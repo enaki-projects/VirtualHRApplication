@@ -1,0 +1,1 @@
+from cv.educational_experiences.insert_data import insert_user_educational_experience

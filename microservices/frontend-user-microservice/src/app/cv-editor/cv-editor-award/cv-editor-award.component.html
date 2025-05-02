@@ -1,0 +1,31 @@
+<div class="flex m-2">
+  <div class="text-right">
+    <button class="btn btn-success mb-2 mt-2" (click)="openAddModal()">Add An Award</button>
+  </div>
+
+  <table class="table table-striped text-center">
+    <thead>
+    <tr>
+      <th class="align-middle" scope="col">#</th>
+      <th class="align-middle" scope="col">Award Title</th>
+      <th class="align-middle" scope="col">Awarding Institution</th>
+      <th class="align-middle" scope="col">Date Of Award</th>
+      <th class="align-middle" scope="col">Description</th>
+      <th class="align-middle" scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let award of awards; index as i">
+      <th class="align-middle" scope="row">{{ i + 1 }}</th>
+      <td class="align-middle">{{award.title | titlecase}}</td>
+      <td class="align-middle">{{award.awardingInstitution | titlecase}}</td>
+      <td class="align-middle">{{award.dateOfAward}}</td>
+      <td class="align-middle">{{award.description || 'No Description Available'}}</td>
+      <td class="align-middle">
+        <button class="btn btn-outline-info mr-3" (click)="openUpdateModal(award)"><fa-icon [icon]="faPen"></fa-icon></button>
+        <button class="btn btn-outline-danger action" (click)="deleteAward(award.awardId)"><fa-icon [icon]="faTrash"></fa-icon></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

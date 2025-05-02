@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  margin: 0 0 0 0;
+  min-height: 100vh ;
+  padding: 0 0 0 0;
+}
+
+.w-10{
+  width: 15%;
+}
+
+.w-35 {
+  width: 35%;
+}
+
+.input-group-text-cst {
+  background: #c0392b !important;
+  color: white;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.white-text {
+  color: white !important;
+}
+
+.input-group-text {
+  border-radius: 0.25rem 0 0 0.25rem !important;
+}
+
+.home-icon {
+  color: #0022be;
+}
+
+.work-icon {
+  color: #29be00;
+}
+
+.other-icon {
+  color: #ab00be;
+}
+
+.msg-icon {
+  color: #dd7400;
+}

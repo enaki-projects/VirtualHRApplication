@@ -1,0 +1,8 @@
+<ngx-spinner>
+  <h3>Loading...</h3>
+</ngx-spinner>
+
+<app-nav></app-nav>
+<div [@routeAnimations]="prepareRoute(outlet)" >
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>

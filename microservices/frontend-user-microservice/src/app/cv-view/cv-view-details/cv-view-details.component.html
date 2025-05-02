@@ -1,0 +1,204 @@
+<div id="cvToConvert" class="mt-2 justify-content-center">
+  <div  class="row ">
+    <div class="offset-lg-1 mt-2 offset-xl-1 offset-md-1 col-lg-10 col-md-10 col-xl-10">
+      <section class="panel panel-default pt-5 pl-5 pr-5 bg-light">
+        <div class="panel-body">
+          <article class="panel-body">
+            <figure class="text-center">
+              <img src="{{currentUser.urlImage}}" class="img-thumbnail rounded-circle img-responsive" alt="me">
+              <figcaption>
+                <h3>{{currentUser.cv.firstname | titlecase}} {{currentUser.cv.lastname | titlecase}}</h3>
+                <div class="container-fluid col-8 text-left">
+                  <fa-icon class="msg-icon" [icon]="faEnvelope"></fa-icon> <strong> {{currentUser.cv.email}}</strong>
+                  <div class="mt-2">
+                    <div *ngFor="let location of currentUser.cv.cvReferences.locations">
+                    <span *ngIf="location.type == 'Home'">
+                      <fa-icon class="home-icon" [icon]="faHome"></fa-icon>
+                    </span>
+                      <span *ngIf="location.type == 'Work'">
+                      <fa-icon class="work-icon" [icon]="faBriefcase"></fa-icon>
+                    </span>
+                      <span *ngIf="location.type == 'Other'">
+                      <fa-icon class="other-icon" [icon]="faBuilding"></fa-icon>
+                    </span>
+                      <strong> {{location.type}}</strong>:
+                      <span class="flag-icon flag-icon-{{this.location.city.region.country.iso2 | lowercase}}"></span>
+                      {{location.city.region.country.countryName}},
+                      {{location.city.cityName}},
+                      {{location.address}}
+                    </div>
+                  </div>
+
+                  <div class="mt-2">
+                    <div *ngFor="let phoneNumber of currentUser.cv.cvReferences.phoneNumbers">
+                      <fa-icon [icon]="faPhoneAlt"></fa-icon> +<strong>{{phoneNumber.country.phoneCode}}</strong> {{phoneNumber.number}}
+                    </div>
+                  </div>
+                </div>
+              </figcaption>
+            </figure>
+          </article>
+          <br>
+          <article>
+            <h4 class="cv-section-title">
+              <strong>Personal Details</strong>
+            </h4>
+            <hr>
+            <dl class="row">
+              <dt class="col-4">Date of Birth:</dt>
+              <dd class="col-7">{{currentUser.cv.birthdate | date:'MMMM d, y'}}</dd>
+              <dt class="col-4">Age:</dt>
+              <dd class="col-7">{{currentUser.cv.birthdate | age}}</dd>
+              <dt *ngIf="currentUser.cv.aboutMe" class="col-4">About:</dt>
+              <dd *ngIf="currentUser.cv.aboutMe" class="col-7">{{currentUser.cv.aboutMe}}</dd>
+              <dt *ngIf="currentUser.cv.motto" class="col-4">Motto:</dt>
+              <dd *ngIf="currentUser.cv.motto" class="col-7">{{currentUser.cv.motto}}</dd>
+            </dl>
+          </article>
+
+          <article *ngIf="currentUser.cv.cvReferences.hobbies.length > 0">
+            <h4 class="cv-section-title">
+              <strong>Hobbies</strong>
+            </h4>
+            <hr>
+            {{cvService.getHobbiesUnited(currentUser.cv.cvReferences.hobbies)}}
+          </article>
+
+          <article *ngIf="cvService.hasAnySkills()">
+            <h4 class="cv-section-title">
+              <strong>Skills</strong>
+            </h4>
+            <hr>
+            <dl class="row" *ngIf="currentUser.cv.cvReferences.userInterpersonalSkills?.length > 0">
+              <dt class="col-3">Interpersonal Skill:</dt>
+              <dd class="col-7"> {{cvService.getSkillsUnited(currentUser.cv.cvReferences.userInterpersonalSkills)}}
+            </dl>
+
+            <dl class="row" *ngIf="currentUser.cv.cvReferences.userLeadershipSkills?.length > 0">
+              <dt class="col-3">Leadership Skill:</dt>
+              <dd class="col-7"> {{cvService.getSkillsUnited(currentUser.cv.cvReferences.userLeadershipSkills)}}
+            </dl>
+
+            <dl class="row" *ngIf="currentUser.cv.cvReferences.userDigitalSkills?.length > 0">
+              <dt class="col-3">Digital Skill:</dt>
+              <dd class="col-7"> {{cvService.getSkillsUnited(currentUser.cv.cvReferences.userDigitalSkills)}}
+            </dl>
+
+            <dl class="row" *ngIf="currentUser.cv.cvReferences.userOrganisationalSkills?.length > 0">
+              <dt class="col-3">Organisational Skill:</dt>
+              <dd class="col-7"> {{cvService.getSkillsUnited(currentUser.cv.cvReferences.userOrganisationalSkills)}}
+            </dl>
+          </article>
+
+          <article *ngIf="currentUser.cv.cvReferences.educationalExperiences.length > 0">
+            <h4 class="cv-section-title">
+              <strong>Education</strong>
+            </h4>
+            <div *ngFor="let educationalExperience of currentUser.cv.cvReferences.educationalExperiences">
+              <hr>
+              <dl class="dl-horizontal">
+                <dt>From <span class="cv-dates">{{educationalExperience.fromDate}}</span> to <span class="cv-dates">{{educationalExperience.toDate  || 'Present'}}</span> <span class="float-right">{{educationalExperience.qualificationTitle}}</span></dt>
+                <div class="offset-4 col-8">
+                  <dd class="text-right"><span class="title-style">"{{educationalExperience.educationalInstitution.institutionName}}"</span>, {{educationalExperience.educationalInstitution.country.countryName}}
+                    <span class="flag-icon flag-icon-{{educationalExperience.educationalInstitution.country.iso2 | lowercase}}"></span></dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+
+          <article *ngIf="currentUser.cv.cvReferences.professionalExperiences.length > 0">
+            <h4 class="cv-section-title">
+              <strong>Work Experiences</strong>
+            </h4>
+            <div *ngFor="let professionalExperience of currentUser.cv.cvReferences.professionalExperiences">
+              <hr>
+              <dl class="dl-horizontal">
+                <dt>From <span class="cv-dates">{{professionalExperience.fromDate}}</span> to <span class="cv-dates">{{professionalExperience.toDate || 'Present'}}</span> <span class="float-right">{{professionalExperience.jobName | titlecase}}</span> </dt>
+                <div class="offset-4 col-8">
+                  <dd class="text-right"><span class="title-style">{{professionalExperience.organisation.organisationName}}</span>, {{professionalExperience.organisation.city.cityName}},
+                    {{professionalExperience.organisation.city.region.country.countryName}} <span class="flag-icon flag-icon-{{professionalExperience.organisation.city.region.country.iso2 | lowercase}}"></span></dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article *ngIf="currentUser.cv.cvReferences.projects.length > 0">
+            <h4 class="cv-section-title">
+              <strong>Projects</strong>
+            </h4>
+            <div *ngFor="let project of currentUser.cv.cvReferences.projects">
+              <hr>
+              <dl class="dl-horizontal">
+                <dt>From <span class="cv-dates">{{project.fromDate}}</span> to <span class="cv-dates">{{project.toDate || 'Present'}}</span></dt>
+                <div class="offset-4 col-8">
+                  <dd><strong>Name:</strong> {{project.name}}</dd>
+                  <dd *ngIf="project.description"><strong>Description:</strong> {{project.description}}</dd>
+                  <dd *ngIf="project.url"><strong><a href="{{project.url}}">See Project</a></strong></dd>
+                </div>
+              </dl>
+            </div>
+            <hr>
+          </article>
+
+          <article *ngIf="currentUser.cv.cvReferences.awards.length > 0">
+            <h4 class="cv-section-title">
+              <strong>Awards</strong>
+            </h4>
+            <div *ngFor="let award of currentUser.cv.cvReferences.awards">
+              <hr>
+              <dl class="dl-horizontal">
+                <dt>From <span class="cv-dates">{{award.dateOfAward}}</span></dt>
+                <div class="offset-4 col-8">
+                  <dd><strong>Name:</strong> {{award.title}}</dd>
+                  <dd><strong>Awarding Institution:</strong> {{award.awardingInstitution}}</dd>
+                  <dd *ngIf="award.description"><strong>Description:</strong> {{award.description}}</dd>
+                </div>
+              </dl>
+            </div>
+            <hr>
+          </article>
+
+          <article *ngIf="currentUser.cv.cvReferences.publications.length > 0">
+            <h4 class="cv-section-title">
+              <strong>Publications</strong>
+            </h4>
+            <div *ngFor="let publication of currentUser.cv.cvReferences.publications">
+              <hr>
+              <dl class="dl-horizontal">
+                <dt>From <span class="cv-dates">{{publication.year}}</span></dt>
+                <div class="offset-4 col-8">
+                  <dd><strong>Name:</strong> {{publication.title}}</dd>
+                  <dd *ngIf="publication.reference"><strong>References:</strong> {{publication.reference}}</dd>
+                  <dd *ngIf="publication.description"><strong>Description:</strong> {{publication.description}}</dd>
+                  <dd *ngIf="publication.url"><strong><a href="{{publication.url}}">See Publication</a></strong></dd>
+                </div>
+              </dl>
+            </div>
+            <hr>
+          </article>
+
+          <article>
+            <div class="d-flex flex-row-reverse">
+              <a class='ml-1 mr-1' href="https://github.com/enaki" title="Enaki's Github">
+                <img class='icon-class' src="/assets/hr_logo_blue.png" alt="vhr_logo">
+              </a>
+              <a class='ml-1 mr-1' href="https://github.com/enaki" title="Enaki's Github">
+                <img class='icon-class' src="/assets/hr_logo_gray.png" alt="vhr_logo">
+              </a>
+              <a class='ml-1 mr-1' href="https://github.com/enaki" title="Enaki's Github">
+                <img class='icon-class' src="/assets/hr_logo_green.png" alt="vhr_logo">
+              </a>
+              <a class='ml-1 mr-1' href="https://github.com/enaki" title="Enaki's Github">
+                <img class='icon-class' src="/assets/hr_logo_red.png" alt="vhr_logo">
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</div>
+
+

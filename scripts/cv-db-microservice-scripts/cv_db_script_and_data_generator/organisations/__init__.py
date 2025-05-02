@@ -1,0 +1,1 @@
+from organisations.insert_data import insert_organisations

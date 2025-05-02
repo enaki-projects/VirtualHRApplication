@@ -1,0 +1,58 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+    <xs:element name="getDecodedJwtRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="encoded_jwt" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getDecodedJwtResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="decoded_jwt" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getEncodedAuthRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="credentials" type="tns:credentials"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAuthRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="credentials" type="tns:credentials"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAuthResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user" type="tns:user"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="credentials">
+        <xs:sequence>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="user">
+        <xs:sequence>
+            <xs:element name="uid" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="token" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

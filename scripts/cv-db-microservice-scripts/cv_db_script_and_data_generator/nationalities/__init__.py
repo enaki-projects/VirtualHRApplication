@@ -1,0 +1,2 @@
+from .generate_sql_scripts import generate_nationalities
+from .insert_data import insert_nationalities

@@ -1,0 +1,12 @@
+{
+  "apps" : [{
+    "name": "CV Website",
+    "script": "src/app.js",
+    "watch": ["src/app.js"],
+    "watch_options": {
+      "followSymlinks": false,
+      "usePolling": true
+    },
+    "log_date_format" : "YYYY-MM-DD HH:mm Z"
+  }]
+}

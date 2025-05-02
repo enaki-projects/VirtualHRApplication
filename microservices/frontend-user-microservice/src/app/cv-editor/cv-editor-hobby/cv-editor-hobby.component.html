@@ -1,0 +1,27 @@
+<div class="flex m-2">
+  <div class="text-right">
+    <button class="btn btn-success mb-2 mt-2" (click)="openAddModal()">Add A Hobby</button>
+  </div>
+
+  <table class="table table-striped text-center">
+    <thead>
+    <tr>
+      <th class="align-middle" scope="col">#</th>
+      <th class="align-middle" scope="col">Hobby Name</th>
+      <th class="align-middle" scope="col">Description</th>
+      <th class="align-middle" scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let hobby of hobbies; index as i">
+      <th class="align-middle" scope="row">{{ i + 1 }}</th>
+      <td class="align-middle">{{hobby.name | titlecase}}</td>
+      <td class="align-middle">{{hobby.description || 'No Description Available'}}</td>
+      <td class="align-middle">
+        <button class="btn btn-outline-info mr-3" (click)="openUpdateModal(hobby)"><fa-icon [icon]="faPen"></fa-icon></button>
+        <button class="btn btn-outline-danger action" (click)="deleteHobby(hobby.hobbyId)"><fa-icon [icon]="faTrash"></fa-icon></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,45 @@
+<div class="card" *ngIf="currentUser">
+  <div class="card-header p-1">
+    <h6 class="card-text text-center m-2"><fa-icon [icon]="faUser"></fa-icon>
+      {{currentUser.cv.email}}
+    </h6>
+  </div>
+  <div class="card-body p-1">
+    <div class="card-img-wrapper m-3 text-center">
+      <img [src]="this.accountService.getUserPhotoUrl()" alt="{{currentUser.cv.email}}" class="img-fluid img-thumbnail card-img-top user-profile-picture">
+      <ul *ngIf="currentUser.cv.hasImage && enableDeletePhotoButton" class="list-inline member-icons animate text-center">
+        <li class="list-inline-item"><button class="btn btn-primary" (click)="deletePhoto()">
+          <fa-icon [icon]="faTrash"></fa-icon></button></li>
+      </ul>
+    </div>
+    <div class="ml-2">
+      <h6 class="card-title m-2">
+        <strong>First Name: </strong>{{currentUser.cv.firstname}}
+      </h6>
+      <h6 class="card-title m-2">
+        <strong>Last Name: </strong>{{currentUser.cv.lastname}}
+      </h6>
+      <h6 class="card-title m-2">
+        <strong>Contact Email: </strong>{{currentUser.cv.email}}
+      </h6>
+      <h6 class="card-title m-2">
+        <strong>Gender: </strong>{{currentUser.cv.gender}}
+      </h6>
+      <h6 class="card-title m-2">
+        <strong>Birthdate: </strong>{{currentUser.cv.birthdate | date:'MMMM d, y'}}
+      </h6>
+      <h6 class="card-title m-2">
+        <strong>Age: </strong>{{currentUser.cv.birthdate | age}}
+      </h6>
+      <h6 *ngIf="currentUser.cv.motto" class="card-title m-2">
+        <strong>Motto: </strong>{{currentUser.cv.motto}}
+      </h6>
+    </div>
+  </div>
+  <div *ngIf="currentUser.cv.aboutMe" class="card-footer p-1">
+    <blockquote class="blockquote ml-4 mr-4">
+      <div class="card-text mb-0">"{{currentUser.cv.aboutMe}}"</div>
+    </blockquote>
+
+  </div>
+</div>

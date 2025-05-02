@@ -1,0 +1,2 @@
+from .generate_sql_scripts import generate_universities_sql_scripts
+from .insert_data import insert_universities

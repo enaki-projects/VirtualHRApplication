@@ -1,0 +1,1 @@
+from cv.citizenships.insert_data import insert_user_citizenships

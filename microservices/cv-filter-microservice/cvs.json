@@ -1,0 +1,1258 @@
+[
+    {
+        "uid": 1,
+        "firstname": "Eren",
+        "lastname": "Yeager",
+        "email": "eren@gmail.com",
+        "gender": "Male",
+        "birthdate": "1998-01-01",
+        "aboutMe": "I am a curios person. Always looking to do something good.",
+        "motto": "Love dogs.",
+        "iqScore": 0,
+        "hasImage": true,
+        "canTakeTheIqRequest": true,
+        "requestedRetakeOfIqTest": false,
+        "cvReferences": {
+            "locations": [
+                {
+                    "locationId": 1,
+                    "type": "Home",
+                    "address": "Strada Mihai Eminescu",
+                    "city": {
+                        "cityId": 67334,
+                        "cityName": "Ungheni",
+                        "latitude": 47.21079,
+                        "longitude": 27.80047,
+                        "region": {
+                            "regionId": 4386,
+                            "regionName": "Ungheni District",
+                            "regionCode": "UN",
+                            "country": {
+                                "countryId": 144,
+                                "countryName": "Moldova",
+                                "iso3": "MDA",
+                                "iso2": "MD",
+                                "phoneCode": "373",
+                                "capital": "Chisinau",
+                                "currency": "MDL"
+                            }
+                        }
+                    }
+                }
+            ],
+            "citizenship": [
+                {
+                    "nationalityId": 21,
+                    "nationalityName": "Belizean"
+                },
+                {
+                    "nationalityId": 23,
+                    "nationalityName": "Bhutanese"
+                }
+            ],
+            "awards": [
+                {
+                    "awardId": 1,
+                    "title": "Romanian Language Olympiad 3'rd place",
+                    "awardingInstitution": "Education Ministry Republic of Moldova",
+                    "dateOfAward": "2013-07-11",
+                    "description": null
+                },
+                {
+                    "awardId": 2,
+                    "title": "Winner of the Kangaroo Maths Contest",
+                    "awardingInstitution": "Kangaroo Team",
+                    "dateOfAward": "2015-07-11",
+                    "description": "By the number of consecutive problems solved"
+                }
+            ],
+            "hobbies": [
+                {
+                    "hobbyId": 2,
+                    "name": "anime",
+                    "description": null
+                },
+                {
+                    "hobbyId": 1,
+                    "name": "guitar",
+                    "description": null
+                }
+            ],
+            "projects": [
+                {
+                    "projectId": 1,
+                    "name": "My mess",
+                    "description": "My Mess app",
+                    "fromDate": "2020-10-01",
+                    "toDate": "2020-12-01",
+                    "url": "https://github.com/enaki/MyMess"
+                },
+                {
+                    "projectId": 2,
+                    "name": "Nyan Bird with Ai",
+                    "description": "Nyan Bird with Ai",
+                    "fromDate": "2020-10-01",
+                    "toDate": "2021-01-01",
+                    "url": "https://github.com/TUIASI-AC-enaki/flappy-bird-with-ai"
+                }
+            ],
+            "phoneNumbers": [
+                {
+                    "phoneNumberId": 1,
+                    "number": "124 1234 1234",
+                    "country": {
+                        "countryId": 181,
+                        "countryName": "Romania",
+                        "iso3": "ROU",
+                        "iso2": "RO",
+                        "phoneCode": "40",
+                        "capital": "Bucharest",
+                        "currency": "RON"
+                    }
+                }
+            ],
+            "publications": [],
+            "iqTests": [],
+            "userLanguages": [
+                {
+                    "userLanguageId": 1,
+                    "listening": "B2",
+                    "reading": "B1",
+                    "spokenInteraction": "B2",
+                    "spokenProduction": "C2",
+                    "writing": "B1",
+                    "language": {
+                        "languageId": 15,
+                        "name": "Bambara",
+                        "code": "bm",
+                        "nativeName": "bamanankan"
+                    }
+                }
+            ],
+            "educationalExperiences": [
+                {
+                    "educationalExperienceId": 1,
+                    "specialty": "Psychology",
+                    "qualificationTitle": "Bachelor Degree",
+                    "fromDate": "2012-09-15",
+                    "toDate": "2016-09-01",
+                    "educationalInstitution": {
+                        "educationalInstitutionId": 12613,
+                        "institutionName": "University School of Fine Arts of Coimbra",
+                        "altInstitutionName": "Escola Universitária das Artes de Coimbra (EUAC)",
+                        "address": "Campus Universitário da Arca, Lordemão, Coimbra, Portugal",
+                        "telephone": "+351(239) 497-400",
+                        "website": "http://www.arca.pt",
+                        "email": "info@arca.pt",
+                        "funding": "Private",
+                        "accreditingAgency": null,
+                        "country": {
+                            "countryId": 177,
+                            "countryName": "Portugal",
+                            "iso3": "PRT",
+                            "iso2": "PT",
+                            "phoneCode": "351",
+                            "capital": "Lisbon",
+                            "currency": "EUR"
+                        }
+                    }
+                },
+                {
+                    "educationalExperienceId": 2,
+                    "specialty": "Computer Science",
+                    "qualificationTitle": "Bachelor Degree",
+                    "fromDate": "2016-10-01",
+                    "toDate": "2020-09-01",
+                    "educationalInstitution": {
+                        "educationalInstitutionId": 12639,
+                        "institutionName": "Dimitrie Cantemir University of Târgu-Mureş",
+                        "altInstitutionName": "Universitatea Dimitrie Cantemir din Municipiul Târgu-Mureş",
+                        "address": "str. Bodoni Sandor, nr.3-5, Târgu-Mureş, Romania",
+                        "telephone": "+40(365) 401- 127",
+                        "website": "http://www.cantemir.ro",
+                        "email": "office@cantemir.ro",
+                        "funding": "Private",
+                        "accreditingAgency": "Ministry of Education and Research",
+                        "country": {
+                            "countryId": 181,
+                            "countryName": "Romania",
+                            "iso3": "ROU",
+                            "iso2": "RO",
+                            "phoneCode": "40",
+                            "capital": "Bucharest",
+                            "currency": "RON"
+                        }
+                    }
+                }
+            ],
+            "professionalExperiences": [
+                {
+                    "professionalExperienceId": 1,
+                    "jobName": "junior programmer",
+                    "description": null,
+                    "fromDate": "2018-01-01",
+                    "toDate": "2019-01-01",
+                    "organisation": {
+                        "organisationId": 1,
+                        "organisationName": "Bitdefender",
+                        "address": "Strada Palas 3, Iași 700259, Romania",
+                        "city": {
+                            "cityId": 94630,
+                            "cityName": "Iaşi",
+                            "latitude": 47.16667,
+                            "longitude": 27.6,
+                            "region": {
+                                "regionId": 4735,
+                                "regionName": "Iași County",
+                                "regionCode": "IS",
+                                "country": {
+                                    "countryId": 181,
+                                    "countryName": "Romania",
+                                    "iso3": "ROU",
+                                    "iso2": "RO",
+                                    "phoneCode": "40",
+                                    "capital": "Bucharest",
+                                    "currency": "RON"
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            "userInterpersonalSkills": [
+                {
+                    "skillId": 4,
+                    "name": "Leadership",
+                    "description": "Even if you are not a manager, it is important to have some leadership experience and ability. Leadership requires being able to motivate and encourage others and help a team achieve success."
+                }
+            ],
+            "userDigitalSkills": [
+                {
+                    "skillId": 2,
+                    "name": "Scripting",
+                    "description": "This could be Bash, Python or even Perl. Bash is a command line interpreter, Python is a dynamic language, while Perl is general purpose. All of them support scripts — programs written to automate tasks that could also be executed manually by a human."
+                }
+            ],
+            "userOrganisationalSkills": [
+                {
+                    "skillId": 1,
+                    "name": "Collaboration",
+                    "description": "Your success may depend on how effectively you can organize your collaboration with others."
+                }
+            ],
+            "userLeadershipSkills": [
+                {
+                    "skillId": 1,
+                    "name": "Strategic Thinking",
+                    "description": "Developing a vision of where yu want to be"
+                },
+                {
+                    "skillId": 3,
+                    "name": "People Management Skills",
+                    "description": "Without followers, there are no leaders. Leaders therefore need skills in working with others on a one-to-one and group basis, and a range of tools in their armoury to deal with a wide range of situations."
+                }
+            ]
+        }
+    },
+    {
+        "uid": 2,
+        "firstname": "Mikasa",
+        "lastname": "Ackerman",
+        "email": "mikasa@gmail.com",
+        "gender": "Female",
+        "birthdate": "1996-11-07",
+        "aboutMe": "I am a curios person. I will prove my skills.",
+        "motto": "This world is cruel. It is also very beautiful.",
+        "iqScore": 0,
+        "hasImage": true,
+        "canTakeTheIqRequest": true,
+        "requestedRetakeOfIqTest": false,
+        "cvReferences": {
+            "locations": [
+                {
+                    "locationId": 2,
+                    "type": "Home",
+                    "address": "Strada Mihai Eminescu",
+                    "city": {
+                        "cityId": 67334,
+                        "cityName": "Ungheni",
+                        "latitude": 47.21079,
+                        "longitude": 27.80047,
+                        "region": {
+                            "regionId": 4386,
+                            "regionName": "Ungheni District",
+                            "regionCode": "UN",
+                            "country": {
+                                "countryId": 144,
+                                "countryName": "Moldova",
+                                "iso3": "MDA",
+                                "iso2": "MD",
+                                "phoneCode": "373",
+                                "capital": "Chisinau",
+                                "currency": "MDL"
+                            }
+                        }
+                    }
+                },
+                {
+                    "locationId": 3,
+                    "type": "Work",
+                    "address": "Strada Mihai Eminescu",
+                    "city": {
+                        "cityId": 95126,
+                        "cityName": "Municipiul Cluj-Napoca",
+                        "latitude": 46.77791,
+                        "longitude": 23.60512,
+                        "region": {
+                            "regionId": 4734,
+                            "regionName": "Cluj County",
+                            "regionCode": "CJ",
+                            "country": {
+                                "countryId": 181,
+                                "countryName": "Romania",
+                                "iso3": "ROU",
+                                "iso2": "RO",
+                                "phoneCode": "40",
+                                "capital": "Bucharest",
+                                "currency": "RON"
+                            }
+                        }
+                    }
+                }
+            ],
+            "citizenship": [
+                {
+                    "nationalityId": 26,
+                    "nationalityName": "Brazilian"
+                }
+            ],
+            "awards": [
+                {
+                    "awardId": 3,
+                    "title": "Maths Olympiad 1'st place",
+                    "awardingInstitution": "Education Ministry Romania",
+                    "dateOfAward": "2015-07-11",
+                    "description": null
+                }
+            ],
+            "hobbies": [
+                {
+                    "hobbyId": 3,
+                    "name": "checkers",
+                    "description": null
+                }
+            ],
+            "projects": [
+                {
+                    "projectId": 3,
+                    "name": "CovidApp Visualizer",
+                    "description": "CovidApp Visualizer app",
+                    "fromDate": "2020-10-01",
+                    "toDate": "2020-12-01",
+                    "url": "https://github.com/enaki/covid-visualizer"
+                }
+            ],
+            "phoneNumbers": [
+                {
+                    "phoneNumberId": 2,
+                    "number": "124 512 1234",
+                    "country": {
+                        "countryId": 181,
+                        "countryName": "Romania",
+                        "iso3": "ROU",
+                        "iso2": "RO",
+                        "phoneCode": "40",
+                        "capital": "Bucharest",
+                        "currency": "RON"
+                    }
+                },
+                {
+                    "phoneNumberId": 3,
+                    "number": "13 1234 1234",
+                    "country": {
+                        "countryId": 144,
+                        "countryName": "Moldova",
+                        "iso3": "MDA",
+                        "iso2": "MD",
+                        "phoneCode": "373",
+                        "capital": "Chisinau",
+                        "currency": "MDL"
+                    }
+                }
+            ],
+            "publications": [],
+            "iqTests": [],
+            "userLanguages": [
+                {
+                    "userLanguageId": 2,
+                    "listening": "B2",
+                    "reading": "B1",
+                    "spokenInteraction": "B2",
+                    "spokenProduction": "C2",
+                    "writing": "B1",
+                    "language": {
+                        "languageId": 10,
+                        "name": "Assamese",
+                        "code": "as",
+                        "nativeName": "অসমীয়া"
+                    }
+                },
+                {
+                    "userLanguageId": 3,
+                    "listening": "A2",
+                    "reading": "A1",
+                    "spokenInteraction": "A2",
+                    "spokenProduction": "A2",
+                    "writing": "A1",
+                    "language": {
+                        "languageId": 12,
+                        "name": "Avestan",
+                        "code": "ae",
+                        "nativeName": "avesta"
+                    }
+                }
+            ],
+            "educationalExperiences": [
+                {
+                    "educationalExperienceId": 3,
+                    "specialty": "Informatics",
+                    "qualificationTitle": "Bachelor Degree",
+                    "fromDate": "2012-09-15",
+                    "toDate": "2016-09-01",
+                    "educationalInstitution": {
+                        "educationalInstitutionId": 12613,
+                        "institutionName": "University School of Fine Arts of Coimbra",
+                        "altInstitutionName": "Escola Universitária das Artes de Coimbra (EUAC)",
+                        "address": "Campus Universitário da Arca, Lordemão, Coimbra, Portugal",
+                        "telephone": "+351(239) 497-400",
+                        "website": "http://www.arca.pt",
+                        "email": "info@arca.pt",
+                        "funding": "Private",
+                        "accreditingAgency": null,
+                        "country": {
+                            "countryId": 177,
+                            "countryName": "Portugal",
+                            "iso3": "PRT",
+                            "iso2": "PT",
+                            "phoneCode": "351",
+                            "capital": "Lisbon",
+                            "currency": "EUR"
+                        }
+                    }
+                }
+            ],
+            "professionalExperiences": [
+                {
+                    "professionalExperienceId": 2,
+                    "jobName": "junior programmer",
+                    "description": null,
+                    "fromDate": "2017-01-01",
+                    "toDate": "2018-01-01",
+                    "organisation": {
+                        "organisationId": 2,
+                        "organisationName": "Centric",
+                        "address": "Str Palat nr. 3C, United Business Center 4, 5th floor",
+                        "city": {
+                            "cityId": 94630,
+                            "cityName": "Iaşi",
+                            "latitude": 47.16667,
+                            "longitude": 27.6,
+                            "region": {
+                                "regionId": 4735,
+                                "regionName": "Iași County",
+                                "regionCode": "IS",
+                                "country": {
+                                    "countryId": 181,
+                                    "countryName": "Romania",
+                                    "iso3": "ROU",
+                                    "iso2": "RO",
+                                    "phoneCode": "40",
+                                    "capital": "Bucharest",
+                                    "currency": "RON"
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            "userInterpersonalSkills": [
+                {
+                    "skillId": 2,
+                    "name": "Conflict Management",
+                    "description": "Whether you are a manager or an employee, you will likely need to resolve conflicts at some point in your job. This might involve solving an issue between two staff members, between yourself and a colleague, or between a client and your company."
+                },
+                {
+                    "skillId": 3,
+                    "name": "Empathy",
+                    "description": "Part of being a good manager, employee, or colleague is the ability to understand and show empathy for others. If a customer or colleague calls with a complaint, for example, you will need to listen thoughtfully to the person’s concerns and express compassion for their issue. Empathy is an important skill that will help you get along with everyone in the workplace."
+                }
+            ],
+            "userDigitalSkills": [
+                {
+                    "skillId": 1,
+                    "name": "HTML",
+                    "description": "HTML tells the web browser how it should define and display content. For content marketing, it is essential to understand how to find and edit meta descriptions, title tags and keywords."
+                }
+            ],
+            "userOrganisationalSkills": [
+                {
+                    "skillId": 2,
+                    "name": "Communication",
+                    "description": "Disorganized and hectic communication will damage your productivity."
+                }
+            ],
+            "userLeadershipSkills": [
+                {
+                    "skillId": 2,
+                    "name": "Planning",
+                    "description": "These areas are key management skills, but the best leaders will also be able to turn their hand to these. The best vision in the world is no good without the plan to turn it into reality."
+                },
+                {
+                    "skillId": 3,
+                    "name": "People Management Skills",
+                    "description": "Without followers, there are no leaders. Leaders therefore need skills in working with others on a one-to-one and group basis, and a range of tools in their armoury to deal with a wide range of situations."
+                }
+            ]
+        }
+    },
+    {
+        "uid": 3,
+        "firstname": "Ion",
+        "lastname": "Creanga",
+        "email": "creanga@gmail.com",
+        "gender": "male",
+        "birthdate": "1824-01-31",
+        "aboutMe": "I am a writer.",
+        "motto": "",
+        "iqScore": 0,
+        "hasImage": true,
+        "canTakeTheIqRequest": true,
+        "requestedRetakeOfIqTest": false,
+        "cvReferences": {
+            "locations": [],
+            "citizenship": [],
+            "awards": [],
+            "hobbies": [],
+            "projects": [],
+            "phoneNumbers": [],
+            "publications": [],
+            "iqTests": [],
+            "userLanguages": [],
+            "educationalExperiences": [],
+            "professionalExperiences": [],
+            "userInterpersonalSkills": [],
+            "userDigitalSkills": [],
+            "userOrganisationalSkills": [],
+            "userLeadershipSkills": []
+        }
+    },
+    {
+        "uid": 4,
+        "firstname": "Inuyasha",
+        "lastname": "HalfDog",
+        "email": "inuyasha@gmail.com",
+        "gender": "male",
+        "birthdate": "1992-05-05",
+        "aboutMe": "I am looking forward to defeat my enemies.",
+        "motto": "The Future Is Not A Straight Line.",
+        "iqScore": 0,
+        "hasImage": true,
+        "canTakeTheIqRequest": true,
+        "requestedRetakeOfIqTest": false,
+        "cvReferences": {
+            "locations": [
+                {
+                    "locationId": 4,
+                    "type": "Home",
+                    "address": "bulevardul. Tudor Vladimirescu",
+                    "city": {
+                        "cityId": 95126,
+                        "cityName": "Municipiul Cluj-Napoca",
+                        "latitude": 46.77791,
+                        "longitude": 23.60512,
+                        "region": {
+                            "regionId": 4734,
+                            "regionName": "Cluj County",
+                            "regionCode": "CJ",
+                            "country": {
+                                "countryId": 181,
+                                "countryName": "Romania",
+                                "iso3": "ROU",
+                                "iso2": "RO",
+                                "phoneCode": "40",
+                                "capital": "Bucharest",
+                                "currency": "RON"
+                            }
+                        }
+                    }
+                }
+            ],
+            "citizenship": [
+                {
+                    "nationalityId": 26,
+                    "nationalityName": "Brazilian"
+                }
+            ],
+            "awards": [
+                {
+                    "awardId": 4,
+                    "title": "Sport Olympiad 1'st place",
+                    "awardingInstitution": "Education Ministry Romania",
+                    "dateOfAward": "2007-07-11",
+                    "description": null
+                }
+            ],
+            "hobbies": [
+                {
+                    "hobbyId": 4,
+                    "name": "fighting",
+                    "description": null
+                }
+            ],
+            "projects": [],
+            "phoneNumbers": [
+                {
+                    "phoneNumberId": 4,
+                    "number": "123 456 789",
+                    "country": {
+                        "countryId": 181,
+                        "countryName": "Romania",
+                        "iso3": "ROU",
+                        "iso2": "RO",
+                        "phoneCode": "40",
+                        "capital": "Bucharest",
+                        "currency": "RON"
+                    }
+                },
+                {
+                    "phoneNumberId": 5,
+                    "number": "13 1234 1234",
+                    "country": {
+                        "countryId": 132,
+                        "countryName": "Malaysia",
+                        "iso3": "MYS",
+                        "iso2": "MY",
+                        "phoneCode": "60",
+                        "capital": "Kuala Lumpur",
+                        "currency": "MYR"
+                    }
+                }
+            ],
+            "publications": [],
+            "iqTests": [],
+            "userLanguages": [
+                {
+                    "userLanguageId": 4,
+                    "listening": "B2",
+                    "reading": "B1",
+                    "spokenInteraction": "B2",
+                    "spokenProduction": "C2",
+                    "writing": "B1",
+                    "language": {
+                        "languageId": 10,
+                        "name": "Assamese",
+                        "code": "as",
+                        "nativeName": "অসমীয়া"
+                    }
+                },
+                {
+                    "userLanguageId": 5,
+                    "listening": "A2",
+                    "reading": "A1",
+                    "spokenInteraction": "A2",
+                    "spokenProduction": "A2",
+                    "writing": "A1",
+                    "language": {
+                        "languageId": 12,
+                        "name": "Avestan",
+                        "code": "ae",
+                        "nativeName": "avesta"
+                    }
+                }
+            ],
+            "educationalExperiences": [
+                {
+                    "educationalExperienceId": 4,
+                    "specialty": "Informatics",
+                    "qualificationTitle": "Bachelor Degree",
+                    "fromDate": "2004-09-15",
+                    "toDate": "2008-09-01",
+                    "educationalInstitution": {
+                        "educationalInstitutionId": 12613,
+                        "institutionName": "University School of Fine Arts of Coimbra",
+                        "altInstitutionName": "Escola Universitária das Artes de Coimbra (EUAC)",
+                        "address": "Campus Universitário da Arca, Lordemão, Coimbra, Portugal",
+                        "telephone": "+351(239) 497-400",
+                        "website": "http://www.arca.pt",
+                        "email": "info@arca.pt",
+                        "funding": "Private",
+                        "accreditingAgency": null,
+                        "country": {
+                            "countryId": 177,
+                            "countryName": "Portugal",
+                            "iso3": "PRT",
+                            "iso2": "PT",
+                            "phoneCode": "351",
+                            "capital": "Lisbon",
+                            "currency": "EUR"
+                        }
+                    }
+                }
+            ],
+            "professionalExperiences": [
+                {
+                    "professionalExperienceId": 3,
+                    "jobName": "junior programmer",
+                    "description": null,
+                    "fromDate": "2017-01-01",
+                    "toDate": "2018-01-01",
+                    "organisation": {
+                        "organisationId": 4,
+                        "organisationName": "Continental",
+                        "address": "Bulevardul Poitiers 6",
+                        "city": {
+                            "cityId": 94630,
+                            "cityName": "Iaşi",
+                            "latitude": 47.16667,
+                            "longitude": 27.6,
+                            "region": {
+                                "regionId": 4735,
+                                "regionName": "Iași County",
+                                "regionCode": "IS",
+                                "country": {
+                                    "countryId": 181,
+                                    "countryName": "Romania",
+                                    "iso3": "ROU",
+                                    "iso2": "RO",
+                                    "phoneCode": "40",
+                                    "capital": "Bucharest",
+                                    "currency": "RON"
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            "userInterpersonalSkills": [
+                {
+                    "skillId": 4,
+                    "name": "Leadership",
+                    "description": "Even if you are not a manager, it is important to have some leadership experience and ability. Leadership requires being able to motivate and encourage others and help a team achieve success."
+                }
+            ],
+            "userDigitalSkills": [
+                {
+                    "skillId": 1,
+                    "name": "HTML",
+                    "description": "HTML tells the web browser how it should define and display content. For content marketing, it is essential to understand how to find and edit meta descriptions, title tags and keywords."
+                }
+            ],
+            "userOrganisationalSkills": [
+                {
+                    "skillId": 2,
+                    "name": "Communication",
+                    "description": "Disorganized and hectic communication will damage your productivity."
+                },
+                {
+                    "skillId": 3,
+                    "name": "Teamwork",
+                    "description": "Organizing work in a group of people is just as essential as selecting the right people to build a team in the first place."
+                },
+                {
+                    "skillId": 4,
+                    "name": "Delegation",
+                    "description": "In fact, your delegation skills are related to your teamwork skills. Well-organized individuals know what they can do themselves, and what they need to delegate to other team members to achieve the best results."
+                }
+            ],
+            "userLeadershipSkills": [
+                {
+                    "skillId": 1,
+                    "name": "Strategic Thinking",
+                    "description": "Developing a vision of where yu want to be"
+                },
+                {
+                    "skillId": 3,
+                    "name": "People Management Skills",
+                    "description": "Without followers, there are no leaders. Leaders therefore need skills in working with others on a one-to-one and group basis, and a range of tools in their armoury to deal with a wide range of situations."
+                }
+            ]
+        }
+    },
+    {
+        "uid": 5,
+        "firstname": "Seshomaru",
+        "lastname": "Sama",
+        "email": "seshomaru@gmail.com",
+        "gender": "male",
+        "birthdate": "1994-03-10",
+        "aboutMe": "I possess the perfect power that many yōkai desired",
+        "motto": "So much power.",
+        "iqScore": 0,
+        "hasImage": true,
+        "canTakeTheIqRequest": true,
+        "requestedRetakeOfIqTest": false,
+        "cvReferences": {
+            "locations": [
+                {
+                    "locationId": 5,
+                    "type": "Home",
+                    "address": "bulevardul. Tudor Vladimirescu",
+                    "city": {
+                        "cityId": 95126,
+                        "cityName": "Municipiul Cluj-Napoca",
+                        "latitude": 46.77791,
+                        "longitude": 23.60512,
+                        "region": {
+                            "regionId": 4734,
+                            "regionName": "Cluj County",
+                            "regionCode": "CJ",
+                            "country": {
+                                "countryId": 181,
+                                "countryName": "Romania",
+                                "iso3": "ROU",
+                                "iso2": "RO",
+                                "phoneCode": "40",
+                                "capital": "Bucharest",
+                                "currency": "RON"
+                            }
+                        }
+                    }
+                }
+            ],
+            "citizenship": [
+                {
+                    "nationalityId": 24,
+                    "nationalityName": "Bolivian"
+                },
+                {
+                    "nationalityId": 25,
+                    "nationalityName": "Bosnian"
+                },
+                {
+                    "nationalityId": 26,
+                    "nationalityName": "Brazilian"
+                }
+            ],
+            "awards": [
+                {
+                    "awardId": 5,
+                    "title": "Sport Olympiad 1'st place",
+                    "awardingInstitution": "Education Ministry Romania",
+                    "dateOfAward": "2007-07-11",
+                    "description": null
+                }
+            ],
+            "hobbies": [
+                {
+                    "hobbyId": 5,
+                    "name": "fighting",
+                    "description": null
+                }
+            ],
+            "projects": [],
+            "phoneNumbers": [
+                {
+                    "phoneNumberId": 6,
+                    "number": "123 456 789",
+                    "country": {
+                        "countryId": 192,
+                        "countryName": "San Marino",
+                        "iso3": "SMR",
+                        "iso2": "SM",
+                        "phoneCode": "378",
+                        "capital": "San Marino",
+                        "currency": "EUR"
+                    }
+                },
+                {
+                    "phoneNumberId": 7,
+                    "number": "13 1234 1234",
+                    "country": {
+                        "countryId": 132,
+                        "countryName": "Malaysia",
+                        "iso3": "MYS",
+                        "iso2": "MY",
+                        "phoneCode": "60",
+                        "capital": "Kuala Lumpur",
+                        "currency": "MYR"
+                    }
+                }
+            ],
+            "publications": [],
+            "iqTests": [],
+            "userLanguages": [
+                {
+                    "userLanguageId": 6,
+                    "listening": "B2",
+                    "reading": "B1",
+                    "spokenInteraction": "B2",
+                    "spokenProduction": "C2",
+                    "writing": "B1",
+                    "language": {
+                        "languageId": 11,
+                        "name": "Avaric",
+                        "code": "av",
+                        "nativeName": "авар мацӀ, магӀарул мацӀ"
+                    }
+                },
+                {
+                    "userLanguageId": 7,
+                    "listening": "C2",
+                    "reading": "C1",
+                    "spokenInteraction": "C2",
+                    "spokenProduction": "C2",
+                    "writing": "C1",
+                    "language": {
+                        "languageId": 12,
+                        "name": "Avestan",
+                        "code": "ae",
+                        "nativeName": "avesta"
+                    }
+                }
+            ],
+            "educationalExperiences": [
+                {
+                    "educationalExperienceId": 5,
+                    "specialty": "Informatics",
+                    "qualificationTitle": "Bachelor Degree",
+                    "fromDate": "2004-09-15",
+                    "toDate": "2008-09-01",
+                    "educationalInstitution": {
+                        "educationalInstitutionId": 12613,
+                        "institutionName": "University School of Fine Arts of Coimbra",
+                        "altInstitutionName": "Escola Universitária das Artes de Coimbra (EUAC)",
+                        "address": "Campus Universitário da Arca, Lordemão, Coimbra, Portugal",
+                        "telephone": "+351(239) 497-400",
+                        "website": "http://www.arca.pt",
+                        "email": "info@arca.pt",
+                        "funding": "Private",
+                        "accreditingAgency": null,
+                        "country": {
+                            "countryId": 177,
+                            "countryName": "Portugal",
+                            "iso3": "PRT",
+                            "iso2": "PT",
+                            "phoneCode": "351",
+                            "capital": "Lisbon",
+                            "currency": "EUR"
+                        }
+                    }
+                }
+            ],
+            "professionalExperiences": [
+                {
+                    "professionalExperienceId": 4,
+                    "jobName": "senior programmer",
+                    "description": null,
+                    "fromDate": "2006-01-01",
+                    "toDate": "2018-01-01",
+                    "organisation": {
+                        "organisationId": 7,
+                        "organisationName": "Levi9",
+                        "address": "Șoseaua Națională 31",
+                        "city": {
+                            "cityId": 94630,
+                            "cityName": "Iaşi",
+                            "latitude": 47.16667,
+                            "longitude": 27.6,
+                            "region": {
+                                "regionId": 4735,
+                                "regionName": "Iași County",
+                                "regionCode": "IS",
+                                "country": {
+                                    "countryId": 181,
+                                    "countryName": "Romania",
+                                    "iso3": "ROU",
+                                    "iso2": "RO",
+                                    "phoneCode": "40",
+                                    "capital": "Bucharest",
+                                    "currency": "RON"
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            "userInterpersonalSkills": [
+                {
+                    "skillId": 5,
+                    "name": "Listening",
+                    "description": "Listening is a skill that goes hand in hand with good communication. While you need to be able to express your own ideas, you also need to thoughtfully listen to the ideas of others. This will help your clients, employers, colleagues, and employees feel respected and valued."
+                }
+            ],
+            "userDigitalSkills": [
+                {
+                    "skillId": 2,
+                    "name": "Scripting",
+                    "description": "This could be Bash, Python or even Perl. Bash is a command line interpreter, Python is a dynamic language, while Perl is general purpose. All of them support scripts — programs written to automate tasks that could also be executed manually by a human."
+                }
+            ],
+            "userOrganisationalSkills": [
+                {
+                    "skillId": 2,
+                    "name": "Communication",
+                    "description": "Disorganized and hectic communication will damage your productivity."
+                }
+            ],
+            "userLeadershipSkills": [
+                {
+                    "skillId": 1,
+                    "name": "Strategic Thinking",
+                    "description": "Developing a vision of where yu want to be"
+                },
+                {
+                    "skillId": 2,
+                    "name": "Planning",
+                    "description": "These areas are key management skills, but the best leaders will also be able to turn their hand to these. The best vision in the world is no good without the plan to turn it into reality."
+                },
+                {
+                    "skillId": 3,
+                    "name": "People Management Skills",
+                    "description": "Without followers, there are no leaders. Leaders therefore need skills in working with others on a one-to-one and group basis, and a range of tools in their armoury to deal with a wide range of situations."
+                }
+            ]
+        }
+    },
+    {
+        "uid": 6,
+        "firstname": "Kikyo",
+        "lastname": "Adachi",
+        "email": "kikio@gmail.com",
+        "gender": "female",
+        "birthdate": "1995-07-10",
+        "aboutMe": "I despise you with my last breath.",
+        "motto": "Once the thread of fate is tangled, it cannot be undone.",
+        "iqScore": 0,
+        "hasImage": true,
+        "canTakeTheIqRequest": true,
+        "requestedRetakeOfIqTest": false,
+        "cvReferences": {
+            "locations": [
+                {
+                    "locationId": 6,
+                    "type": "Home",
+                    "address": "bulevardul. Tudor Vladimirescu",
+                    "city": {
+                        "cityId": 95126,
+                        "cityName": "Municipiul Cluj-Napoca",
+                        "latitude": 46.77791,
+                        "longitude": 23.60512,
+                        "region": {
+                            "regionId": 4734,
+                            "regionName": "Cluj County",
+                            "regionCode": "CJ",
+                            "country": {
+                                "countryId": 181,
+                                "countryName": "Romania",
+                                "iso3": "ROU",
+                                "iso2": "RO",
+                                "phoneCode": "40",
+                                "capital": "Bucharest",
+                                "currency": "RON"
+                            }
+                        }
+                    }
+                }
+            ],
+            "citizenship": [
+                {
+                    "nationalityId": 30,
+                    "nationalityName": "Burkinabe"
+                }
+            ],
+            "awards": [
+                {
+                    "awardId": 6,
+                    "title": "Chemistry Olympiad 1'st place",
+                    "awardingInstitution": "Education Ministry Romania",
+                    "dateOfAward": "2007-07-11",
+                    "description": null
+                }
+            ],
+            "hobbies": [
+                {
+                    "hobbyId": 6,
+                    "name": "helping others",
+                    "description": null
+                }
+            ],
+            "projects": [],
+            "phoneNumbers": [
+                {
+                    "phoneNumberId": 8,
+                    "number": "123 456 789",
+                    "country": {
+                        "countryId": 192,
+                        "countryName": "San Marino",
+                        "iso3": "SMR",
+                        "iso2": "SM",
+                        "phoneCode": "378",
+                        "capital": "San Marino",
+                        "currency": "EUR"
+                    }
+                },
+                {
+                    "phoneNumberId": 9,
+                    "number": "13 1234 1234",
+                    "country": {
+                        "countryId": 132,
+                        "countryName": "Malaysia",
+                        "iso3": "MYS",
+                        "iso2": "MY",
+                        "phoneCode": "60",
+                        "capital": "Kuala Lumpur",
+                        "currency": "MYR"
+                    }
+                }
+            ],
+            "publications": [],
+            "iqTests": [],
+            "userLanguages": [
+                {
+                    "userLanguageId": 9,
+                    "listening": "C2",
+                    "reading": "C1",
+                    "spokenInteraction": "C2",
+                    "spokenProduction": "C2",
+                    "writing": "C1",
+                    "language": {
+                        "languageId": 12,
+                        "name": "Avestan",
+                        "code": "ae",
+                        "nativeName": "avesta"
+                    }
+                },
+                {
+                    "userLanguageId": 8,
+                    "listening": "B2",
+                    "reading": "B1",
+                    "spokenInteraction": "B2",
+                    "spokenProduction": "C2",
+                    "writing": "B1",
+                    "language": {
+                        "languageId": 13,
+                        "name": "Aymara",
+                        "code": "ay",
+                        "nativeName": "aymar aru"
+                    }
+                }
+            ],
+            "educationalExperiences": [
+                {
+                    "educationalExperienceId": 6,
+                    "specialty": "Informatics",
+                    "qualificationTitle": "Bachelor Degree",
+                    "fromDate": "2004-09-15",
+                    "toDate": "2008-09-01",
+                    "educationalInstitution": {
+                        "educationalInstitutionId": 12613,
+                        "institutionName": "University School of Fine Arts of Coimbra",
+                        "altInstitutionName": "Escola Universitária das Artes de Coimbra (EUAC)",
+                        "address": "Campus Universitário da Arca, Lordemão, Coimbra, Portugal",
+                        "telephone": "+351(239) 497-400",
+                        "website": "http://www.arca.pt",
+                        "email": "info@arca.pt",
+                        "funding": "Private",
+                        "accreditingAgency": null,
+                        "country": {
+                            "countryId": 177,
+                            "countryName": "Portugal",
+                            "iso3": "PRT",
+                            "iso2": "PT",
+                            "phoneCode": "351",
+                            "capital": "Lisbon",
+                            "currency": "EUR"
+                        }
+                    }
+                }
+            ],
+            "professionalExperiences": [
+                {
+                    "professionalExperienceId": 5,
+                    "jobName": "senior programmer",
+                    "description": null,
+                    "fromDate": "2006-01-01",
+                    "toDate": "2016-01-01",
+                    "organisation": {
+                        "organisationId": 6,
+                        "organisationName": "Amazon",
+                        "address": "Strada Sfântul Lazăr nr. 27",
+                        "city": {
+                            "cityId": 94630,
+                            "cityName": "Iaşi",
+                            "latitude": 47.16667,
+                            "longitude": 27.6,
+                            "region": {
+                                "regionId": 4735,
+                                "regionName": "Iași County",
+                                "regionCode": "IS",
+                                "country": {
+                                    "countryId": 181,
+                                    "countryName": "Romania",
+                                    "iso3": "ROU",
+                                    "iso2": "RO",
+                                    "phoneCode": "40",
+                                    "capital": "Bucharest",
+                                    "currency": "RON"
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            "userInterpersonalSkills": [
+                {
+                    "skillId": 5,
+                    "name": "Listening",
+                    "description": "Listening is a skill that goes hand in hand with good communication. While you need to be able to express your own ideas, you also need to thoughtfully listen to the ideas of others. This will help your clients, employers, colleagues, and employees feel respected and valued."
+                }
+            ],
+            "userDigitalSkills": [
+                {
+                    "skillId": 1,
+                    "name": "HTML",
+                    "description": "HTML tells the web browser how it should define and display content. For content marketing, it is essential to understand how to find and edit meta descriptions, title tags and keywords."
+                },
+                {
+                    "skillId": 2,
+                    "name": "Scripting",
+                    "description": "This could be Bash, Python or even Perl. Bash is a command line interpreter, Python is a dynamic language, while Perl is general purpose. All of them support scripts — programs written to automate tasks that could also be executed manually by a human."
+                },
+                {
+                    "skillId": 3,
+                    "name": "Data Analysis",
+                    "description": "This is SQL & Excel. SQL is a programming language designed for managing data held in a relational database management system. They have data definition, manipulation and control languages. As a marketer, you would be using the manipulation language, or querying."
+                }
+            ],
+            "userOrganisationalSkills": [
+                {
+                    "skillId": 2,
+                    "name": "Communication",
+                    "description": "Disorganized and hectic communication will damage your productivity."
+                },
+                {
+                    "skillId": 3,
+                    "name": "Teamwork",
+                    "description": "Organizing work in a group of people is just as essential as selecting the right people to build a team in the first place."
+                },
+                {
+                    "skillId": 4,
+                    "name": "Delegation",
+                    "description": "In fact, your delegation skills are related to your teamwork skills. Well-organized individuals know what they can do themselves, and what they need to delegate to other team members to achieve the best results."
+                }
+            ],
+            "userLeadershipSkills": [
+                {
+                    "skillId": 2,
+                    "name": "Planning",
+                    "description": "These areas are key management skills, but the best leaders will also be able to turn their hand to these. The best vision in the world is no good without the plan to turn it into reality."
+                },
+                {
+                    "skillId": 4,
+                    "name": "Change Management and Innovation Skills",
+                    "description": "A leader needs to understand change management in order to lead an organisation through the process."
+                }
+            ]
+        }
+    }
+]

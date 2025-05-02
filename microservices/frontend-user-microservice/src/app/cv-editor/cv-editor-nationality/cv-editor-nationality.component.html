@@ -1,0 +1,24 @@
+<div class="flex m-2">
+  <div class="text-right">
+    <button class="btn btn-success mb-2 mt-2" (click)="openAddModal()">Add Citizenship</button>
+  </div>
+
+  <table class="table table-striped text-center">
+    <thead>
+    <tr>
+      <th class="align-middle" scope="col">#</th>
+      <th class="align-middle" scope="col">Nationality</th>
+      <th class="align-middle" scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let nationality of nationalities; index as i">
+      <th class="align-middle" scope="row">{{ i + 1 }}</th>
+      <td class="align-middle">{{nationality.nationalityName}}</td>
+      <td class="align-middle">
+        <button class="btn btn-outline-danger action" (click)="deleteCitizenship(nationality.nationalityId)"><fa-icon [icon]="faTrash"></fa-icon></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

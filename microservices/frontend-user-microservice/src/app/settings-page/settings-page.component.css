@@ -1,0 +1,25 @@
+.input-group-text-input {
+  background: #c0392b;
+  color: white ;
+  border: 0;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+.input_user,
+.input_pass:focus {
+  box-shadow: none;
+  outline: 0;
+}
+
+.update-container{
+  border: solid chocolate;
+  border-radius: 10px;
+}
+.input-group-text-area {
+  color: #000000;
+  border: 0;
+  border-radius: 0.25rem 0 0 0.25rem;
+  background: #c0392b;
+  color: white ;
+  width: 20%;
+}
+

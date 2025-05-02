@@ -1,0 +1,18 @@
+<div class="input-group">
+  <div class="input-group-append">
+    <span class="input-group-text"><fa-icon [icon]="iconName"></fa-icon></span>
+  </div>
+  <input
+    type="text"
+    [class.is-invalid]='ngControl.touched && ngControl.invalid'
+    class='form-control'
+    [formControl]='ngControl.control'
+    placeholder="{{label}}"
+    bsDatepicker
+    [bsConfig]='bsConfig'
+    [maxDate]='maxDate'
+    [minDate]='minDate'
+    [attr.disabled]="isDisabled ? '' : null"
+  >
+  <!--<div *ngIf="ngControl.control.errors?.required" class="invalid-feedback">{{label}} is required</div>-->
+</div>

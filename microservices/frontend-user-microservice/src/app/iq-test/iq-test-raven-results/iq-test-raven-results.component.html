@@ -1,0 +1,64 @@
+<div class="d-flex">
+  <div class="row mt-4 w-100 justify-content-between">
+    <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12">
+      <div class="row text-center justify-content-center">
+        <div class="col-xl-8 col-lg-18 col-md-8 col-sm-10 col-10">
+          <section class="card panel panel-default">
+            <div class="bg-light card-header m-0 pt-1">
+              <h5>Raven’s Advanced Progressive Matrices Result</h5>
+            </div>
+            <div class="card-body">
+              <h5 class="text-warning">Your Score</h5>
+              <div *ngIf="review" class="d-flex justify-content-center">
+
+                <table class="table table-sm w-75 align-self-center table-hover">
+                  <tbody class="text-left">
+                  <tr class="m-0">
+                    <td><strong>IQ</strong></td>
+                    <td>{{review.iq}}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Exact IQ</strong></td>
+                    <td>{{review.exactIQ | number : '1.2-3'}} </td>
+                  </tr>
+                  <tr>
+                    <td><strong>IQ Adjusted By Age</strong></td>
+                    <td>{{review.iqAdjustedByAge}}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Diagnostic</strong></td>
+                    <td>{{review.diagnostic}}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Submitted On</strong></td>
+                    <td>{{review.submittedOn | date: 'medium'}}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Taken Time</strong></td>
+                    <td>{{getTimeInMinutes(review.timeTakenInSeconds)}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <hr>
+              <h5 class="text-warning">Normal IQ Distribution</h5>
+              <img class="w-75" src="assets/iq/iq_table.png" alt="iq table">
+            </div>
+            <div class="card-footer d-flex justify-content-around bg-light">
+              <button class="btn btn-danger" routerLink="/iq-test">
+                Back
+              </button>
+
+              <button class="btn btn-info" (click)="requestToRetakeTheTest()" [disabled]="currentUser.cv.requestedRetakeOfIqTest">
+                Request To Retake The Test
+              </button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
+      <app-vjs-player></app-vjs-player>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div *ngIf="currentSection" class="container mt-5">
+  <div class="d-flex justify-content-center row">
+    <div class="col-md-10 col-lg-10">
+      <div class="border">
+        <div class="bg-light question bg-white p-3 border-bottom">
+          <div class="d-flex flex-row justify-content-between align-items-center mcq">
+            <h3 class="text-primary">{{getSectionName()}}</h3>
+            <h3 >
+              <countdown class="text-warning" [config]="myConfig" (event)="handleLimitTime($event)"></countdown>
+            </h3>
+            <h3><span>({{getCurrentQuestion()}} of 60)</span></h3>
+          </div>
+        </div>
+        <div class="question bg-white p-3 border-bottom">
+          <div class="flex-row align-items-center question-title ">
+            <h3 class="text-danger">Q{{getCurrentQuestion()}}.</h3>
+            <div class="text-center">
+              <img class="text-center" src="{{currentSection.sources[currentSection.questions[currentQuestion-1]]}}"
+                   alt="">
+            </div>
+          </div>
+          <div class="d-flex flex-row justify-content-around mt-4">
+            <div *ngFor="let index of getCurrentSectionLabels()">
+              <label class="radio">
+                <input type="radio" [(ngModel)]="this.userResponse[this.currentSection.questions[this.currentQuestion - 1]]" name="{{currentSection.questions[currentQuestion-1]}}"
+                       [value]="index"> <span>{{index}}</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end p-3 bg-white">
+          <button *ngIf="!(currentSectionIdx == 4 && currentQuestion == 12)" (click)="moveToNextQuestion()"
+                  class="btn btn-primary border-success btn-success" type="button">Next
+            <fa-icon [icon]="faAngleRight"></fa-icon>
+          </button>
+
+          <button *ngIf="currentSectionIdx == 4 && currentQuestion == 12" (click)="submitIqResponses()"
+                  class="btn btn-danger border-success btn-success" type="button">Submit All
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

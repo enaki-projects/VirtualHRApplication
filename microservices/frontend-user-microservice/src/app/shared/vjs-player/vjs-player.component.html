@@ -1,0 +1,14 @@
+<div class="card mb-4">
+  <div class="card-header text-center bg-light">
+    <h3 class="mb-0 text-primary">Mia Negrescu</h3>
+  </div>
+  <div [hidden]="!this.avatarSettings.enabled" class="card-body">
+      <video #target class="video-js vjs-fluid" controls playsinline preload="none">Your browser does not support the video tag.</video>
+  </div>
+  <div *ngIf="!avatarSettings.enabled" class="card-body">
+    <img class="avatar-img" src="./assets/images/candidate_avatar.png" alt=""/>
+  </div>
+  <div *ngIf="avatarSettings.enableSubtitles" class="card-footer text-center bg-light">
+    {{subtitles}}
+  </div>
+</div>

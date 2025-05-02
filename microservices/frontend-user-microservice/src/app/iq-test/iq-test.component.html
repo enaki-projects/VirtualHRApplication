@@ -1,0 +1,56 @@
+<div class="d-flex">
+  <div class="row mt-4 w-100 justify-content-between">
+    <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12 container">
+      <h2 class="text-center text-primary">Available Tests:</h2>
+      <hr>
+      <div class="row ">
+
+        <div class="card col-xl-4 col-lg-4 col-md-4 col-sm-8 col-12 m-3 p-0" *ngIf="currentUser">
+          <div class="card-header text-center bg-primary">
+            <h5 class="text-center text-white">Advanced Progressive Matrices</h5>
+          </div>
+          <div class="card-body p-1">
+            <div class="text-center">
+              <img class="iq_image" src="assets/iq/iq_test_2.png" alt="Iq Test Image">
+            </div>
+            <div class="m-3">
+              <h6><strong>Time:</strong> 45 minutes</h6>
+              <h6><strong>Info:</strong> Raven’s Advanced Progressive Matrices™ (APM) measures high-level observation skills, clear thinking ability, and intellectual capacity as a non-verbal estimate of abstract reasoning or fluid intelligence.</h6>
+              <a class="float-right" href="https://en.wikipedia.org/wiki/Raven%27s_Progressive_Matrices">Read More</a>
+            </div>
+          </div>
+          <div class="card-footer text-center p-1 bg-light">
+            <div class="container-fluid  margin">
+              <button *ngIf="currentUser.cv.canTakeTheIqRequest" class="btn btn-dark custom-text m-2 p-2 themeBtn" routerLink="/iq-test/raven-apm">Start Test</button>
+              <button *ngIf="!currentUser.cv.canTakeTheIqRequest" class="btn btn-success custom-text m-2 p-2 themeBtn" routerLink="/iq-test/raven-apm-results">View Results</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card col-xl-4 col-lg-4 col-md-4 col-sm-8 col-12 m-3 p-0" *ngIf="currentUser">
+          <div class="card-header text-center bg-warning">
+            <h5 class="text-center text-white">Unknown</h5>
+          </div>
+          <div class="card-body p-1">
+            <div class="text-center">
+              <img class="iq_image_unknown" src="assets/iq/question_2.png" alt="Test Image">
+            </div>
+            <div class="m-3">
+              <h6><strong>Info:</strong> Upcoming...</h6>
+            </div>
+
+          </div>
+          <div class="card-footer text-center p-1 bg-light">
+            <div class="container-fluid  margin">
+              <button class="btn btn-warning custom-text disabled m-2 p-2 " disabled>Start Test</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
+      <app-vjs-player></app-vjs-player>
+    </div>
+  </div>
+</div>

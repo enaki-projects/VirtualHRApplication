@@ -1,0 +1,26 @@
+<div class="input-group ">
+  <div class="input-group-append w-35">
+    <div class="input-group-text bg-light w-100 input-group-text-cst justify-content-center">
+      <span class="text-primary text-center text-light">{{textToDisplay | titlecase}}</span>
+    </div>
+  </div>
+  <select [class.is-invalid]="ngControl.touched && ngControl.invalid"
+          class="form-control input_user" [value]="defaultValue"
+          [formControl]="ngControl.control">
+
+    <option *ngFor="let option of options"
+            [value]="option"
+    >
+      {{option}}
+    </option>
+  </select>
+
+  <div *ngIf="ngControl.control.errors?.required" class="invalid-feedback">Please
+    enter {{(startWithVowelRegEx(textToDisplay)) ? 'an' : 'a'}} {{textToDisplay | lowercase}}</div>
+  <div *ngIf="ngControl.control.errors?.minlength" class="invalid-feedback">
+    {{textToDisplay}} must be at least {{ngControl.control.errors.minlength['requiredLength']}}
+  </div>
+  <div *ngIf="ngControl.control.errors?.maxlength" class="invalid-feedback">
+    {{textToDisplay}} must be at most {{ngControl.control.errors.maxlength['requiredLength']}}
+  </div>
+</div>

@@ -1,0 +1,1 @@
+from cv.locations.insert_data import insert_user_locations

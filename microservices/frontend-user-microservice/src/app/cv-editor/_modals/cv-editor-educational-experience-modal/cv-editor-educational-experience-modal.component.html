@@ -1,0 +1,106 @@
+<div class="modal-header bg-light">
+  <h4 class="modal-title">{{addAction ? 'Add An ': 'Update The '}} Educational Experience!</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="d-flex justify-content-center form_container">
+    <form *ngIf="educationalExperienceForm" [formGroup]='educationalExperienceForm'
+          (ngSubmit)="addEducationalExperience()" autocomplete="off">
+
+      <div class="row">
+        <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="input-group-append">
+            <span class="input-group-text input-group-text-input input-group-text-cst"><fa-icon [icon]="faFlag"></fa-icon></span>
+          </div>
+          <div class="input-group-append">
+            <div class="input-group-text" >
+              <span class="flag-icon flag-icon-{{this.selectedCountry?.iso2 | lowercase}}"></span>
+            </div>
+          </div>
+          <select (change)="onCountryChange($event.target.value)"
+                  class="form-control input_user"
+          >
+            <option *ngFor="let country of countries"
+                    [value]="country.countryId" [selected]="country.countryId === selectedCountry?.countryId"
+            >
+              {{country.countryName}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="input-group-text input-group-text-cst text-light">University: </div>
+          <input [formControl]='educationalExperienceForm.controls["institutionName"]'
+                 [typeahead]="dataSource"
+                 [typeaheadAsync]="true"
+                 [typeaheadOptionsLimit]="10"
+                 (typeaheadOnSelect)="typeaheadOnSelect($event)"
+                 typeaheadOptionField="institutionName"
+                 (typeaheadLoading)="changeTypeaheadLoading($event)"
+                 placeholder="Educational Institutions"
+                 class="form-control"></div>
+      </div>
+
+      <div class="row">
+        <div class="input-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <app-date-input [formControl]='educationalExperienceForm.controls["fromDate"]' [maxDate]="toDateMaxValue()"
+                          [label]='"From Date"'></app-date-input>
+        </div>
+        <div class="input-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <app-date-input [isDisabled]="toPresent" [formControl]='educationalExperienceForm.controls["toDate"]'
+                          [minDate]="educationalExperienceForm.value.fromDate"
+                          [label]='toPresent? "To Present": "To Date" '></app-date-input>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="input-group offset-md-6 offset-lg-6 offset-xl-6 mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div class="form-check mt-1">
+            <input class="form-check-input" type="checkbox" [checked]="toPresent" (change)="onToPresentChange($event)">
+            <label class="form-check-label">
+              To Present
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="input-group mb-3">
+            <span
+              class="input-group-text input-group-text-area col-12 input-group-text-cst text-light">Specialty: </span>
+            <textarea [formControl]='educationalExperienceForm.controls["specialty"]' class="form-control"
+                      aria-label="With textarea"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="input-group mb-3">
+            <span class="input-group-text input-group-text-area col-12 input-group-text-cst text-light">Qualification Title: </span>
+            <textarea [formControl]='educationalExperienceForm.controls["qualificationTitle"]' class="form-control"
+                      aria-label="With textarea"></textarea>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+<div class="modal-footer bg-light">
+  <button [disabled]='!educationalExperienceForm.valid' *ngIf="addAction" type="button"
+          class="btn btn-success"
+          (click)="addEducationalExperience()">Add
+  </button>
+  <button [disabled]='!educationalExperienceForm.valid' *ngIf="updateAction" type="button"
+          class="btn btn-info"
+          (click)="updateEducationalExperience()">Update
+  </button>
+  <button type="button" class="btn btn-dark" (click)="activeModal.hide()">Close</button>
+</div>

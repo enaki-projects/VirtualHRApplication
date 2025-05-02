@@ -1,0 +1,68 @@
+<div class="justify-content-center d-flex w-100">
+  <div class="row">
+    <div class="col-4 m-3">
+      <app-user-card [currentUser]="currentUser" [enableDeletePhotoButton]="true"></app-user-card>
+    </div>
+    <div class="col-6 m-3">
+      <div class="container">
+        <app-photo-editor></app-photo-editor>
+      </div>
+      <div class="container update-container m-3 p-3 bg-light">
+        <h5 class="text-center">General Info:</h5>
+        <form [formGroup]='generalInfoForm' (ngSubmit)="updateGeneralInfo()" autocomplete="off">
+          <div class="row w-100">
+            <div class="input-group mb-3 col-12">
+              <app-text-input [formControl]='generalInfoForm.controls["email"]'
+                              [label]='"Email"' [type]='"email"' [iconName]="faEnvelope">
+              </app-text-input>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-group mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <app-text-input [formControl]='generalInfoForm.controls["firstname"]'
+                              [label]='"First Name"' [type]='"text"' [iconName]="faFileSignature">
+              </app-text-input>
+            </div>
+            <div class="input-group mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <app-text-input [formControl]='generalInfoForm.controls["lastname"]'
+                              [label]='"Last Name"' [type]='"text"' [iconName]="faFileSignature">
+              </app-text-input>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <div class="input-group-append">
+                <span class="input-group-text input-group-text-input"><fa-icon [icon]="faVenusMars"></fa-icon></span>
+              </div>
+              <select [class.is-invalid]='generalInfoForm.get("gender").errors && generalInfoForm.get("gender").touched'
+                      formControlName="gender" class="form-control input_user" value="" placeholder="Gender" [formControl]="generalInfoForm.controls['gender']">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="input-group mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <app-date-input [formControl]='generalInfoForm.controls["birthdate"]' [label]='"Date Of Birth"' [maxDate]='maxDate'></app-date-input>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text input-group-text-area col-12">Motto: </span>
+            <textarea [formControl]='generalInfoForm.controls["motto"]' class="form-control" aria-label="With textarea"></textarea>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text input-group-text-area col-12">About Me: </span>
+            <textarea [formControl]='generalInfoForm.controls["aboutMe"]' class="form-control" aria-label="With textarea"></textarea>
+          </div>
+
+          <div class="d-flex justify-content-center mt-3 register_container">
+            <button [disabled]='!generalInfoForm.dirty || !generalInfoForm.valid'  type="submit" name="update_general_info_button" class="btn btn-outline-primary submit_btn">Update</button>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>

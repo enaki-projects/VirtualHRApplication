@@ -1,0 +1,68 @@
+<div class="modal-header bg-light">
+  <h4 class="modal-title">{{addAction ? 'Add A ': 'Update The '}} Publication!</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="d-flex justify-content-center form_container">
+    <form *ngIf="publicationForm" [formGroup]='publicationForm' (ngSubmit)="addPublication()" autocomplete="off">
+      <div class="row">
+        <div class="input-group col-12 mb-3">
+          <app-date-input [formControl]='publicationForm.controls["year"]' [maxDate]="today" [label]='"Year"'></app-date-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="input-group mb-3">
+            <span class="input-group-text input-group-text-area col-12 input-group-text-cst text-light">Title: </span>
+            <textarea [formControl]='publicationForm.controls["title"]' class="form-control"
+                      aria-label="With textarea"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="input-group mb-3">
+            <span class="input-group-text input-group-text-area col-12 input-group-text-cst text-light">Url: </span>
+            <textarea type="url" [formControl]='publicationForm.controls["url"]' class="form-control"
+                      aria-label="With textarea"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="input-group mb-3">
+            <span class="input-group-text input-group-text-area col-12 input-group-text-cst text-light">Description: </span>
+            <textarea [formControl]='publicationForm.controls["description"]' class="form-control"
+                      aria-label="With textarea"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="input-group mb-3">
+            <span class="input-group-text input-group-text-area col-12 input-group-text-cst text-light">Reference: </span>
+            <textarea [formControl]='publicationForm.controls["reference"]' class="form-control"
+                      aria-label="With textarea"></textarea>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+<div class="modal-footer bg-light">
+  <button [disabled]='!publicationForm.valid' *ngIf="addAction" type="button" class="btn btn-success"
+          (click)="addPublication()">Add
+  </button>
+  <button [disabled]='!publicationForm.valid' *ngIf="updateAction" type="button" class="btn btn-info"
+          (click)="updatePublication()">Update
+  </button>
+  <button type="button" class="btn btn-dark" (click)="activeModal.hide()">Close</button>
+</div>

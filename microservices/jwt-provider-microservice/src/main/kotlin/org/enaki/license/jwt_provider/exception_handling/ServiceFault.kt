@@ -1,0 +1,19 @@
+package org.enaki.license.jwt_provider.exception_handling
+
+import javax.xml.bind.annotation.XmlAccessType
+import javax.xml.bind.annotation.XmlAccessorType
+import javax.xml.bind.annotation.XmlType
+
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "ServiceFault", propOrder = ["code", "description"])
+class ServiceFault {
+    var code: String? = null
+    var description: String? = null
+
+    constructor() {}
+    constructor(code: String?, description: String?) {
+        this.code = code
+        this.description = description
+    }
+}

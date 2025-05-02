@@ -1,0 +1,145 @@
+{
+  "leadership_skills": [
+    {
+      "skill_id": 1,
+      "name": "Strategic Thinking",
+      "description": "Developing a vision of where yu want to be"
+    },
+    {
+      "skill_id": 2,
+      "name": "Planning",
+      "description": "These areas are key management skills, but the best leaders will also be able to turn their hand to these. The best vision in the world is no good without the plan to turn it into reality."
+    },
+    {
+      "skill_id": 3,
+      "name": "People Management Skills",
+      "description": "Without followers, there are no leaders. Leaders therefore need skills in working with others on a one-to-one and group basis, and a range of tools in their armoury to deal with a wide range of situations."
+    },
+    {
+      "skill_id": 4,
+      "name": "Change Management and Innovation Skills",
+      "description": "A leader needs to understand change management in order to lead an organisation through the process."
+    },
+    {
+      "skill_id": 5,
+      "name": "Communication Skills",
+      "description": "While communication skills are important for everyone, leaders and managers perhaps need them even more."
+    },
+    {
+      "skill_id": 6,
+      "name": "Persuasion and Influencing Skills",
+      "description": "Good leaders use a range of tools for persuading and influencing others."
+    }
+  ],
+  "organisational_skills": [
+    {
+      "skill_id": 1,
+      "name": "Collaboration",
+      "description": "Your success may depend on how effectively you can organize your collaboration with others."
+    },
+    {
+      "skill_id": 2,
+      "name": "Communication",
+      "description": "Disorganized and hectic communication will damage your productivity."
+    },
+    {
+      "skill_id": 3,
+      "name": "Teamwork",
+      "description": "Organizing work in a group of people is just as essential as selecting the right people to build a team in the first place."
+    },
+    {
+      "skill_id": 4,
+      "name": "Delegation",
+      "description": "In fact, your delegation skills are related to your teamwork skills. Well-organized individuals know what they can do themselves, and what they need to delegate to other team members to achieve the best results."
+    },
+    {
+      "skill_id": 5,
+      "name": "Planning",
+      "description": "We can easily say that the most important part of a well-organized undertaking happens before anything else even takes place. The ability to plan is arguably the most important attribute of any person who claims to have strong organizational skills."
+    },
+    {
+      "skill_id": 6,
+      "name": "Prioritizing",
+      "description": "Being able to give priority to your tasks is far more important than checking off items on your to-do lists. If you can identify roadblocks ahead, break complex projects into smaller components and assess their impact on the outcome, you’re building your project management skills and developing strong problem-solving skills when something doesn't go as planned."
+    },
+    {
+      "skill_id": 7,
+      "name": "Mental organizational skills",
+      "description": "This goes far beyond being able to think in a logical and orderly way. Mental organizational skills allow you to research and analyze situations, prepare documentation, or think strategically among others."
+    },
+    {
+      "skill_id": 8,
+      "name": "Physical organization",
+      "description": "Being able to keep your workplace well-organized is also important. If you can’t find necessary documents, office utilities or your computer desktop is so cluttered that you don’t remember what your wallpaper looks like, your workflow will catch a hiccup."
+    }
+  ],
+  "digital_skills": [
+    {
+      "skill_id": 1,
+      "name": "HTML",
+      "description": "HTML tells the web browser how it should define and display content. For content marketing, it is essential to understand how to find and edit meta descriptions, title tags and keywords."
+    },
+    {
+      "skill_id": 2,
+      "name": "Scripting",
+      "description": "This could be Bash, Python or even Perl. Bash is a command line interpreter, Python is a dynamic language, while Perl is general purpose. All of them support scripts — programs written to automate tasks that could also be executed manually by a human."
+    },
+    {
+      "skill_id": 3,
+      "name": "Data Analysis",
+      "description": "This is SQL & Excel. SQL is a programming language designed for managing data held in a relational database management system. They have data definition, manipulation and control languages. As a marketer, you would be using the manipulation language, or querying."
+    },
+    {
+      "skill_id": 4,
+      "name": "Data Visualisation",
+      "description": "Data visualisation is the presentation of information in a graphical format, usually a chart, sometimes a pictorial representation. They enable decision makers to see analytics visually and draw conclusions at a glance. They can convey a lot of information in a relatively small amount of screen real estate."
+    },
+    {
+      "skill_id": 5,
+      "name": "Understanding of programming concepts",
+      "description": "It’s very useful to understand the applications of different programming languages and the complexity of various tasks. You should also understand, for example, the capability of APIs and multivariate testing."
+    }
+  ],
+  "interpersonal_skills": [
+    {
+      "skill_id": 1,
+      "name": "Communication",
+      "description": "One of the most important interpersonal skills in any job is communication. Whether you work in IT, customer service, construction, or any other industry, you will need to be able to communicate clearly and effectively with others through both oral and written communications."
+    },
+    {
+      "skill_id": 2,
+      "name": "Conflict Management",
+      "description": "Whether you are a manager or an employee, you will likely need to resolve conflicts at some point in your job. This might involve solving an issue between two staff members, between yourself and a colleague, or between a client and your company."
+    },
+    {
+      "skill_id": 3,
+      "name": "Empathy",
+      "description": "Part of being a good manager, employee, or colleague is the ability to understand and show empathy for others. If a customer or colleague calls with a complaint, for example, you will need to listen thoughtfully to the person’s concerns and express compassion for their issue. Empathy is an important skill that will help you get along with everyone in the workplace."
+    },
+    {
+      "skill_id": 4,
+      "name": "Leadership",
+      "description": "Even if you are not a manager, it is important to have some leadership experience and ability. Leadership requires being able to motivate and encourage others and help a team achieve success."
+    },
+    {
+      "skill_id": 5,
+      "name": "Listening",
+      "description": "Listening is a skill that goes hand in hand with good communication. While you need to be able to express your own ideas, you also need to thoughtfully listen to the ideas of others. This will help your clients, employers, colleagues, and employees feel respected and valued."
+    },
+    {
+      "skill_id": 6,
+      "name": "Negotiation",
+      "description": "Negotiation is an important skill for many positions. Depending on the specific job, it might involve creating formal agreements (or contracts) between clients or helping colleagues solve a problem and determine a solution. To be a good negotiator, you have to be able to listen to others, use creative problem-solving, and arrive at an outcome that satisfies everyone."
+    },
+    {
+      "skill_id": 7,
+      "name": "Positive Attitude",
+      "description": "Employers want to hire employees who make the office a brighter place. They want people with a friendly, positive demeanor. This doesn’t mean you have to be the most social person in the office, but you have to be willing to develop some sort of a positive rapport with your colleagues."
+    },
+    {
+      "skill_id": 8,
+      "name": "Teamwork",
+      "description": "Even if your job involves a lot of independent work, you still need to be able to collaborate with others. Teamwork involves a number of the skills already mentioned: you need to be able to listen to others, communicate your own goals, motivate your team, and resolve any conflicts that may arise."
+    }
+  ]
+}

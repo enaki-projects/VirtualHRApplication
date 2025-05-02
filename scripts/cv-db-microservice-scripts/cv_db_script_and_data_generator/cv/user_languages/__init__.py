@@ -1,0 +1,1 @@
+from cv.user_languages.insert_data import insert_user_languages

@@ -1,0 +1,16 @@
+.active_nav{
+  background: #e2dfdf !important;
+  color: #030000 !important;
+}
+
+.nav-item {
+  cursor: pointer;
+}
+
+.custom-navbar{
+  background: #000000;
+}
+
+.custom-text{
+  color: #ffbc00;
+}

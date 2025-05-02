@@ -1,0 +1,42 @@
+<div class="flex m-2">
+  <div class="text-right">
+    <button class="btn btn-success mb-2 mt-2" (click)="openAddModal()">Add An Professional Experience</button>
+  </div>
+
+  <table class="table table-striped text-center">
+    <thead>
+    <tr>
+      <th class="align-middle" scope="col">#</th>
+      <th class="align-middle" scope="col">Country</th>
+      <th class="align-middle" scope="col">City</th>
+      <th class="align-middle" scope="col">Organisation Name</th>
+      <th class="align-middle" scope="col">From Date</th>
+      <th class="align-middle" scope="col">To Date</th>
+      <th class="align-middle" scope="col">Job Name</th>
+      <th class="align-middle" scope="col">Description</th>
+      <th class="align-middle" scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let professionalExperience of professionalExperiences; index as i">
+      <th class="align-middle" scope="row">{{ i + 1 }}</th>
+
+      <td class="align-middle">
+        <span class="flag-icon flag-icon-{{professionalExperience.organisation.city.region.country.iso2 | lowercase}}"></span>
+        {{professionalExperience.organisation.city.region.country.countryName}}
+      </td>
+      <td class="align-middle">{{professionalExperience.organisation.city.cityName}}</td>
+      <td class="align-middle">{{professionalExperience.organisation.organisationName}}</td>
+      <td class="align-middle">{{professionalExperience.fromDate}}</td>
+      <td class="align-middle">{{professionalExperience.toDate || 'Present'}}</td>
+      <td class="align-middle">{{professionalExperience.jobName | titlecase}}</td>
+      <td class="align-middle">{{professionalExperience.description || 'No Description'}}</td>
+
+      <td class="align-middle">
+        <button class="btn btn-outline-info mr-3" (click)="openUpdateModal(professionalExperience)"><fa-icon [icon]="faPen"></fa-icon></button>
+        <button class="btn btn-outline-danger action" (click)="deleteProfessionalExperience(professionalExperience.professionalExperienceId)"><fa-icon [icon]="faTrash"></fa-icon></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,72 @@
+<div class="register-page-container">
+  <div class="register-component row m-0 justify-content-center">
+    <div class="user_card col-xl-5 col-lg-6 col-md-8 col-sm-10 col-11 my-auto ">
+      <div class="d-flex justify-content-center">
+        <div class="brand_logo_container">
+          <img src="../../../assets/logo.png" class="brand_logo" alt="Logo">
+        </div>
+      </div>
+      <div class="d-flex justify-content-center form_container">
+        <form [formGroup]='registerForm' (ngSubmit)="register()" autocomplete="off">
+          <div class="row">
+            <div class="input-group mb-3 col-12">
+              <app-text-input [formControl]='registerForm.controls["email"]'
+                              [label]='"Email"' [type]='"email"' [iconName]="faUser">
+              </app-text-input>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-group mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <app-text-input [formControl]='registerForm.controls["password"]'
+                              [label]='"Password"' [type]='"password"' [iconName]="faKey">
+              </app-text-input>
+            </div>
+            <div class="input-group mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <app-text-input [formControl]='registerForm.controls["passwordConfirm"]'
+                              [label]='"Confirm Password"' [type]='"password"' [iconName]="faKey">
+              </app-text-input>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-group mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <app-text-input [formControl]='registerForm.controls["firstname"]'
+                              [label]='"First Name"' [type]='"text"' [iconName]="faFileSignature">
+              </app-text-input>
+            </div>
+            <div class="input-group mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <app-text-input [formControl]='registerForm.controls["lastname"]'
+                              [label]='"Last Name"' [type]='"text"' [iconName]="faFileSignature">
+              </app-text-input>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <div class="input-group-append">
+                <span class="input-group-text"><fa-icon [icon]="faVenusMars"></fa-icon></span>
+              </div>
+              <select [class.is-invalid]='registerForm.get("gender").errors && registerForm.get("gender").touched'
+                formControlName="gender" class="form-control input_user" value="" placeholder="Gender" [formControl]="registerForm.controls['gender']">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="input-group mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <app-date-input [formControl]='registerForm.controls["birthdate"]' [label]='"Date Of Birth"' [maxDate]='maxDate'></app-date-input>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-center mt-3 register_container">
+            <button [disabled]='!registerForm.valid'  type="submit" name="register_button" class="btn register_btn">Register</button>
+          </div>
+
+          <div class="d-flex justify-content-center mt-3 register_container">
+            <a type="button" routerLink="/auth/login" class="btn back_to_login_btn">Back To Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

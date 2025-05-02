@@ -1,0 +1,34 @@
+<div class="modal-header bg-light">
+  <h4 class="modal-title">Add Your Nationality!</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="d-flex justify-content-center form_container">
+    <form *ngIf="citizenshipForm" [formGroup]='citizenshipForm' (ngSubmit)="addCitizenship()" autocomplete="off">
+      <div class="row">
+        <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="input-group-append">
+            <span class="input-group-text input-group-text-input"><fa-icon [icon]="faFlag"></fa-icon></span>
+          </div>
+          <select (change)="onChange($event.target.value)" [class.is-invalid]='citizenshipForm.get("nationalityId").errors && citizenshipForm.get("nationalityId").touched'
+                  formControlName="nationalityId" class="form-control input_user" [value]="selectedNationality?.nationalityId"
+                  [formControl]="citizenshipForm.controls['nationalityId']">
+
+            <option *ngFor="let nationality of nationalities"
+                    [value]="nationality.nationalityId"
+            >
+              {{nationality.nationalityName}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+<div class="modal-footer bg-light">
+  <button [disabled]='!citizenshipForm.valid' type="button" class="btn btn-success" (click)="addCitizenship()">Add</button>
+  <button type="button" class="btn btn-danger" (click)="activeModal.hide()">Close</button>
+</div>

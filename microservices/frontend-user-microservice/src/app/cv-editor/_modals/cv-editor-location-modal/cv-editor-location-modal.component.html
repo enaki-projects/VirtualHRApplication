@@ -1,0 +1,101 @@
+<div class="modal-header bg-light">
+  <h4 class="modal-title">{{addAction ? 'Add A ': 'Update the '}} Residence!</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="d-flex justify-content-center form_container">
+    <form *ngIf="locationForm" [formGroup]='locationForm' autocomplete="off">
+
+      <div class="row">
+        <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="input-group-append">
+            <span class="input-group-text input-group-text-input input-group-text-cst"><fa-icon [icon]="faFlag"></fa-icon></span>
+          </div>
+          <div class="input-group-append">
+            <div class="input-group-text" >
+              <span class="flag-icon flag-icon-{{this.selectedCountry?.iso2 | lowercase}}"></span>
+            </div>
+          </div>
+          <select (change)="onCountryChange($event.target.value)"
+                   class="form-control input_user"
+                  >
+
+            <option *ngFor="let country of countries"
+                    [value]="country.countryId" [selected]="country.countryId === selectedCountry.countryId"
+            >
+              {{country.countryName}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="input-group-append w-35">
+            <div class="input-group-text input-group-text-cst w-100 justify-content-center">
+              <span class="text-primary text-light">Region</span>
+            </div>
+          </div>
+          <select (change)="onRegionChange($event.target.value)"
+                  class="form-control input_user"
+          >
+
+            <option *ngFor="let region of regions"
+                    [value]="region.regionId" [selected]="region.regionId === selectedRegion.regionId"
+            >
+              {{region.regionName}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="input-group-append w-35">
+            <div class="input-group-text input-group-text-cst w-100 justify-content-center">
+              <span class="text-primary text-light">City</span>
+            </div>
+          </div>
+          <select
+            (change)="onCityChange($event.target.value)" [class.is-invalid]='locationForm.get("cityId").touched && locationForm.get("cityId").invalid'
+                  formControlName="cityId" class="form-control input_user" [value]="selectedCity?.cityId"
+                  [formControl]="locationForm.controls['cityId']">
+
+            <option *ngFor="let city of cities"
+                    [value]="city.cityId" [selected]="city.cityId === selectedCity.cityId"
+            >
+              {{city.cityName}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <app-select-input class = "col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" [formControl]='locationForm.controls["type"]'
+                          [textToDisplay]='"Type"' [label]='"type"' [type]='"text"' [defaultValue]="location?.type" [options]="locationTypes">
+        </app-select-input>
+      </div>
+
+      <div class="row">
+        <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="input-group mb-3">
+            <span class="input-group-text input-group-text-area col-12 input-group-text-cst text-light">Address: </span>
+            <textarea [formControl]='locationForm.controls["address"]' class="form-control" aria-label="With textarea"></textarea>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+<div class="modal-footer bg-light">
+  <button [disabled]='!locationForm.valid' *ngIf="addAction" type="button" class="btn btn-success"
+          (click)="addLocation()">Add
+  </button>
+  <button [disabled]='!locationForm.valid' *ngIf="updateAction" type="button" class="btn btn-info"
+          (click)="updateLocation()">Update
+  </button>
+  <button type="button" class="btn btn-dark" (click)="activeModal.hide()">Close</button>
+</div>

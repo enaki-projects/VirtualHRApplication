@@ -1,0 +1,24 @@
+<ng-container *ngIf="accountService.currentUser$ | async">
+<nav class="navbar-dark  ">
+  <ul class="nav nav-tabs nav-fill">
+    <li class="nav-item">
+      <a class="nav-link p-2 custom-text custom-navbar" routerLinkActive='active_nav' routerLink="/home"><fa-icon [icon]="faHome"></fa-icon> Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link p-2 custom-text custom-navbar" routerLinkActive='active_nav' routerLink="/cv-view"><fa-icon [icon]="faEnvelopeOpenText"></fa-icon> CV View</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link p-2 custom-text custom-navbar" routerLinkActive='active_nav' routerLink="/cv-editor"><fa-icon [icon]="faUserEdit"></fa-icon> CV Maker</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link p-2 custom-text custom-navbar" routerLinkActive='active_nav' routerLink="/iq-test"><fa-icon [icon]="faBrain"></fa-icon> IQ Test</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link p-2 custom-text custom-navbar" routerLinkActive='active_nav' routerLink="/settings"><fa-icon [icon]="faCogs"></fa-icon> Settings</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link p-2 custom-text custom-navbar {{hasStartedTheTest? 'disabled': ''}}" (click)="logout()"><fa-icon [icon]="faSignOutAlt"></fa-icon> Logout</a>
+    </li>
+  </ul>
+</nav>
+</ng-container>

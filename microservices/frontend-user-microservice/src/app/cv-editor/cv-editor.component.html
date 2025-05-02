@@ -1,0 +1,56 @@
+<div class="d-flex">
+  <div class="row mt-4 w-100 justify-content-between">
+    <div class="ml-8 col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+      <nav class="navbar-dark bg-light">
+        <ul class="nav nav-tabs nav-fill">
+          <li class="nav-item">
+            <a class="nav-link text-primary" [ngClass]="{'active':tabIndex == 0}" (click)="onTabClick(0)">General Info</a></li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" [ngClass]="{'active':tabIndex == 1}" (click)="onTabClick(1)">Contacts</a></li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" [ngClass]="{'active':tabIndex == 2}" (click)="onTabClick(2)">Nationalities</a></li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" [ngClass]="{'active':tabIndex == 3}" (click)="onTabClick(3)">Languages</a></li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" [ngClass]="{'active':tabIndex == 4}" (click)="onTabClick(4)">Locations</a></li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" [ngClass]="{'active':tabIndex == 5}" (click)="onTabClick(5)">Hobbies</a></li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" [ngClass]="{'active':tabIndex == 6}" (click)="onTabClick(6)">Projects</a></li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" [ngClass]="{'active':tabIndex == 7}" (click)="onTabClick(7)">Publications</a></li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" [ngClass]="{'active':tabIndex == 8}" (click)="onTabClick(8)">Awards</a></li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" [ngClass]="{'active':tabIndex == 9}" (click)="onTabClick(9)">Educational Background</a></li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" [ngClass]="{'active':tabIndex == 10}" (click)="onTabClick(10)">Professional Experience</a></li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" [ngClass]="{'active':tabIndex == 11}" (click)="onTabClick(11)">Skills</a></li>
+        </ul>
+      </nav>
+      <div>
+        <app-cv-editor-general-info *ngIf="tabIndex == 0" [currentUser]="currentUser"></app-cv-editor-general-info>
+        <app-cv-editor-contacts *ngIf="tabIndex == 1" [phoneNumbers]="currentUser?.cv.cvReferences.phoneNumbers"></app-cv-editor-contacts>
+        <app-cv-editor-nationality *ngIf="tabIndex == 2" [nationalities]="currentUser?.cv.cvReferences.citizenship"></app-cv-editor-nationality>
+        <app-cv-editor-language *ngIf="tabIndex == 3" [userLanguages]="currentUser?.cv.cvReferences.userLanguages"></app-cv-editor-language>
+        <app-cv-editor-location *ngIf="tabIndex == 4" [locations]="currentUser?.cv.cvReferences.locations"></app-cv-editor-location>
+        <app-cv-editor-hobby *ngIf="tabIndex == 5" [hobbies]="currentUser?.cv.cvReferences.hobbies"></app-cv-editor-hobby>
+        <app-cv-editor-project *ngIf="tabIndex == 6" [projects]="currentUser?.cv.cvReferences.projects"></app-cv-editor-project>
+        <app-cv-editor-publication *ngIf="tabIndex == 7" [publications]="currentUser?.cv.cvReferences.publications"></app-cv-editor-publication>
+        <app-cv-editor-award *ngIf="tabIndex == 8" [awards]="currentUser?.cv.cvReferences.awards"></app-cv-editor-award>
+        <app-cv-editor-educational-experience *ngIf="tabIndex == 9" [educationalExperiences]="currentUser?.cv.cvReferences.educationalExperiences"></app-cv-editor-educational-experience>
+        <app-cv-editor-professional-experience *ngIf="tabIndex == 10" [professionalExperiences]="currentUser?.cv.cvReferences.professionalExperiences"></app-cv-editor-professional-experience>
+        <app-cv-editor-skills *ngIf="tabIndex == 11"
+                              [interpersonalSkills]="currentUser?.cv.cvReferences.userInterpersonalSkills"
+                              [digitalSkills]="currentUser?.cv.cvReferences.userDigitalSkills"
+                              [organisationalSkills]="currentUser?.cv.cvReferences.userOrganisationalSkills"
+                              [leadershipSkills]="currentUser?.cv.cvReferences.userLeadershipSkills"
+        ></app-cv-editor-skills>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+      <app-vjs-player></app-vjs-player>
+    </div>
+  </div>
+</div>

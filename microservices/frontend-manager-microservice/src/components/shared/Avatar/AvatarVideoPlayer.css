@@ -1,0 +1,17 @@
+.react-player {
+    width: 100%;
+    height: auto !important;
+}
+
+.avatar-img {
+    width: 100% !important;
+    transform: none!important;
+    transition: none!important;
+    opacity: 1!important;
+}
+
+.avatar-img:hover {
+    transform: none!important;
+    transition: none!important;
+    opacity: 1!important;
+}

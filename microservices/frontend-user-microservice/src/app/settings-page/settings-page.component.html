@@ -1,0 +1,122 @@
+<div class="d-flex">
+  <div class="row mt-4 w-100 justify-content-between">
+    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ml-5">
+      <app-user-card [currentUser]="currentUser"></app-user-card>
+    </div>
+    <section class="border col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 text-center">
+      <h2 class="mt-2 mb-2">General settings</h2>
+      <hr>
+      <div class="row justify-content-around">
+        <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 mb-3 bg-light border rounded">
+          <h3 class="mt-2 mb-2">Avatar settings</h3>
+          <hr class="mb-3">
+          <form [formGroup]='avatarSettingsForm' (ngSubmit)="updateSettings()" autocomplete="off">
+            <div class="row justify-content-center">
+              <div class="input-group mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div class="input-group-append w-35">
+                  <span class="input-group-text justify-content-center input-group-text-input w-100">Resolution</span>
+                </div>
+                <select
+                  [class.is-invalid]='avatarSettingsForm.get("resolution").errors && avatarSettingsForm.get("resolution").touched'
+                  formControlName="resolution" class="form-control input_user" placeholder="Resolution"
+                  [formControl]="avatarSettingsForm.controls['resolution']">
+                  <option value="720x720">720x720</option>
+                  <option value="800x600">800x600</option>
+                  <option value="1280x720">1280x720</option>
+                </select>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="input-group mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div class="input-group-append w-35">
+                  <span class="input-group-text justify-content-center input-group-text-input w-100">Language</span>
+                </div>
+                <select
+                  [class.is-invalid]='avatarSettingsForm.get("language").errors && avatarSettingsForm.get("language").touched'
+                  formControlName="language" class="form-control input_user" placeholder="Language"
+                  [formControl]="avatarSettingsForm.controls['language']">
+                  <option value="en">English</option>
+                  <option value="ro">Romanian</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row justify-content-center">
+              <div class="input-group mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div class="input-group-append w-35">
+                  <span class="input-group-text justify-content-center input-group-text-input w-100">Subtitles</span>
+                </div>
+                <select
+                  [class.is-invalid]='avatarSettingsForm.get("enableSubtitles").errors && avatarSettingsForm.get("enableSubtitles").touched'
+                  formControlName="enableSubtitles" class="form-control input_user" placeholder="Subtitles"
+                  [formControl]="avatarSettingsForm.controls['enableSubtitles']">
+                  <option [value]="1">On</option>
+                  <option [value]="0">Off</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row mb-3  justify-content-center">
+              <div class="input-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div class="input-group-append w-35">
+                  <span class="input-group-text justify-content-center input-group-text-input w-100">Avatar</span>
+                </div>
+                <select
+                  [class.is-invalid]='avatarSettingsForm.get("enabled").errors && avatarSettingsForm.get("enabled").touched'
+                  formControlName="enabled" class="form-control input_user" placeholder="Enable"
+                  [formControl]="avatarSettingsForm.controls['enabled']">
+                  <option [value]="1">Enable</option>
+                  <option [value]="0">Disable</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-3 mb-3 register_container">
+              <button [disabled]='!avatarSettingsForm.dirty' type="submit" name="update_settings_button"
+                      class="btn btn-primary">Update
+              </button>
+            </div>
+          </form>
+
+        </div>
+        <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 mb-3 bg-light border rounded">
+          <h3 class="mt-2 mb-2">Change Password</h3>
+          <hr class="mb-3">
+          <form [formGroup]='passwordChangeForm' (ngSubmit)="updatePassword()" autocomplete="off">
+            <div class="input-group mb-3 justify-content-center text-center">
+              <app-text-input disabled [formControl]='passwordChangeForm.controls["email"]'
+                              [label]='"Email"' [type]='"email"' [iconName]="faUser">
+              </app-text-input>
+            </div>
+
+            <div class="input-group mb-3 justify-content-center text-center">
+              <app-text-input [formControl]='passwordChangeForm.controls["oldPassword"]'
+                              [label]='"Old Password"' [disabled]='true' [type]='"password"' [iconName]="faLock" [pronoun]="true">
+              </app-text-input>
+            </div>
+
+            <div class="input-group mb-3 justify-content-center text-center">
+              <app-text-input [formControl]='passwordChangeForm.controls["password"]'
+                              [label]='"Password"' [type]='"password"' [iconName]="faKey">
+              </app-text-input>
+            </div>
+
+            <div class="input-group mb-3 justify-content-center text-center">
+              <app-text-input [formControl]='passwordChangeForm.controls["passwordConfirm"]'
+                              [label]='"Confirm Password"' [type]='"password"' [iconName]="faKey" [pronoun]="true">
+              </app-text-input>
+            </div>
+
+            <div class="d-flex justify-content-center mt-3 mb-3 change-password_container">
+              <button [disabled]='!passwordChangeForm.valid' type="submit" name="change_password_button"
+                      class="btn btn-info">Change Password
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <hr>
+    </section>
+
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="modal-header bg-light">
+  <h4 class="modal-title">{{addAction ? 'Add A ': 'Update The '}} Hobby!</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="d-flex justify-content-center form_container">
+    <form *ngIf="hobbyForm" [formGroup]='hobbyForm' autocomplete="off">
+
+      <div class="row">
+        <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="input-group mb-3">
+            <span class="input-group-text input-group-text-area col-12 input-group-text-cst text-light">Hobby: </span>
+            <textarea [formControl]='hobbyForm.controls["name"]' class="form-control" aria-label="With textarea"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="input-group mb-3">
+            <span class="input-group-text input-group-text-area input-group-text-cst col-12 text-light">Description: </span>
+            <textarea [formControl]='hobbyForm.controls["description"]' class="form-control" aria-label="With textarea"></textarea>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+
+<div class="modal-footer bg-light">
+  <button [disabled]='!hobbyForm.valid' *ngIf="addAction" type="button" class="btn btn-success"
+          (click)="addHobby()">Add
+  </button>
+  <button [disabled]='!hobbyForm.valid' *ngIf="updateAction" type="button" class="btn btn-info"
+          (click)="updateHobby()">Update
+  </button>
+  <button type="button" class="btn btn-dark" (click)="activeModal.hide()">Close</button>
+</div>

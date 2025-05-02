@@ -1,0 +1,430 @@
+[
+  {
+    "uid": 1,
+    "email": "eren@gmail.com",
+    "password": "eren",
+    "roles": [1, 2],
+    "cv": {
+      "first_name": "Eren",
+      "last_name": "Yeager",
+      "email": "eren@gmail.com",
+      "birthdate": "1998-01-01",
+      "gender": "Male",
+      "about_me": "I am a curios person. Always looking to do something good.",
+      "motto": "Love dogs.",
+      "image_name": "1.png"
+    },
+    "locations": [{
+      "city_id": 67334,
+      "type": "Home",
+      "address": "Strada Mihai Eminescu"
+    }],
+    "hobbies": ["guitar", "anime"],
+    "user_leadership_skills": [1, 3],
+    "user_organisational_skills": [1],
+    "user_digital_skills": [2],
+    "user_interpersonal_skills": [4],
+    "professional_experiences": [
+      {
+        "job_name": "junior programmer",
+        "from_date": "2018-01-01",
+        "to_date": "2019-01-01",
+        "organisation_id": 1
+      }
+    ],
+    "educational_experiences": [
+      {
+        "qualification_title": "Bachelor Degree",
+        "specialty": "Psychology",
+        "from_date": "2012-09-15",
+        "to_date": "2016-09-01",
+        "edu_id": 12613
+      },
+      {
+        "qualification_title": "Bachelor Degree",
+        "specialty": "Computer Science",
+        "from_date": "2016-10-01",
+        "to_date": "2020-09-01",
+        "edu_id": 12639
+      }
+    ],
+    "projects": [
+      {
+        "name": "My mess",
+        "description": "My Mess app",
+        "url": "https://github.com/enaki/MyMess",
+        "from_date": "2020-10-01",
+        "to_date": "2020-12-01"
+      },
+      {
+        "name": "Nyan Bird with Ai",
+        "description": "Nyan Bird with Ai",
+        "url": "https://github.com/TUIASI-AC-enaki/flappy-bird-with-ai",
+        "from_date": "2020-10-01",
+        "to_date": "2021-01-01"
+      }
+    ],
+    "awards": [{
+        "title": "Romanian Language Olympiad 3'rd place",
+        "awarding_institution": "Education Ministry Republic of Moldova",
+        "date_of_award": "2013-07-11 0:0:0"
+      },
+      {
+        "title": "Winner of the Kangaroo Maths Contest",
+        "awarding_institution": "Kangaroo Team",
+        "date_of_award": "2015-07-11 0:0:0",
+        "description": "By the number of consecutive problems solved"
+      }],
+    "citizenships": [23, 21],
+    "phone_numbers": [
+      {
+        "country_id": 181,
+        "number": "124 1234 1234"
+      }
+    ],
+    "user_languages": [{
+      "language_id": 15,
+      "reading": "B1",
+      "listening": "B2",
+      "spoken_interaction": "B2",
+      "spoken_production": "C2",
+      "writing": "B1"
+    }]
+  },
+  {
+    "uid": 2,
+    "email": "mikasa@gmail.com",
+    "password": "mikasa",
+    "roles": [1, 2, 3],
+    "hobbies": ["checkers"],
+    "locations": [{
+      "city_id": 67334,
+      "type": "Home",
+      "address": "Strada Mihai Eminescu"
+    },
+    {
+      "city_id": 95126,
+      "type": "Work",
+      "address": "Strada Mihai Eminescu"
+    }],
+    "cv": {
+      "first_name": "Mikasa",
+      "last_name": "Ackerman",
+      "email": "mikasa@gmail.com",
+      "birthdate": "1996-11-07",
+      "gender": "Female",
+      "about_me": "I am a curios person. I will prove my skills.",
+      "motto": "This world is cruel. It is also very beautiful.",
+      "image_name": "2.png"
+    },
+    "user_leadership_skills": [2, 3],
+    "user_organisational_skills": [2],
+    "user_digital_skills": [1],
+    "user_interpersonal_skills": [2, 3],
+    "professional_experiences": [
+      {
+        "job_name": "junior programmer",
+        "from_date": "2017-01-01",
+        "to_date": "2018-01-01",
+        "organisation_id": 2
+      }
+    ],
+    "educational_experiences": [
+      {
+        "qualification_title": "Bachelor Degree",
+        "from_date": "2012-09-15",
+        "to_date": "2016-09-01",
+        "edu_id": 12613,
+        "specialty": "Informatics"
+      }
+    ],
+    "awards": [{
+        "title": "Maths Olympiad 1'st place",
+        "awarding_institution": "Education Ministry Romania",
+        "date_of_award": "2015-07-11 0:0:0"
+      }],
+    "citizenships": [26],
+    "projects": [
+      {
+        "name": "CovidApp Visualizer",
+        "description": "CovidApp Visualizer app",
+        "url": "https://github.com/enaki/covid-visualizer",
+        "from_date": "2020-10-01",
+        "to_date": "2020-12-01"
+      }
+    ],
+    "phone_numbers": [
+      {
+        "country_id": 181,
+        "number": "124 512 1234"
+      },
+      {
+        "country_id": 144,
+        "number": "13 1234 1234"
+      }
+    ],
+    "user_languages": [{
+      "language_id": 10,
+      "reading": "B1",
+      "listening": "B2",
+      "spoken_interaction": "B2",
+      "spoken_production": "C2",
+      "writing": "B1"
+    },
+    {
+      "language_id": 12,
+      "reading": "A1",
+      "listening": "A2",
+      "spoken_interaction": "A2",
+      "spoken_production": "A2",
+      "writing": "A1"
+    }]
+  },
+  {
+    "uid": 3,
+    "email": "test@gmail.com",
+    "password": "test",
+    "roles": [3],
+    "cv": {
+      "first_name": "Ion",
+      "last_name": "Creanga",
+      "email": "creanga@gmail.com",
+      "birthdate": "1824-01-31",
+      "gender": "male",
+      "about_me": "I am a writer.",
+      "motto": "",
+      "image_name": "3.png"
+    }
+  },
+  {
+    "uid": 4,
+    "email": "inuyasha@gmail.com",
+    "password": "inuyasha",
+    "roles": [1, 2],
+    "hobbies": ["fighting"],
+    "locations": [
+    {
+      "city_id": 95126,
+      "type": "Home",
+      "address": "bulevardul. Tudor Vladimirescu"
+    }],
+    "cv": {
+      "first_name": "Inuyasha",
+      "last_name": "HalfDog",
+      "email": "inuyasha@gmail.com",
+      "birthdate": "1992-05-05",
+      "gender": "male",
+      "about_me": "I am looking forward to defeat my enemies.",
+      "motto": "The Future Is Not A Straight Line.",
+      "image_name": "4.png"
+    },
+    "user_leadership_skills": [1, 3],
+    "user_organisational_skills": [2, 3, 4],
+    "user_digital_skills": [1],
+    "user_interpersonal_skills": [4],
+    "professional_experiences": [
+      {
+        "job_name": "junior programmer",
+        "from_date": "2017-01-01",
+        "to_date": "2018-01-01",
+        "organisation_id": 4
+      }
+    ],
+    "educational_experiences": [
+      {
+        "qualification_title": "Bachelor Degree",
+        "from_date": "2004-09-15",
+        "to_date": "2008-09-01",
+        "edu_id": 12613,
+        "specialty": "Informatics"
+      }
+    ],
+    "awards": [{
+        "title": "Sport Olympiad 1'st place",
+        "awarding_institution": "Education Ministry Romania",
+        "date_of_award": "2007-07-11 0:0:0"
+      }],
+    "citizenships": [26],
+    "projects": [],
+    "phone_numbers": [
+      {
+        "country_id": 181,
+        "number": "123 456 789"
+      },
+      {
+        "country_id": 132,
+        "number": "13 1234 1234"
+      }
+    ],
+    "user_languages": [{
+      "language_id": 10,
+      "reading": "B1",
+      "listening": "B2",
+      "spoken_interaction": "B2",
+      "spoken_production": "C2",
+      "writing": "B1"
+    },
+    {
+      "language_id": 12,
+      "reading": "A1",
+      "listening": "A2",
+      "spoken_interaction": "A2",
+      "spoken_production": "A2",
+      "writing": "A1"
+    }]
+  },
+  {
+    "uid": 5,
+    "email": "seshomaru@gmail.com",
+    "password": "seshomaru",
+    "roles": [1, 2],
+    "hobbies": ["fighting"],
+    "locations": [
+    {
+      "city_id": 95126,
+      "type": "Home",
+      "address": "bulevardul. Tudor Vladimirescu"
+    }],
+    "cv": {
+      "first_name": "Seshomaru",
+      "last_name": "Sama",
+      "email": "seshomaru@gmail.com",
+      "birthdate": "1994-03-10",
+      "gender": "male",
+      "about_me": "I possess the perfect power that many yōkai desired",
+      "motto": "So much power.",
+      "image_name": "5.png"
+    },
+    "user_leadership_skills": [1, 2, 3],
+    "user_organisational_skills": [2],
+    "user_digital_skills": [2],
+    "user_interpersonal_skills": [5],
+    "professional_experiences": [
+      {
+        "job_name": "senior programmer",
+        "from_date": "2006-01-01",
+        "to_date": "2018-01-01",
+        "organisation_id": 7
+      }
+    ],
+    "educational_experiences": [
+      {
+        "qualification_title": "Bachelor Degree",
+        "from_date": "2004-09-15",
+        "to_date": "2008-09-01",
+        "edu_id": 12613,
+        "specialty": "Informatics"
+      }
+    ],
+    "awards": [{
+        "title": "Sport Olympiad 1'st place",
+        "awarding_institution": "Education Ministry Romania",
+        "date_of_award": "2007-07-11 0:0:0"
+      }],
+    "citizenships": [26, 25, 24],
+    "projects": [],
+    "phone_numbers": [
+      {
+        "country_id": 192,
+        "number": "123 456 789"
+      },
+      {
+        "country_id": 132,
+        "number": "13 1234 1234"
+      }
+    ],
+    "user_languages": [{
+      "language_id": 11,
+      "reading": "B1",
+      "listening": "B2",
+      "spoken_interaction": "B2",
+      "spoken_production": "C2",
+      "writing": "B1"
+    },
+    {
+      "language_id": 12,
+      "reading": "C1",
+      "listening": "C2",
+      "spoken_interaction": "C2",
+      "spoken_production": "C2",
+      "writing": "C1"
+    }]
+  },
+  {
+    "uid": 6,
+    "email": "kikio@gmail.com",
+    "password": "kikio",
+    "roles": [1, 2],
+    "hobbies": ["helping others"],
+    "locations": [
+    {
+      "city_id": 95126,
+      "type": "Home",
+      "address": "bulevardul. Tudor Vladimirescu"
+    }],
+    "cv": {
+      "first_name": "Kikyo",
+      "last_name": "Adachi",
+      "email": "kikio@gmail.com",
+      "birthdate": "1995-07-10",
+      "gender": "female",
+      "about_me": "I despise you with my last breath.",
+      "motto": "Once the thread of fate is tangled, it cannot be undone.",
+      "image_name": "6.png"
+    },
+    "user_leadership_skills": [2, 4],
+    "user_organisational_skills": [2,3,4],
+    "user_digital_skills": [2,1,3],
+    "user_interpersonal_skills": [5],
+    "professional_experiences": [
+      {
+        "job_name": "senior programmer",
+        "from_date": "2006-01-01",
+        "to_date": "2016-01-01",
+        "organisation_id": 6
+      }
+    ],
+    "educational_experiences": [
+      {
+        "qualification_title": "Bachelor Degree",
+        "from_date": "2004-09-15",
+        "to_date": "2008-09-01",
+        "edu_id": 12613,
+        "specialty": "Informatics"
+      }
+    ],
+    "awards": [{
+        "title": "Chemistry Olympiad 1'st place",
+        "awarding_institution": "Education Ministry Romania",
+        "date_of_award": "2007-07-11 0:0:0"
+      }],
+    "citizenships": [30],
+    "projects": [],
+    "phone_numbers": [
+      {
+        "country_id": 192,
+        "number": "123 456 789"
+      },
+      {
+        "country_id": 132,
+        "number": "13 1234 1234"
+      }
+    ],
+    "user_languages": [{
+      "language_id": 13,
+      "reading": "B1",
+      "listening": "B2",
+      "spoken_interaction": "B2",
+      "spoken_production": "C2",
+      "writing": "B1"
+    },
+    {
+      "language_id": 12,
+      "reading": "C1",
+      "listening": "C2",
+      "spoken_interaction": "C2",
+      "spoken_production": "C2",
+      "writing": "C1"
+    }]
+  }
+]

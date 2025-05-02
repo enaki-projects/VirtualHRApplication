@@ -1,0 +1,1 @@
+docker run -p 2013:2013 -p 8888:8888 --name cv_filter_microservice --net my-net --ip 172.18.0.13 --mount source="hadoop-distributed-file-system",target=/opt/workspace jupyterlab

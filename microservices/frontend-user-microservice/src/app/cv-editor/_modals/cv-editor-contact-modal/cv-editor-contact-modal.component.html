@@ -1,0 +1,52 @@
+<div class="modal-header bg-light">
+  <h4 class="modal-title">{{addAction ? 'Add A ': 'Update The '}} Phone Number!</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="d-flex justify-content-center form_container">
+    <form *ngIf="contactForm" [formGroup]='contactForm' (ngSubmit)="addPhoneNumber()" autocomplete="off">
+      <div  class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text input-group-text-cst"><fa-icon [icon]="faPhoneAlt"></fa-icon></span>
+          </div>
+          <div class="input-group-prepend ml-1 mr-1">
+            <div class="input-group-text" >
+              <span class="flag-icon flag-icon-{{this.selectedCountry?.iso2 | lowercase}}"></span>
+              <span> <span *ngIf="!this.selectedCountry?.phoneCode.includes('+')">&nbsp;+ </span>{{this.selectedCountry?.phoneCode}}</span>
+            </div>
+          </div>
+          <input
+            [class.is-invalid]='contactForm.get("number").errors && contactForm.get("number").touched'
+            type="number"
+            class="form-control input_user"
+            [formControl]="contactForm.controls['number']"
+            placeholder="Phone Number">
+      </div>
+      <div class="row">
+        <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="input-group-append">
+            <span class="input-group-text input-group-text-input"><fa-icon [icon]="faFlag"></fa-icon></span>
+          </div>
+          <select (change)="onChange($event.target.value)" [class.is-invalid]='contactForm.get("countryId").errors && contactForm.get("countryId").touched'
+                  formControlName="countryId" class="form-control input_user" [value]="selectedCountry?.countryId"
+                  [formControl]="contactForm.controls['countryId']">
+
+            <option *ngFor="let country of countries"
+                    [value]="country.countryId"
+            >
+              {{country.countryName}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+<div class="modal-footer bg-light">
+  <button [disabled]='!contactForm.valid' *ngIf="addAction" type="button" class="btn btn-success" (click)="addPhoneNumber()">Add</button>
+  <button [disabled]='!contactForm.valid' *ngIf="updateAction" type="button" class="btn btn-info" (click)="updatePhoneNumber()">Update</button>
+  <button type="button" class="btn btn-dark" (click)="activeModal.hide()">Close</button>
+</div>

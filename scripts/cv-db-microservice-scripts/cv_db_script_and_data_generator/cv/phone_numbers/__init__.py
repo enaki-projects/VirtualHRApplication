@@ -1,0 +1,1 @@
+from cv.phone_numbers.insert_data import insert_user_phone_numbers

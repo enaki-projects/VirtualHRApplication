@@ -1,0 +1,96 @@
+<div class="m-3">
+  <div class="row mt-3">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="input-group-text input-group-text-cst w-100 justify-content-center">
+        <span class="text-primary text-light">Interpersonal Skills</span>
+      </div>
+    </div>
+    <div class="input-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <tag-input [(ngModel)]='interpersonalSkills' theme="dark"
+                 (onRemove)="onSkillRemoved($event, 'interpersonal')"
+                 [identifyBy]="'skillId'"
+                 [displayBy]="'name'"
+                 (onAdd)="onSkillAdded($event, 'interpersonal')"
+                 placeholder="Interpersonal Skill"
+      >
+        <tag-input-dropdown [autocompleteItems]="globalInterpersonalSkills"
+                            displayBy="name"
+                            identifyBy="skillId">
+        </tag-input-dropdown>
+      </tag-input>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="input-group-text input-group-text-cst digital-bg w-100 justify-content-center">
+        <span class="text-primary text-light">Technical Skills</span>
+      </div>
+    </div>
+    <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <tag-input [(ngModel)]='digitalSkills' theme="dark"
+                 (onRemove)="onSkillRemoved($event, 'digital')"
+                 [identifyBy]="'skillId'"
+                 [displayBy]="'name'"
+                 (onAdd)="onSkillAdded($event, 'digital')"
+                 placeholder="Technical Skill"
+      >
+        <tag-input-dropdown [autocompleteItems]="globalDigitalSkills"
+                            displayBy="name"
+                            identifyBy="skillId">
+        </tag-input-dropdown>
+      </tag-input>
+    </div>
+  </div>
+
+
+  <div class="row mt-3">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="input-group-text input-group-text-cst organisational-bg w-100 justify-content-center">
+        <span class="text-primary text-light">Organisational Skills</span>
+      </div>
+    </div>
+    <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <tag-input [(ngModel)]='organisationalSkills' theme="dark"
+                 (onRemove)="onSkillRemoved($event, 'organisational')"
+                 [identifyBy]="'skillId'"
+                 [displayBy]="'name'"
+                 (onAdd)="onSkillAdded($event, 'organisational')"
+                 placeholder="Organisational Skill"
+      >
+        <tag-input-dropdown [autocompleteItems]="globalOrganisationalSkills"
+                            displayBy="name"
+                            identifyBy="skillId"
+        >
+        </tag-input-dropdown>
+      </tag-input>
+    </div>
+  </div>
+
+
+  <div class="row mt-3">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="input-group-text input-group-text-cst leadership-bg w-100 justify-content-center">
+        <span class="text-primary text-light">Leadership Skills</span>
+      </div>
+    </div>
+    <div class="input-group mb-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <tag-input [(ngModel)]='leadershipSkills' theme="dark"
+                 (onRemove)="onSkillRemoved($event, 'leadership')"
+                 [identifyBy]="'skillId'"
+                 [displayBy]="'name'"
+                 (onAdd)="onSkillAdded($event, 'leadership')"
+                 placeholder="Leadership Skill"
+      >
+        <tag-input-dropdown [autocompleteItems]="globalLeadershipSkills"
+                            displayBy="name"
+                            identifyBy="skillId"
+        >
+        </tag-input-dropdown>
+      </tag-input>
+    </div>
+  </div>
+
+</div>
+
+
