@@ -4,6 +4,7 @@
 #   ./deploy/pi/deploy-to-pi.sh                 # build, copy, start, smoke-test
 #   ./deploy/pi/deploy-to-pi.sh --skip-build    # reuse the images already built locally
 #   ./deploy/pi/deploy-to-pi.sh --skip-videos   # don't re-sync the 1.3 GB avatar videos
+#   ./deploy/pi/deploy-to-pi.sh --smoke-only    # only wait for the backends and re-run the smoke test
 #
 # Needs on the Mac: docker (Colima) with compose, rsync, ssh.
 # Needs on the Pi:  run deploy/pi/pi-setup.sh once first (installs Docker + nginx on port 8080).
@@ -20,10 +21,12 @@ REMOTE_DIR="${REMOTE_DIR:-/srv/virtualhr}"
 PLATFORM="${PLATFORM:-linux/arm64}"
 SKIP_BUILD=0
 SKIP_VIDEOS=0
+SMOKE_ONLY=0
 for arg in "$@"; do
   case "$arg" in
     --skip-build) SKIP_BUILD=1 ;;
     --skip-videos) SKIP_VIDEOS=1 ;;
+    --smoke-only) SMOKE_ONLY=1 ;;
     *) echo "unknown option: $arg" >&2; exit 2 ;;
   esac
 done
@@ -48,6 +51,7 @@ step "Connecting to $PI"
 pi 'echo "connected to $(hostname) ($(uname -m))"; command -v docker >/dev/null || { echo "Docker is not installed on the Pi: run deploy/pi/pi-setup.sh there first"; exit 1; }'
 pi "sudo mkdir -p '$REMOTE_DIR' && sudo chown \"\$(id -un)\": '$REMOTE_DIR'"
 
+if [[ $SMOKE_ONLY -eq 0 ]]; then
 IMAGES=$(IMAGE_PREFIX=virtualhr docker compose config --images | sort -u)
 
 if [[ $SKIP_BUILD -eq 0 ]]; then
@@ -68,25 +72,43 @@ for img in $IMAGES; do
 done
 
 step "Syncing compose files to $REMOTE_DIR"
-rsync -az -e "ssh ${SSH_OPTS[*]}" docker-compose.yml .env.example deploy "$PI:$REMOTE_DIR/"
-rsync -az --chmod=F600 -e "ssh ${SSH_OPTS[*]}" .env "$PI:$REMOTE_DIR/.env"
+rsync -az -e "ssh ${SSH_OPTS[*]}" docker-compose.yml docker-compose.pi.yml .env.example deploy "$PI:$REMOTE_DIR/"
+# Secrets: written over ssh with umask 077 so the file is never readable by others.
+# (macOS ships openrsync, whose --chmod and --info differ from GNU rsync.)
+pi "umask 077 && cat > '$REMOTE_DIR/.env' && chmod 600 '$REMOTE_DIR/.env'" < .env
 pi "sed -i 's#^PUBLIC_URL=.*#PUBLIC_URL=${PUBLIC_URL}#' '$REMOTE_DIR/.env'; grep -q '^PUBLIC_URL=' '$REMOTE_DIR/.env' || echo 'PUBLIC_URL=${PUBLIC_URL}' >> '$REMOTE_DIR/.env'"
+# On the Pi every `docker compose` command (including ones you type by hand) also loads
+# docker-compose.pi.yml, which keeps the SQLite data in /srv/virtualhr/data.
+pi "sed -i '/^COMPOSE_FILE=/d' '$REMOTE_DIR/.env' && echo 'COMPOSE_FILE=docker-compose.yml:docker-compose.pi.yml' >> '$REMOTE_DIR/.env'"
 
 RES=microservices/avatar-db-microservice/src/main/resources
 if [[ $SKIP_VIDEOS -eq 0 ]]; then
   step "Syncing avatar scenarios and videos (1.3 GB the first time, then only changes)"
   pi "mkdir -p '$REMOTE_DIR/$RES'"
-  rsync -a --info=progress2 --delete --exclude keystore/ -e "ssh ${SSH_OPTS[*]}" "$RES/" "$PI:$REMOTE_DIR/$RES/"
+  rsync -a --progress --delete --exclude keystore/ -e "ssh ${SSH_OPTS[*]}" "$RES/" "$PI:$REMOTE_DIR/$RES/"
 fi
+
+step "Preparing the data folders in $REMOTE_DIR/data (moves old volume data once)"
+pi "cd '$REMOTE_DIR' && sudo DATA_DIR='$REMOTE_DIR/data' bash deploy/pi/prepare-data.sh"
 
 step "Starting the stack on the Pi"
 pi "cd '$REMOTE_DIR' && docker compose up -d --no-build --pull never --remove-orphans && docker image prune -f >/dev/null"
 
-step "Waiting for the services (the JVMs take 30-60 s to start on a Pi 4)"
-for _ in $(seq 1 36); do
-  if pi "curl -fs -o /dev/null http://127.0.0.1:8088/healthz && curl -fs -o /dev/null http://127.0.0.1:8088/manager/" 2>/dev/null; then break; fi
-  sleep 5
+step "Installing the nightly SQLite backup (03:30, keeps 14 days in $REMOTE_DIR/backups)"
+pi "echo '30 3 * * * root ROOT=$REMOTE_DIR /bin/bash $REMOTE_DIR/deploy/pi/backup-sqlite.sh >> /var/log/virtualhr-backup.log 2>&1' | sudo tee /etc/cron.d/virtualhr-backup >/dev/null"
+fi
+
+step "Waiting for the backends (the JVMs take 30-90 s to start on a Pi 4)"
+# /healthz and the UIs are served by nginx itself, so they are up instantly. Wait until
+# every proxied backend answers with anything other than 502/503/504.
+ready=0
+for i in $(seq 1 48); do
+  if pi 'for u in /admin/login /api/geography/countries "/avatar-api/avatar-info?name=candidate_intro_1&category=candidate&subcategory=intro&resolution=720x720&language=en"; do
+           c=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:8088$u"); case "$c" in 000|502|503|504) exit 1;; esac
+         done' 2>/dev/null; then ready=1; break; fi
+  printf '  waiting (%ss)\r' "$((i * 5))"; sleep 5
 done
+[[ $ready -eq 1 ]] || echo "Backends still not answering after 4 minutes; running the smoke test anyway."
 
 step "Smoke test on the Pi"
 if pi "cd '$REMOTE_DIR' && python3 deploy/smoke_test.py http://127.0.0.1:8088"; then

@@ -1,0 +1,21 @@
+# Raspberry Pi override: keep the SQLite data in plain host folders instead of Docker
+# named volumes, so `docker compose down -v` or `docker volume prune` cannot delete it
+# and the files can be copied in/out directly.
+#
+# Used on the Pi via COMPOSE_FILE=docker-compose.yml:docker-compose.pi.yml in .env
+# (deploy/pi/deploy-to-pi.sh sets it). The Mac keeps using the named volumes.
+#
+#   /srv/virtualhr/data/cv-db/       cv.db + images/ (user photos)
+#   /srv/virtualhr/data/manager-db/  manager.db
+#
+# Both containers run as uid 999; deploy/pi/prepare-data.sh creates the folders with that
+# owner and moves existing named-volume data into them once.
+
+services:
+  cv-db:
+    volumes:
+      - ${DATA_DIR:-/srv/virtualhr/data}/cv-db:/data
+
+  manager-db:
+    volumes:
+      - ${DATA_DIR:-/srv/virtualhr/data}/manager-db:/data
