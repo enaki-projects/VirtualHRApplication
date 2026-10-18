@@ -5,6 +5,7 @@ import {faBriefcase, faBuilding, faEnvelope, faGlobe, faHome, faPhoneAlt} from '
 
 
 @Component({
+  standalone: false,
   selector: 'app-cv-view-details',
   templateUrl: './cv-view-details.component.html',
   styleUrls: ['./cv-view-details.component.css']

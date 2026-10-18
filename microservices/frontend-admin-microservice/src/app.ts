@@ -1,11 +1,12 @@
 import config from './config';
 import express from 'express';
 import Logger from './loaders/logger';
+import loaders from './loaders';
 
 async function startServer() {
     const app = express();
 
-    await require('./loaders').default({ expressApp: app });
+    await loaders({ expressApp: app });
 
     app.listen(config.port, () => {
         Logger.info(`
@@ -13,8 +14,8 @@ async function startServer() {
       🛡️  Server listening on port: ${config.port} 🛡️
       ################################################
     `);
-        Logger.info(`http://localhost:${config.port}/home`)
-        Logger.info(`Adapter: ${config.adapterIP}`)
+        Logger.info(`http://localhost:${config.port}${config.basePath}/home`)
+        Logger.info(`Adapter: ${config.adapterUrl}`)
     });
 
 }

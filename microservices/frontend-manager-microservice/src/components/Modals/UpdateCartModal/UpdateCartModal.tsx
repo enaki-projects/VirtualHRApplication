@@ -1,7 +1,7 @@
 import {Button, InputGroup, Modal, Row} from "react-bootstrap";
 import React, {useCallback, useState} from "react";
 import {cartService} from "../../../services/CartService";
-import {NotificationManager} from 'react-notifications';
+import {NotificationManager} from '../../../shared/notifications';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit} from "@fortawesome/free-solid-svg-icons";
 
@@ -53,7 +53,7 @@ export function UpdateCartModal(props) {
 
     return (
         <>
-            <Button className="btn btn-info mr-2" onClick={handleShow}><FontAwesomeIcon icon={faEdit}/></Button>
+            <Button className="btn btn-info me-2" onClick={handleShow}><FontAwesomeIcon icon={faEdit}/></Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

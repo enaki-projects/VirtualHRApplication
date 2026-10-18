@@ -1,7 +1,7 @@
 import {Button, InputGroup, Modal, Row} from "react-bootstrap";
 import React, {useState} from "react";
 import {cartService} from "../../../services/CartService";
-import {NotificationManager} from 'react-notifications';
+import {NotificationManager} from '../../../shared/notifications';
 import './AddCartModal.css'
 
 export function AddCartModal() {

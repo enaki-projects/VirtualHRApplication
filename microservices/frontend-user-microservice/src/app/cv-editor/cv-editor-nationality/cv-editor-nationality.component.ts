@@ -7,6 +7,7 @@ import {CitizenshipService} from '../../_services/cv-references/citizenship.serv
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-nationality',
   templateUrl: './cv-editor-nationality.component.html',
   styleUrls: ['./cv-editor-nationality.component.css']

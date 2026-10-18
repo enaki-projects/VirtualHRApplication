@@ -4,6 +4,7 @@ import {SkillService} from '../../_services/cv-references/skill.service';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-skills',
   templateUrl: './cv-editor-skills.component.html',
   styleUrls: ['./cv-editor-skills.component.css']

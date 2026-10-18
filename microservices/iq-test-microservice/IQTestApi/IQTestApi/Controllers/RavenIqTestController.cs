@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using System.Web.Http;
+using System.Threading.Tasks;
 using IQTestServices.Interfaces;
 using IQTestServices.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +7,7 @@ using Microsoft.Extensions.Logging;
 namespace IQTestApi.Controllers
 {
     [ApiController]
-    [Microsoft.AspNetCore.Mvc.Route("api/raven-test")]
+    [Route("api/raven-test")]
     public class RavenIqTestController : ControllerBase
     {
         private readonly ILogger<RavenIqTestController> _logger;
@@ -20,14 +19,14 @@ namespace IQTestApi.Controllers
             _ravenIqTestService = ravenIqTestService;
         }
 
-        [Microsoft.AspNetCore.Mvc.HttpGet]
-        public async Task<IActionResult> Get([FromUri] bool randomize = false)
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery] bool randomize = false)
         {
             var result = await _ravenIqTestService.GetRavenQuestions(randomize);
             return Ok(result);
         }
 
-        [Microsoft.AspNetCore.Mvc.HttpGet("{questionCode}")]
+        [HttpGet("{questionCode}")]
         public async Task<IActionResult> GetQuestion([FromRoute] string questionCode)
         {
             var bytes = await _ravenIqTestService.GetQuestion(questionCode);
@@ -36,8 +35,8 @@ namespace IQTestApi.Controllers
             return NotFound();
         }
 
-        [Microsoft.AspNetCore.Mvc.HttpPost]
-        public async Task<IActionResult> ProcessTest([Microsoft.AspNetCore.Mvc.FromBody] RavenIqTest test)
+        [HttpPost]
+        public async Task<IActionResult> ProcessTest([FromBody] RavenIqTest test)
         {
             var result = await _ravenIqTestService.ProcessRavenTest(test);
             return Ok(result);

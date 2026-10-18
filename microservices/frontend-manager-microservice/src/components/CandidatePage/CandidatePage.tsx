@@ -8,7 +8,8 @@ import {environment} from "../../environments/environment";
 import {candidateService} from "../../services/CandidateService";
 import {CandidateCv} from "../../models/cv/candidate-cv";
 import CandidateCard from "../shared/CandidateCard/CandidateCard";
-import ReactLoading from 'react-loading';
+import ReactLoading from "../../shared/Loading";
+
 import {WithContext as ReactTags} from 'react-tag-input';
 import "./CandidatePage.css"
 import {myUtils} from "../../shared/utils";
@@ -160,7 +161,7 @@ export class CandidatePage extends React.Component<any, any> {
             <Row className="mt-4 w-100 justify-content-between">
 
                 <Col xl={8} lg={8} md={8} sm={12} xs={12} className="text-center">
-                    <Row className="ml-2 mr-2 w-100 border rounded bg-custom border-light">
+                    <Row className="ms-2 me-2 w-100 border rounded bg-custom border-light">
                         <Col className="mt-2" xl={8} lg={8} md={8} sm={12} xs={12}>
                             <Row>
                                 <InputGroup className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -203,7 +204,7 @@ export class CandidatePage extends React.Component<any, any> {
                     </Row>
                     {
                         !this.state.loadingData ?
-                            <Row className="ml-2 mr-2 mt-3">
+                            <Row className="ms-2 me-2 mt-3">
                                 {
                                     this.candidates ? this.candidates.map(item =>
                                         <Col className="mb-4" key={item.uid} xl={3} lg={3} md={4} sm={12} xs={12}>

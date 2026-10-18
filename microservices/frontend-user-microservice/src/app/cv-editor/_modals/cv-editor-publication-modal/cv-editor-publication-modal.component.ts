@@ -6,6 +6,7 @@ import {ToastrService} from 'ngx-toastr';
 import {BsModalRef} from 'ngx-bootstrap/modal';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-publication-modal',
   templateUrl: './cv-editor-publication-modal.component.html',
   styleUrls: ['./cv-editor-publication-modal.component.css']

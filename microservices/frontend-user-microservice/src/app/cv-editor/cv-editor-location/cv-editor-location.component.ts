@@ -7,6 +7,7 @@ import {CvEditorLocationModalComponent} from '../_modals/cv-editor-location-moda
 import {LocationService} from '../../_services/cv-references/location.service';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-location',
   templateUrl: './cv-editor-location.component.html',
   styleUrls: ['./cv-editor-location.component.css']

@@ -1,0 +1,8 @@
+target/
+build/
+.idea/
+*.iml
+.vscode/
+HELP.md
+*.log
+# NOTE: manager.db is intentionally NOT ignored - it is the seed database the image ships.

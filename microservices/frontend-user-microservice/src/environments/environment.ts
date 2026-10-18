@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  adapterApiUrl: 'https://localhost:5000/api/',
-  avatarApiUrl: 'https://localhost:2010/api/',
+  adapterApiUrl: '/api/',
+  avatarApiUrl: '/avatar-api/',
   avatarScenarios: {
     home: {
       name: 'candidate_intro_1',

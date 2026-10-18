@@ -6,6 +6,7 @@ import {ToastrService} from 'ngx-toastr';
 import {BsModalRef} from 'ngx-bootstrap/modal';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-award-modal',
   templateUrl: './cv-editor-award-modal.component.html',
   styleUrls: ['./cv-editor-award-modal.component.css']

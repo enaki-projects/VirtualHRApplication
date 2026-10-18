@@ -7,6 +7,7 @@ import {faEye, faEyeSlash, faPen, faTrash} from '@fortawesome/free-solid-svg-ico
 import {CvEditorPublicationModalComponent} from '../_modals/cv-editor-publication-modal/cv-editor-publication-modal.component';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-publication',
   templateUrl: './cv-editor-publication.component.html',
   styleUrls: ['./cv-editor-publication.component.css']

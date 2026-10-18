@@ -7,6 +7,7 @@ import {UserLanguage} from '../../_models/cv/references/user-language';
 import {CvEditorLanguageModalComponent} from '../_modals/cv-editor-language-modal/cv-editor-language-modal.component';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-language',
   templateUrl: './cv-editor-language.component.html',
   styleUrls: ['./cv-editor-language.component.css']

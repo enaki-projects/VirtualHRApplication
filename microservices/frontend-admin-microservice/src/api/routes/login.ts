@@ -3,8 +3,7 @@ import config from "../../config";
 import services from "../../services";
 
 const route = Router();
-const fetch = require('node-fetch');
-const { check, validationResult} = require("express-validator/check");
+import { check, validationResult } from 'express-validator';
 
 
 export default (app: Router) => {
@@ -28,7 +27,7 @@ export default (app: Router) => {
                     errors: errors.array()
                 });
             }
-            const url = config.adapterIP + "api/auth/login?as=administrator";
+            const url = config.adapterUrl + "api/auth/login?as=administrator";
             const settings = {
                 method: 'post',
                 body:    JSON.stringify({
@@ -39,19 +38,19 @@ export default (app: Router) => {
             };
             const response = await fetch(url, settings)
             if (response["status"] === 200){
-                req["session"]["currentUser"] = await response.json();
+                req.session.currentUser = await response.json();
 
-                const url = config.adapterIP + "api/cvs/" + req["session"]["currentUser"]["uid"];
+                const url = config.adapterUrl + "api/cvs/" + req.session.currentUser["uid"];
                 const settings = {
                     method: 'GET',
                     headers: { 'Content-Type': 'application/json',
-                        "Authorization": "Bearer " + req["session"]["currentUser"]["token"]
+                        "Authorization": "Bearer " + req.session.currentUser["token"]
                     },
                 };
-                req["session"]["currentUser"]["cv"] = await((await fetch(url, settings)).json());
-                req["session"]["currentUser"]["cv"]["photoUrl"] = services.getUrlPhoto(req["session"]["currentUser"])
-                req["session"]["currentUser"]["cv"]["age"] = services.getAge(req["session"]["currentUser"]["cv"]["birthdate"])
-                res.redirect("/");
+                req.session.currentUser["cv"] = await((await fetch(url, settings)).json());
+                req.session.currentUser["cv"]["photoUrl"] = services.getUrlPhoto(req.session.currentUser)
+                req.session.currentUser["cv"]["age"] = services.getAge(req.session.currentUser["cv"]["birthdate"])
+                res.redirect(config.basePath + "/");
             }
             else {
                 res.sendStatus(response["status"]);
@@ -59,8 +58,8 @@ export default (app: Router) => {
     });
 
     app.use((req, res, next) => {       // Catches access to all other pages
-        if(!req["session"]["currentUser"]) {       // requiring a valid access token
-            res.redirect('/login');
+        if(!req.session.currentUser) {       // requiring a valid access token
+            res.redirect(config.basePath + '/login');
         } else {
             next();
         }

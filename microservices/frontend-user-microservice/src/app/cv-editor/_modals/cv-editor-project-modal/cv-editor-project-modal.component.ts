@@ -7,6 +7,7 @@ import {ProjectService} from '../../../_services/cv-references/project.service';
 import {Project} from '../../../_models/cv/references/project';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-project-modal',
   templateUrl: './cv-editor-project-modal.component.html',
   styleUrls: ['./cv-editor-project-modal.component.css']

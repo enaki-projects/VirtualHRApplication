@@ -32,7 +32,7 @@ $('#login_form').submit(function (e) {
         success: function (result) {
             //if the submit was successful, you redirect
             console.log(result.status);
-            window.location.href = "/";
+            window.location.href = (window.BASE_PATH || "") + "/";
         },
         error: function (e) {
             console.log(e.status);

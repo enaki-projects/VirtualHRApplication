@@ -6,7 +6,10 @@ import {AvatarService} from '../../_services/avatar.service';
 import {Subscription} from 'rxjs';
 import {AvatarVideoSettings} from './model/AvatarVideoSettings';
 
+type VideoJsPlayer = ReturnType<typeof videojs>;
+
 @Component({
+  standalone: false,
   selector: 'app-vjs-player',
   templateUrl: './vjs-player.component.html',
   styleUrls: [
@@ -20,7 +23,7 @@ export class VjsPlayerComponent implements OnInit, OnDestroy {
   // see options: https://github.com/videojs/video.js/blob/maintutorial-options.html
   @Input() options: VjsPlayerSettings;
   @Input() subtitles: string;
-  player: videojs.Player;
+  player: VideoJsPlayer;
   subscriptions: Subscription[] = [];
   avatarSettings: AvatarVideoSettings;
   kkt = false;

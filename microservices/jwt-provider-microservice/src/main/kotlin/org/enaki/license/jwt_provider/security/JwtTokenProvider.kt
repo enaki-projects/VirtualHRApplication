@@ -4,12 +4,13 @@ import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys
 import org.enaki.license.jwt_provider.rest_consuming.models.AuthUserModelForJwt
 import org.enaki.license.jwt_provider.utils.ServerEnvUtils
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import org.springframework.util.Assert
 import java.nio.charset.StandardCharsets
 import java.util.*
-import javax.annotation.PostConstruct
+import jakarta.annotation.PostConstruct
 import javax.crypto.SecretKey
 
 
@@ -28,11 +29,15 @@ class JwtTokenProvider {
     protected fun init() {
         secretKeyString = jwtProperties!!.secretKey
 
-        val bytes = jwtProperties!!.secretKey.toByteArray(StandardCharsets.UTF_8)
-        secretKey = Keys.hmacShaKeyFor(bytes)
+        if (secretKeyString!!.startsWith("dev-only-change-me")) {
+            log.warn("JWT_SECRET is not set - using the insecure dev-only fallback key. " +
+                    "Set the JWT_SECRET env var (>= 32 bytes) before deploying.")
+        }
 
-        //secretKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKeyString))
-        // secretKey = Base64.getEncoder().encodeToString(jwtProperties.getSecretKey().getBytes());
+        // The secret is used as raw UTF-8 bytes (NOT base64-decoded). jjwt 0.12 requires the HMAC
+        // key material to be at least 256 bits (32 bytes) for HS256, which hmacShaKeyFor enforces.
+        val bytes = secretKeyString!!.toByteArray(StandardCharsets.UTF_8)
+        secretKey = Keys.hmacShaKeyFor(bytes)
     }
 
     fun decodeAndParseJwt(jwt: String?): DecodedJwt {
@@ -40,36 +45,36 @@ class JwtTokenProvider {
         return parseJwt(base64DecodeJwt)
     }
 
+    @Suppress("UNCHECKED_CAST")
     fun parseJwt(base64DecodeJwt: String?): DecodedJwt {
-        val claims = Jwts.parserBuilder()
-                .setSigningKey(secretKeyString)
+        val claims = Jwts.parser()
+                .verifyWith(secretKey)
                 .build()
-                .parseClaimsJws(base64DecodeJwt)
+                .parseSignedClaims(base64DecodeJwt)
+                .payload
         val decodedJwt = DecodedJwt()
-        decodedJwt.jti = claims.body.id
-        decodedJwt.expiration = claims.body.expiration
-        decodedJwt.roles = claims.body["roles"] as List<String>?
-        decodedJwt.uid = claims.body.subject
+        decodedJwt.jti = claims.id
+        decodedJwt.expiration = claims.expiration
+        decodedJwt.roles = claims["roles"] as List<String>?
+        decodedJwt.uid = claims.subject
         return decodedJwt
     }
 
     fun createToken(authUserModelForJwt: AuthUserModelForJwt): String {
-        val claims = Jwts.claims()
+        val claims = mutableMapOf<String, Any?>()
         claims["jti"] = authUserModelForJwt.email
         claims["roles"] = authUserModelForJwt.roles
         claims["type"] = "access"
         val now = Date()
         val validity = Date(now.time + jwtProperties!!.validityInMs.toLong())
-        val header = Jwts.header();
-        header.type = "JWT";
         return Jwts.builder()
-                .setHeader(header)
-                .setClaims(claims)
-                .setIssuer(serverEnvUtils.serverUrlPrefix)
-                .setSubject(authUserModelForJwt.uid.toString())
-                .setExpiration(validity)
-                .setIssuedAt(now)
-                .setNotBefore(now)
+                .header().type("JWT").and()
+                .claims(claims)
+                .issuer(serverEnvUtils.serverUrlPrefix)
+                .subject(authUserModelForJwt.uid.toString())
+                .expiration(validity)
+                .issuedAt(now)
+                .notBefore(now)
                 .signWith(secretKey)
                 .compact()
     }
@@ -82,5 +87,9 @@ class JwtTokenProvider {
         Assert.notNull(jwt, "The jwt must not be null")
         Assert.hasLength(jwt, "The jwt must not be empty")
         return String(Base64.getDecoder().decode(jwt), StandardCharsets.UTF_8)
+    }
+
+    companion object {
+        private val log = LoggerFactory.getLogger(JwtTokenProvider::class.java)
     }
 }

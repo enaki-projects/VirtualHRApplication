@@ -1,34 +1,32 @@
-FROM python:3.9-alpine
-RUN mkdir -p /app
+# cv-adapter gateway: Flask 3 served by gunicorn, plain HTTP on 0.0.0.0:5000.
+# No secrets or service IPs are baked in; all config comes from env at runtime
+# (see routes/shared/__init__.py). ffmpeg is NOT needed: the service only proxies
+# image/CV bytes, it never transcodes media.
+FROM python:3.12-slim-bookworm
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
 
 WORKDIR /app
 
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
-ENV AVATAR_DB_MICROSERVICE=172.18.0.10
-ENV CV_DB_MICROSERVICE=172.18.0.11
-ENV JWT_DB_MICROSERVICE=172.18.0.12
-ENV CV_FILTER_MICROSERVICE=172.18.0.13
-ENV IQ_TEST_MICROSERVICE=172.18.0.14
-ENV MANAGER_DB_MICROSERVICE=172.18.0.15
-ENV CANDIDATE_MICROSERVICE=172.18.0.2
-
-ENV SECRET_KEY=******
-ENV MAIL_SERVER=smtp.mailgun.org
-ENV MAIL_PORT=587
-ENV MAIL_USERNAME=******
-ENV MAIL_PASSWORD=******
-
-RUN mkdir -p /utils
-RUN mkdir -p /routes
-
+# Pure-Python wheels (Flask 3 / gunicorn / PyJWT) install on arm64 and amd64
+# without a compiler, so no build toolchain is required on python:3.12-slim.
 COPY requirements.txt .
-COPY app.py .
-COPY utils/. utils/.
-COPY routes/. routes/.
-RUN apk add alpine-sdk gcc musl-dev python3-dev libffi-dev openssl-dev cargo jpeg-dev zlib-dev  ffmpeg
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir -r requirements.txt
 
-RUN pip install --upgrade pip \
-    && pip install -r requirements.txt
+COPY app.py .
+COPY utils/ utils/
+COPY routes/ routes/
+
+# Writable scratch dir used by the email confirmation flow (workdir/*.txt).
+RUN mkdir -p workdir \
+    && useradd --create-home --uid 10001 appuser \
+    && chown -R appuser:appuser /app
+USER appuser
+
 EXPOSE 5000
-CMD ["python3", "app.py"]
+
+# 2 workers / 4 threads is plenty for a Raspberry Pi gateway in front of the
+# other microservices; tune via GUNICORN_CMD_ARGS in compose if needed.
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "-w", "2", "--threads", "4", "--timeout", "120", "app:app"]

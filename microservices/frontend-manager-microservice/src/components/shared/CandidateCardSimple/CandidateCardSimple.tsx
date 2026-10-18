@@ -29,7 +29,7 @@ export default class CandidateCardSimple extends React.Component<any, any> {
                         <img src={photoUrl} alt="Candidate Image"
                              className="img-fluid img-thumbnail card-img-top candidate-profile-picture p-0 m-0"/>
                     </div>
-                    <div className="ml-2">
+                    <div className="ms-2">
                         <Card.Text className="m-2">
                             <strong>First Name: </strong>{this.currentUserCv.firstname}
                         </Card.Text>
@@ -45,7 +45,7 @@ export default class CandidateCardSimple extends React.Component<any, any> {
                     </div>
                 </Card.Body>
                 <Card.Footer className="p-1">
-                    <blockquote className="ml-4 mr-4">
+                    <blockquote className="ms-4 me-4">
                         <Card.Text className="mb-0">"{this.currentUserCv.aboutMe}"</Card.Text>
                     </blockquote>
                 </Card.Footer>

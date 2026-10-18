@@ -13,6 +13,7 @@ import {Observable, of, Subscriber} from 'rxjs';
 import {mergeMap} from 'rxjs/operators';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-educational-experience-modal',
   templateUrl: './cv-editor-educational-experience-modal.component.html',
   styleUrls: ['./cv-editor-educational-experience-modal.component.css']

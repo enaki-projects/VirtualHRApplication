@@ -7,6 +7,7 @@ import {faEnvelope, faFileSignature, faKey, faUser, faVenusMars} from '@fortawes
 
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-general-info',
   templateUrl: './cv-editor-general-info.component.html',
   styleUrls: ['./cv-editor-general-info.component.css']

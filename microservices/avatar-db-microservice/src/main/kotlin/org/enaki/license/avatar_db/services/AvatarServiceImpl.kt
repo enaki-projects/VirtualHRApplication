@@ -5,6 +5,7 @@ import org.enaki.license.avatar_db.interfaces.ScenarioValidator
 import org.enaki.license.avatar_db.model.AvatarScene
 import org.enaki.license.avatar_db.model.Scenario
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import org.w3c.dom.Document
 import org.w3c.dom.Element
@@ -20,12 +21,15 @@ class AvatarServiceImpl : AvatarService{
     @Autowired
     private lateinit var _scenarioValidator: ScenarioValidator
 
+    @Value("\${avatar.resources-dir}")
+    private lateinit var resourcesDir: String
+
     override fun getAvatarScene(scenario: Scenario): AvatarScene? {
         if (_scenarioValidator.validate(scenario).not()) return null
 
         val docBuilderFactory = DocumentBuilderFactory.newInstance()
         val docBuilder = docBuilderFactory.newDocumentBuilder()
-        val doc: Document = docBuilder.parse(File("src/main/resources/available_languages/${scenario.language}_avatar.xml"))
+        val doc: Document = docBuilder.parse(File("$resourcesDir/available_languages/${scenario.language}_avatar.xml"))
 
         val nList: NodeList = doc.getElementsByTagName("scene")
         println(nList)
@@ -73,7 +77,7 @@ class AvatarServiceImpl : AvatarService{
 
         val docBuilderFactory = DocumentBuilderFactory.newInstance()
         val docBuilder = docBuilderFactory.newDocumentBuilder()
-        val doc: Document = docBuilder.parse(File("src/main/resources/avatar.xml"))
+        val doc: Document = docBuilder.parse(File("$resourcesDir/avatar.xml"))
 
         val nList: NodeList = doc.getElementsByTagName("scene")
         println(nList)

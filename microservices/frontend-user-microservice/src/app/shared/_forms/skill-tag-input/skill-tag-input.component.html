@@ -1,0 +1,29 @@
+<div class="skill-tag-input" [class.dark]="theme === 'dark'">
+  <div class="skill-tag-chips">
+    <span class="skill-tag-chip" *ngFor="let tag of tags">
+      {{ labelOf(tag) }}
+      <button type="button" class="skill-tag-remove" (click)="removeTag(tag)" aria-label="Remove">&times;</button>
+    </span>
+    <div class="skill-tag-field">
+      <input
+        type="text"
+        class="skill-tag-text"
+        [placeholder]="placeholder"
+        [(ngModel)]="inputValue"
+        [ngModelOptions]="{standalone: true}"
+        (focus)="onFocus()"
+        (blur)="onBlur()"
+        (keydown)="onKeydown($event)"
+      />
+      <ul class="skill-tag-dropdown" *ngIf="showDropdown && filteredItems.length">
+        <li
+          *ngFor="let item of filteredItems"
+          class="skill-tag-option"
+          (mousedown)="selectItem(item)"
+        >
+          {{ labelOf(item) }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

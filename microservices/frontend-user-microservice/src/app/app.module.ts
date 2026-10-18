@@ -18,7 +18,7 @@ import {CvViewDetailsComponent} from './cv-view/cv-view-details/cv-view-details.
 import {SharedModule} from './shared/shared.module';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {NavComponent} from './nav/nav.component';
-import {CountdownModule} from 'ngx-countdown';
+import {CountdownComponent} from 'ngx-countdown';
 import { SettingsPageComponent } from './settings-page/settings-page.component';
 
 @NgModule({
@@ -43,7 +43,7 @@ import { SettingsPageComponent } from './settings-page/settings-page.component';
     BrowserAnimationsModule,
     NgxSpinnerModule,
     FontAwesomeModule,
-    CountdownModule
+    CountdownComponent
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

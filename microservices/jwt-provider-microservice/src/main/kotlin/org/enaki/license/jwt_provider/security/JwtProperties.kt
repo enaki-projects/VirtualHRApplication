@@ -8,10 +8,12 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 @ConfigurationProperties(prefix = "jwt")
 class JwtProperties {
-    @Value("\${secretKey}")
+    // Signing secret. Sourced from the JWT_SECRET env var. The dev fallback is obviously fake and
+    // JwtTokenProvider logs a warning when it is in use. Must be >= 32 bytes (256 bits) for HS256.
+    @Value("\${JWT_SECRET:dev-only-change-me-dev-only-change-me-0123456789}")
     lateinit var secretKey: String
 
-    //validity in milliseconds
-    @Value("\${validityInMs}")
-    lateinit var validityInMs: String // 1h
+    // Token validity in milliseconds.
+    @Value("\${JWT_VALIDITY_MS:\${validityInMs:36000000}}")
+    lateinit var validityInMs: String
 }

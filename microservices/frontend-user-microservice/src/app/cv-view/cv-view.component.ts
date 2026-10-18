@@ -10,6 +10,7 @@ import { jsPDF  } from 'jspdf';
 import {faDownload, faEye, faPlus, faMinus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-view',
   templateUrl: './cv-view.component.html',
   styleUrls: ['./cv-view.component.css']

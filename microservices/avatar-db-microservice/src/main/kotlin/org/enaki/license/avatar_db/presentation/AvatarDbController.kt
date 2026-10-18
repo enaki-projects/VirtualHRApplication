@@ -4,6 +4,7 @@ import org.enaki.license.avatar_db.interfaces.AvatarService
 import org.enaki.license.avatar_db.model.AvatarScene
 import org.enaki.license.avatar_db.model.Scenario
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.core.io.UrlResource
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
@@ -12,12 +13,16 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
+import java.io.File
 
 @RestController
 class AvatarDbController{
 
     @Autowired
     private lateinit var _avatarService: AvatarService
+
+    @Value("\${avatar.resources-dir}")
+    private lateinit var resourcesDir: String
 
     @RequestMapping("/api/avatars", method = [RequestMethod.GET])
     fun getAvatarScenes(): ResponseEntity<List<AvatarScene>> {
@@ -37,7 +42,9 @@ class AvatarDbController{
     fun getAvatarScene(scenario: Scenario): ResponseEntity<UrlResource?> {
         val avatarScene = _avatarService.getAvatarScene(scenario)
         println(avatarScene?.relativePath)
-        val resourceUrl = if (avatarScene != null) UrlResource("file:src/main/resources/avatar/${avatarScene.relativePath}") else null
+        val resourceUrl = if (avatarScene != null)
+            UrlResource(File("$resourcesDir/avatar/${avatarScene.relativePath}").toURI())
+        else null
         val status = if (avatarScene == null) HttpStatus.NOT_FOUND else HttpStatus.OK
         return ResponseEntity.status(status).contentType(MediaTypeFactory
                 .getMediaType(resourceUrl)

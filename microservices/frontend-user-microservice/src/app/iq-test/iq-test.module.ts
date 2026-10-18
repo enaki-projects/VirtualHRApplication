@@ -7,7 +7,7 @@ import {FormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
 import {RouterModule} from '@angular/router';
 import {IqTestRavenResultsComponent} from './iq-test-raven-results/iq-test-raven-results.component';
-import {CountdownModule} from 'ngx-countdown';
+import {CountdownComponent} from 'ngx-countdown';
 
 
 @NgModule({
@@ -22,7 +22,7 @@ import {CountdownModule} from 'ngx-countdown';
     SharedModule,
     IqTestRoutingModule,
     RouterModule,
-    CountdownModule,
+    CountdownComponent,
   ]
 })
 export class IqTestModule { }

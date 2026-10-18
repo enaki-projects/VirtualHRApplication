@@ -3,11 +3,15 @@ import React, {useState} from "react";
 import './EditCartItemModal.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit} from "@fortawesome/free-solid-svg-icons";
-import Rating from "react-rating";
+import RatingComponent from "react-rating";
+import {cjsDefault} from "../../../shared/interop";
+
+// react-rating ships class-component typings older than React 19's JSX types.
+const Rating = cjsDefault(RatingComponent) as unknown as React.ComponentType<any>;
 import CandidateCardSimple from "../../shared/CandidateCardSimple/CandidateCardSimple";
 import {Item} from "../../../models/manager/item";
 import {cartService} from "../../../services/CartService";
-import {NotificationManager} from 'react-notifications';
+import {NotificationManager} from '../../../shared/notifications';
 
 export function EditCartItemModal(props) {
     let item = props.item as Item;
@@ -43,7 +47,7 @@ export function EditCartItemModal(props) {
 
     return (
         <>
-            <button className="btn btn-info mr-2" onClick={handleShow}><FontAwesomeIcon icon={faEdit}/></button>
+            <button className="btn btn-info me-2" onClick={handleShow}><FontAwesomeIcon icon={faEdit}/></button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

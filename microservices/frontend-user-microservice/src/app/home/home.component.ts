@@ -7,6 +7,7 @@ import {environment} from '../../environments/environment';
 import {AvatarService} from '../_services/avatar.service';
 
 @Component({
+  standalone: false,
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']

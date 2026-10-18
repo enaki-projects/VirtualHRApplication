@@ -6,7 +6,7 @@ import {faLock, faUser} from '@fortawesome/free-solid-svg-icons'
 import {LoginUser} from "../../../models/login-user";
 import {Col, Container, FormControl, InputGroup, Row} from "react-bootstrap";
 import {authenticationService} from "../../../services/AuthService";
-import {NotificationManager} from 'react-notifications';
+import {NotificationManager} from '../../../shared/notifications';
 import {config} from "../../../environments/config";
 
 
@@ -40,16 +40,14 @@ export default function Login() {
                     <Col xs={3} className="user_card my-auto">
                         <Container className="d-flex justify-content-center">
                             <div className="brand_logo_container">
-                                <img src={process.env.PUBLIC_URL + "./assets/logo.png"} className="brand_logo"
+                                <img src={import.meta.env.BASE_URL + "assets/logo.png"} className="brand_logo"
                                      alt="Logo"/>
                             </div>
                         </Container>
                         <Container className="d-flex justify-content-center pt-0 mt-4 w-75 ">
                             <form onSubmit={handleSubmit}>
                                 <InputGroup className="mb-3">
-                                    <InputGroup.Append>
                                         <InputGroup.Text> <FontAwesomeIcon icon={faUser}/></InputGroup.Text>
-                                    </InputGroup.Append>
                                     <FormControl
                                         placeholder="Email"
                                         aria-label="Email"
@@ -60,9 +58,7 @@ export default function Login() {
                                     />
                                 </InputGroup>
                                 <InputGroup className="mb-3">
-                                    <InputGroup.Append>
                                         <InputGroup.Text> <FontAwesomeIcon icon={faLock}/></InputGroup.Text>
-                                    </InputGroup.Append>
                                     <FormControl
                                         placeholder="Password"
                                         aria-label="Password"
@@ -82,13 +78,13 @@ export default function Login() {
 
                         <div className="mt-4">
                             <div className="d-flex justify-content-center links">
-                                Don't have an account? <a href={userFrontendUrl + "auth/register"} className="ml-2">Sign
+                                Don't have an account? <a href={userFrontendUrl + "auth/register"} className="ms-2">Sign
                                 Up</a>
                             </div>
                         </div>
                         <div className="mt-1 mb-4">
                             <div className="d-flex justify-content-center links">
-                                Forget Password? <a href={userFrontendUrl + "auth/recover"} className="ml-2">Recover</a>
+                                Forget Password? <a href={userFrontendUrl + "auth/recover"} className="ms-2">Recover</a>
                             </div>
                         </div>
                     </Col>

@@ -7,6 +7,7 @@ import {ToastrService} from 'ngx-toastr';
 import {faBan, faCloudUploadAlt, faTrash, faUpload} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
+  standalone: false,
   selector: 'app-photo-editor',
   templateUrl: './photo-editor.component.html',
   styleUrls: ['./photo-editor.component.css']

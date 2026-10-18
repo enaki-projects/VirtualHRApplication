@@ -7,6 +7,7 @@ import {CvEditorProjectModalComponent} from '../_modals/cv-editor-project-modal/
 import {faEye, faEyeSlash, faPen, faTrash} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-project',
   templateUrl: './cv-editor-project.component.html',
   styleUrls: ['./cv-editor-project.component.css']

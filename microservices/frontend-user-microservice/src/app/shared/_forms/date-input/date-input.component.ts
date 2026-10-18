@@ -4,6 +4,7 @@ import {BsDatepickerConfig} from 'ngx-bootstrap/datepicker';
 import {faTable} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
+  standalone: false,
   selector: 'app-date-input',
   templateUrl: './date-input.component.html',
   styleUrls: ['./date-input.component.css']

@@ -7,7 +7,7 @@ import {RavenQuiz} from '../../_models/iq/raven-apm/raven-quiz';
 import {Observable, ReplaySubject} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {RavenUserQuizResponse} from '../../_models/iq/raven-apm/raven-user-quiz-response';
-import * as moment from 'moment';
+import moment from 'moment';
 import {RavenAnswer} from '../../_models/iq/raven-apm/raven-answer';
 import {RavenReview} from '../../_models/iq/raven-apm/raven-review';
 

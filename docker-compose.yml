@@ -1,0 +1,134 @@
+# Virtual HR - all 10 services behind one gateway.
+#
+#   cp .env.example .env   # fill in the secrets
+#   docker compose up -d --build
+#   open http://localhost:8088/          (candidate UI)
+#        http://localhost:8088/manager/  (recruiter UI)
+#        http://localhost:8088/admin/    (admin UI)
+#
+# Only the gateway publishes a port, and only on 127.0.0.1. On the Raspberry Pi the
+# host nginx listens on port 8080 and forwards to it (see deploy/pi/).
+
+x-jvm: &jvm
+  JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS:--Xmx256m -Xss512k -XX:+UseSerialGC -XX:MaxMetaspaceSize=160m}
+
+x-common: &common
+  restart: unless-stopped
+  networks: [backend]
+  logging:
+    driver: json-file
+    options: { max-size: "10m", max-file: "3" }
+
+services:
+  gateway:
+    <<: *common
+    image: ${IMAGE_PREFIX:-virtualhr}/gateway:${TAG:-latest}
+    build: ./deploy/gateway
+    ports:
+      - "127.0.0.1:${GATEWAY_PORT:-8088}:8080"
+    depends_on: [frontend-user, frontend-manager, frontend-admin, cv-adapter, avatar-db]
+
+  # ---------------------------------------------------------------- frontends
+  frontend-user:
+    <<: *common
+    image: ${IMAGE_PREFIX:-virtualhr}/frontend-user:${TAG:-latest}
+    build: ./microservices/frontend-user-microservice
+
+  frontend-manager:
+    <<: *common
+    image: ${IMAGE_PREFIX:-virtualhr}/frontend-manager:${TAG:-latest}
+    build: ./microservices/frontend-manager-microservice
+
+  frontend-admin:
+    <<: *common
+    image: ${IMAGE_PREFIX:-virtualhr}/frontend-admin:${TAG:-latest}
+    build: ./microservices/frontend-admin-microservice
+    environment:
+      BASE_PATH: /admin
+      ADAPTER_URL: http://cv-adapter:5000/
+      PUBLIC_ADAPTER_URL: /
+      SESSION_SECRET: ${SESSION_SECRET:?set SESSION_SECRET in .env}
+    depends_on: [cv-adapter]
+
+  # ---------------------------------------------------------------- gateway API
+  cv-adapter:
+    <<: *common
+    image: ${IMAGE_PREFIX:-virtualhr}/cv-adapter:${TAG:-latest}
+    build: ./microservices/cv-adapter-microservice
+    environment:
+      SECRET_KEY: ${JWT_SECRET:?set JWT_SECRET in .env}
+      CV_DB_URL: http://cv-db:2011/
+      JWT_PROVIDER_URL: http://jwt-provider:2012/
+      CV_FILTER_URL: http://cv-filter:2013/
+      IQ_TEST_URL: http://iq-test:2014/
+      MANAGER_DB_URL: http://manager-db:2015/
+      # Used in password-recovery emails.
+      CANDIDATE_URL: ${PUBLIC_URL:-http://localhost:8088/}
+      MAIL_SERVER: ${MAIL_SERVER:-}
+      MAIL_PORT: ${MAIL_PORT:-587}
+      MAIL_USERNAME: ${MAIL_USERNAME:-}
+      MAIL_PASSWORD: ${MAIL_PASSWORD:-}
+    depends_on: [cv-db, jwt-provider, cv-filter, iq-test, manager-db]
+
+  # ---------------------------------------------------------------- backends
+  avatar-db:
+    <<: *common
+    image: ${IMAGE_PREFIX:-virtualhr}/avatar-db:${TAG:-latest}
+    build: ./microservices/avatar-db-microservice
+    environment:
+      <<: *jvm
+    volumes:
+      # Scenario XML + 1.3 GB of avatar videos, read straight from the repo checkout.
+      - ${AVATAR_RESOURCES:-./microservices/avatar-db-microservice/src/main/resources}:/app/resources:ro
+
+  cv-db:
+    <<: *common
+    image: ${IMAGE_PREFIX:-virtualhr}/cv-db:${TAG:-latest}
+    build: ./microservices/cv-db-microservice
+    environment:
+      <<: *jvm
+      DB_PATH: /data/cv.db
+      # Base URL cv-db puts into the resource links it returns to cv-adapter.
+      CV_DB_MICROSERVICE: http://cv-db:2011
+    volumes:
+      - cv-db-data:/data
+
+  jwt-provider:
+    <<: *common
+    image: ${IMAGE_PREFIX:-virtualhr}/jwt-provider:${TAG:-latest}
+    build: ./microservices/jwt-provider-microservice
+    environment:
+      <<: *jvm
+      JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
+      CV_DB_URL: http://cv-db:2011
+    depends_on: [cv-db]
+
+  manager-db:
+    <<: *common
+    image: ${IMAGE_PREFIX:-virtualhr}/manager-db:${TAG:-latest}
+    build: ./microservices/manager-db-microservice
+    environment:
+      <<: *jvm
+      DB_PATH: /data/manager.db
+    volumes:
+      - manager-db-data:/data
+
+  cv-filter:
+    <<: *common
+    image: ${IMAGE_PREFIX:-virtualhr}/cv-filter:${TAG:-latest}
+    build: ./microservices/cv-filter-microservice
+    environment:
+      SPARK_MASTER: local[1]
+      JAVA_TOOL_OPTIONS: -Xmx384m
+
+  iq-test:
+    <<: *common
+    image: ${IMAGE_PREFIX:-virtualhr}/iq-test:${TAG:-latest}
+    build: ./microservices/iq-test-microservice/IQTestApi
+
+networks:
+  backend: {}
+
+volumes:
+  cv-db-data: {}
+  manager-db-data: {}

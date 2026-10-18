@@ -1,3 +1,8 @@
-.dockerignore
+node_modules
+build
+.git
+.idea
 Dockerfile
-Dockerfile.prod
+.dockerignore
+docker_commands.bat
+npm-debug.log

@@ -3,7 +3,7 @@ package org.enaki.license.manager_db.presentation.utils
 import org.enaki.license.manager_db.business.error_handling.MyError
 import org.enaki.license.manager_db.business.error_handling.Response
 import org.springframework.http.ResponseEntity
-import javax.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletRequest
 
 object ControllerUtils {
     fun makeResponse(response: Response<*>, request: HttpServletRequest): ResponseEntity<*> {

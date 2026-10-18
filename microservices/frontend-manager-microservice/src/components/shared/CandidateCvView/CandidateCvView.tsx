@@ -2,7 +2,8 @@ import "./CandidateCvView.scss"
 import React, {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import {candidateService} from "../../../services/CandidateService";
-import ReactLoading from "react-loading";
+import ReactLoading from "../../../shared/Loading";
+
 import {Col, Container, Row} from "react-bootstrap";
 import {authenticationService} from "../../../services/AuthService";
 import {userService} from "../../../services/UserService";
@@ -86,7 +87,7 @@ export default function CandidateCvView() {
                                              className="img-thumbnail rounded-circle img-responsive" alt="me"/>
                                         <figcaption>
                                             <h3>{currentCv.firstname} {currentCv.lastname}</h3>
-                                            <div className="container-fluid col-8 text-left">
+                                            <div className="container-fluid col-8 text-start">
                                                 <FontAwesomeIcon icon={faUser}/>
                                                 <strong> {currentCv.email}</strong>
                                                 {renderLocations(currentCv.cvReferences.locations)}
@@ -103,7 +104,7 @@ export default function CandidateCvView() {
                                     <hr/>
                                     <dl className="row">
                                         <dt className="col-4">Date of Birth:</dt>
-                                        <dd className="col-7">{currentCv.birthdate}</dd>
+                                        <dd className="col-7">{String(currentCv.birthdate)}</dd>
                                         <dt className="col-4">Age:</dt>
                                         <dd className="col-7">{age}</dd>
                                         <dt className="col-4">About:</dt>
@@ -129,16 +130,16 @@ export default function CandidateCvView() {
                                 <article>
                                     <div className="d-flex flex-row-reverse">
                                         <a className='ml-1 mr-1' href="https://github.com/enaki" title="Enaki's Github">
-                                            <img className='icon-class' src="/assets/hr_logo_blue.png" alt="vhr_logo"/>
+                                            <img className='icon-class' src={import.meta.env.BASE_URL + "assets/hr_logo_blue.png"} alt="vhr_logo"/>
                                         </a>
                                         <a className='ml-1 mr-1' href="https://github.com/enaki" title="Enaki's Github">
-                                            <img className='icon-class' src="/assets/hr_logo_gray.png" alt="vhr_logo"/>
+                                            <img className='icon-class' src={import.meta.env.BASE_URL + "assets/hr_logo_gray.png"} alt="vhr_logo"/>
                                         </a>
                                         <a className='ml-1 mr-1' href="https://github.com/enaki" title="Enaki's Github">
-                                            <img className='icon-class' src="/assets/hr_logo_green.png" alt="vhr_logo"/>
+                                            <img className='icon-class' src={import.meta.env.BASE_URL + "assets/hr_logo_green.png"} alt="vhr_logo"/>
                                         </a>
                                         <a className='ml-1 mr-1' href="https://github.com/enaki" title="Enaki's Github">
-                                            <img className='icon-class' src="/assets/hr_logo_red.png" alt="vhr_logo"/>
+                                            <img className='icon-class' src={import.meta.env.BASE_URL + "assets/hr_logo_red.png"} alt="vhr_logo"/>
                                         </a>
                                     </div>
                                 </article>
@@ -229,9 +230,9 @@ function renderEducationalExperiences(educationalExperiences: EducationalExperie
                         <dl className="dl-horizontal">
                             <dt>From <span className="cv-dates">{educationalExperience.fromDate}</span> to <span
                                 className="cv-dates">{educationalExperience.toDate || 'Present'}</span> <span
-                                className="float-right">{educationalExperience.qualificationTitle}</span></dt>
+                                className="float-end">{educationalExperience.qualificationTitle}</span></dt>
                             <div className="offset-4 col-8">
-                                <dd className="text-right"><span
+                                <dd className="text-end"><span
                                     className="title-style">"{educationalExperience.educationalInstitution.institutionName}"
                             </span>, {educationalExperience.educationalInstitution.country.countryName}
                                     &nbsp;<span
@@ -260,10 +261,10 @@ function renderProfessionalExperiences(professionalExperiences: ProfessionalExpe
                         <dl className="dl-horizontal">
                             <dt>From <span className="cv-dates">{professionalExperience.fromDate}</span> to <span
                                 className="cv-dates">{professionalExperience.toDate || 'Present'}</span> <span
-                                className="float-right">{myUtils.toTitleCase(professionalExperience.jobName)}</span>
+                                className="float-end">{myUtils.toTitleCase(professionalExperience.jobName)}</span>
                             </dt>
                             <div className="offset-4 col-8">
-                                <dd className="text-right"><span className="title-style">{
+                                <dd className="text-end"><span className="title-style">{
                                     professionalExperience.organisation.organisationName
                                 }</span>, {professionalExperience.organisation.city.cityName},
                                     {professionalExperience.organisation.city.region.country.countryName}
@@ -290,8 +291,8 @@ function renderProjects(projects: Project[]) {
                     <div key={"project" + project.projectId}>
                         <hr/>
                         <dl className="dl-horizontal">
-                            <dt>From <span className="cv-dates">{project.fromDate}</span> to <span
-                                className="cv-dates">{project.toDate || 'Present'}</span></dt>
+                            <dt>From <span className="cv-dates">{String(project.fromDate)}</span> to <span
+                                className="cv-dates">{project.toDate ? String(project.toDate) : 'Present'}</span></dt>
                             <div className="offset-4 col-8">
                                 <dd><strong>Name:</strong> {project.name}</dd>
 

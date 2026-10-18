@@ -15,7 +15,8 @@ import {TextInputComponent} from './_forms/text-input/text-input.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {SelectInputComponent} from './_forms/select-input/select-input.component';
-import {TagInputModule} from 'ngx-chips';
+import {SkillTagInputComponent} from './_forms/skill-tag-input/skill-tag-input.component';
+import {FormsModule} from '@angular/forms';
 import {ConfirmDialogComponent} from './_modals/confirm-dialog/confirm-dialog.component';
 
 
@@ -28,19 +29,20 @@ import {ConfirmDialogComponent} from './_modals/confirm-dialog/confirm-dialog.co
     DateInputComponent,
     TextInputComponent,
     SelectInputComponent,
+    SkillTagInputComponent,
     ConfirmDialogComponent,
   ],
   imports: [
-    TagInputModule,
     CommonModule,
-    BsDropdownModule.forRoot(),
+    BsDropdownModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-center'
     }),
     FontAwesomeModule,
-    TabsModule.forRoot(),
-    ModalModule.forRoot(),
-    BsDatepickerModule.forRoot(),
+    TabsModule,
+    ModalModule,
+    BsDatepickerModule,
+    FormsModule,
     ReactiveFormsModule,
     FileUploadModule,
   ],
@@ -59,7 +61,8 @@ import {ConfirmDialogComponent} from './_modals/confirm-dialog/confirm-dialog.co
     ReactiveFormsModule,
     FontAwesomeModule,
     ModalModule,
-    SelectInputComponent
+    SelectInputComponent,
+    SkillTagInputComponent
   ],
 })
 export class SharedModule {

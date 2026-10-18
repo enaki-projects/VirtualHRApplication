@@ -9,6 +9,7 @@ import {BsModalRef} from 'ngx-bootstrap/modal';
 import {ContactsService} from '../../../_services/cv-references/contacts.service';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-contact-modal',
   templateUrl: './cv-editor-contact-modal.component.html',
   styleUrls: ['./cv-editor-contact-modal.component.css']

@@ -23,7 +23,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
-    TypeaheadModule.forRoot()
+    TypeaheadModule
   ],
   exports: [RouterModule]
 })

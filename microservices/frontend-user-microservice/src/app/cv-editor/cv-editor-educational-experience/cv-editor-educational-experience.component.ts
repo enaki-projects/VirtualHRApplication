@@ -7,6 +7,7 @@ import {EducationalExperienceService} from '../../_services/cv-references/educat
 import {CvEditorEducationalExperienceModalComponent} from '../_modals/cv-editor-educational-experience-modal/cv-editor-educational-experience-modal.component';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-educational-experience',
   templateUrl: './cv-editor-educational-experience.component.html',
   styleUrls: ['./cv-editor-educational-experience.component.css']

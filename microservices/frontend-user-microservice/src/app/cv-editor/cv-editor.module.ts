@@ -28,7 +28,6 @@ import {TypeaheadModule} from 'ngx-bootstrap/typeahead';
 import {CvEditorProfessionalExperienceComponent} from './cv-editor-professional-experience/cv-editor-professional-experience.component';
 import {CvEditorProfessionalExperienceModalComponent} from './_modals/cv-editor-professional-experience-modal/cv-editor-professional-experience-modal.component';
 import {CvEditorSkillsComponent} from './cv-editor-skills/cv-editor-skills.component';
-import {TagInputModule} from 'ngx-chips';
 
 
 @NgModule({
@@ -63,7 +62,6 @@ import {TagInputModule} from 'ngx-chips';
         TypeaheadModule,
         CommonModule,
         SharedModule,
-        TagInputModule,
     ]
 })
 export class CvEditorModule { }

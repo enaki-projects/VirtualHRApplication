@@ -1,0 +1,10 @@
+target/
+build/
+*.jks
+src/main/resources/avatar/
+src/main/resources/keystore/
+.idea/
+*.iml
+.vscode/
+HELP.md
+*.log

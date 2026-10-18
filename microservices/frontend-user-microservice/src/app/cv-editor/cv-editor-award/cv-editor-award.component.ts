@@ -7,6 +7,7 @@ import {AwardService} from '../../_services/cv-references/award.service';
 import {CvEditorAwardModalComponent} from '../_modals/cv-editor-award-modal/cv-editor-award-modal.component';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-award',
   templateUrl: './cv-editor-award.component.html',
   styleUrls: ['./cv-editor-award.component.css']

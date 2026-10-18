@@ -14,19 +14,19 @@
     <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js"
             integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a"
             crossorigin="anonymous"></script>
-    <link rel="icon" type="image/png" sizes="96x96" href="/logo.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="<%= base %>/logo.png">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
           rel="stylesheet">
 
     <!-- Main CSS-->
-    <link href="/css/main.css" rel="stylesheet" media="all">
+    <link href="<%= base %>/css/main.css" rel="stylesheet" media="all">
 
     <% if (typeof enable_login_css != "undefined" && enable_login_css){ %>
-        <link rel="stylesheet" type="text/css" href="/css/login.css">
+        <link rel="stylesheet" type="text/css" href="<%= base %>/css/login.css">
     <% } %>
     <% if (typeof enable_home_css != "undefined" && enable_home_css){ %>
-        <link rel="stylesheet" type="text/css" href="/css/home.css">
+        <link rel="stylesheet" type="text/css" href="<%= base %>/css/home.css">
     <% } %>
 </head>
 <body>
@@ -37,10 +37,10 @@
         <nav class="navbar-dark bg-dark">
             <ul class="nav nav-tabs nav-fill ">
                 <li class="nav-item ">
-                    <a class="nav-link p-2" href="/home"><i class="fas fa-server"></i> Home</a>
+                    <a class="nav-link p-2" href="<%= base %>/home"><i class="fas fa-server"></i> Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link p-2" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <a class="nav-link p-2" href="<%= base %>/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </li>
             </ul>
         </nav>
@@ -59,13 +59,14 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
+<script>window.BASE_PATH = <%- JSON.stringify(base) %>;</script>
 <!-- Main JS-->
-<script src="/js/main.js"></script>
-<script src="/js/login.js"></script>
+<script src="<%= base %>/js/main.js"></script>
+<script src="<%= base %>/js/login.js"></script>
 
 <!--Javascript-->
 <% if (typeof javascript_file != "undefined"){ %>
-<script src="/js/<%= javascript_file %>"></script>
+<script src="<%= base %>/js/<%= javascript_file %>"></script>
 <% } %>
 
 </body>

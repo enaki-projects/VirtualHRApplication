@@ -7,6 +7,7 @@ import {ContactsService} from '../../_services/cv-references/contacts.service';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-contacts',
   templateUrl: './cv-editor-contacts.component.html',
   styleUrls: ['./cv-editor-contacts.component.css']

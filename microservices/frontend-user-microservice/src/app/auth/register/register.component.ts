@@ -6,6 +6,7 @@ import {faFileSignature, faKey, faTable, faUser, faVenusMars} from '@fortawesome
 import {AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 
 @Component({
+  standalone: false,
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']

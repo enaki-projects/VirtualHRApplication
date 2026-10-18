@@ -8,6 +8,7 @@ import {Citizenship} from '../../../_models/cv/references/citizenship';
 import {faFlag} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-nationality-modal',
   templateUrl: './cv-editor-nationality-modal.component.html',
   styleUrls: ['./cv-editor-nationality-modal.component.css']

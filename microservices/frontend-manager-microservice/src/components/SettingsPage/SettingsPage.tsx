@@ -6,7 +6,7 @@ import UserCard from "../shared/UserCard/UserCard";
 import {AuthenticatedUser} from "../../models/authenticated-user";
 import {authenticationService} from "../../services/AuthService";
 import "./SettingsPage.scss"
-import {NotificationManager} from 'react-notifications';
+import {NotificationManager} from '../../shared/notifications';
 
 
 export class SettingsPage extends React.Component<any, any> {
@@ -83,7 +83,7 @@ export class SettingsPage extends React.Component<any, any> {
         return (
             <div className="d-flex">
                 <Row className="mt-4 w-100 justify-content-between">
-                    <Col xl={3} lg={4} md={4} sm={12} xs={12} className="ml-5">
+                    <Col xl={3} lg={4} md={4} sm={12} xs={12} className="ms-5">
                         <UserCard/>
                     </Col>
                     <Col xl={8} lg={8} md={8} sm={12} xs={12} className="border text-center">
@@ -104,8 +104,7 @@ export class SettingsPage extends React.Component<any, any> {
                                                             className="input-group-text justify-content-center input-group-text-input w-100">Resolution</span>
                                                 </div>
                                                 <select value={this.state.avatarSettings.resolution} onChange={this.handleChangeResolution}
-                                                        className="form-control input_user"
-                                                        placeholder="Resolution">
+                                                        className="form-control input_user">
                                                     <option value="720x720">720x720</option>
                                                     <option value="800x600">800x600</option>
                                                     <option value="1280x720">1280x720</option>
@@ -120,7 +119,7 @@ export class SettingsPage extends React.Component<any, any> {
                                                             className="input-group-text justify-content-center input-group-text-input w-100">Language</span>
                                                 </div>
                                                 <select value={this.state.avatarSettings.language} onChange={this.handleChangeLanguage}
-                                                        className="form-control input_user" placeholder="Language"
+                                                        className="form-control input_user"
                                                 >
                                                     <option value="en">English</option>
                                                     <option value="ro">Romanian</option>
@@ -137,7 +136,7 @@ export class SettingsPage extends React.Component<any, any> {
                                                 </div>
                                                 <select onChange={this.handleChangeEnableSubtitles}
                                                     value={this.state.avatarSettings.enableSubtitles ? "1" : "0"}
-                                                        className="form-control input_user" placeholder="Subtitles">
+                                                        className="form-control input_user">
                                                     <option value="1">On</option>
                                                     <option value="0">Off</option>
                                                 </select>
@@ -153,7 +152,7 @@ export class SettingsPage extends React.Component<any, any> {
                                                 </div>
                                                 <select onChange={this.handleChangeEnabled}
                                                         value={this.state.avatarSettings.enabled ? "1" : "0"}
-                                                        className="form-control input_user" placeholder="Enable"
+                                                        className="form-control input_user"
                                                 >
                                                     <option value="1">Enable</option>
                                                     <option value="0">Disable</option>

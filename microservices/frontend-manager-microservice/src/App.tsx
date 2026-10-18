@@ -3,11 +3,11 @@ import './App.css';
 import {Subscription} from "rxjs";
 import {authenticationService} from "./services/AuthService";
 import {AuthenticatedUser} from "./models/authenticated-user";
-import {BrowserRouter, Redirect, Route, Switch, useLocation} from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import {Home} from "./components/HomePage/Home";
 import Login from "./components/Auth/Login/Login";
 import Header from "./components/Nav/Header.jsx";
-import {NotificationContainer} from 'react-notifications';
+import {NotificationContainer} from './shared/notifications';
 import {CandidatePage} from "./components/CandidatePage/CandidatePage";
 import {CartPage} from "./components/CartPage/CartPage";
 import CandidateCvView from './components/shared/CandidateCvView/CandidateCvView';
@@ -44,54 +44,28 @@ class App extends React.Component {
 
         if (currentUser == null) {
             insideContainer =
-                <Switch>
-                    <Route path="/login">
-                        <Login/>
-                    </Route>
-                    <Route exact path="/">
-                        <Redirect to="/login"/>
-                    </Route>
-                    <Route path="/">
-                        <Redirect to="/login"/>
-                    </Route>
-                </Switch>
+                <Routes>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="*" element={<Navigate to="/login" replace/>}/>
+                </Routes>
         } else {
             insideContainer =
-                <Switch>
-                    <Route exact path="/">
-                        <Redirect to="/home"/>
-                    </Route>
-                    <Route exact path="/login">
-                        <Redirect to="/home"/>
-                    </Route>
-
-                    <Route path="/home">
-                        <Home/>
-                    </Route>
-
-                    <Route exact path="/candidates/:id/from-cart/:cartId" > <CandidateCvView/></Route>
-
-                    <Route path="/candidates/:id" > <CandidateCvView/></Route>
-
-                    <Route path="/candidates">
-                        <CandidatePage/>
-                    </Route>
-
-                    <Route path="/cart/:id" > <CartView/></Route>
-                    <Route path="/cart">
-                        <CartPage/>
-                    </Route>
-
-                    <Route path="/settings">
-                        <SettingsPage/>
-                    </Route>
-
-                </Switch>
+                <Routes>
+                    <Route path="/" element={<Navigate to="/home" replace/>}/>
+                    <Route path="/login" element={<Navigate to="/home" replace/>}/>
+                    <Route path="/home/*" element={<Home/>}/>
+                    <Route path="/candidates/:id/from-cart/:cartId" element={<CandidateCvView/>}/>
+                    <Route path="/candidates/:id" element={<CandidateCvView/>}/>
+                    <Route path="/candidates" element={<CandidatePage/>}/>
+                    <Route path="/cart/:id" element={<CartView/>}/>
+                    <Route path="/cart" element={<CartPage/>}/>
+                    <Route path="/settings" element={<SettingsPage/>}/>
+                </Routes>
         }
 
         return (
             <div className="wrapper">
-                <BrowserRouter>
+                <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
                     {currentUser != null? <Header/>: null}
                     <NotificationContainer/>
                     {insideContainer}

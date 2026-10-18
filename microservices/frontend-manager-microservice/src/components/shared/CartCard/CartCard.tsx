@@ -5,7 +5,7 @@ import {Cart} from "../../../models/manager/cart";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {cartService} from "../../../services/CartService";
-import {NotificationManager} from 'react-notifications';
+import {NotificationManager} from '../../../shared/notifications';
 import {UpdateCartModal} from "../../Modals/UpdateCartModal/UpdateCartModal";
 import {myUtils} from "../../../shared/utils";
 
@@ -44,7 +44,7 @@ export default class CartCard extends React.Component<any, any> {
                              className="img-fluid img-thumbnail card-img-top cart-picture p-0 m-0"/>
                         <ul className="list-inline member-icons animate text-center">
                             <li className="list-inline-item">
-                                <a href={"/cart/" + this.currentCart.cartId} className="btn btn-success mr-2"><FontAwesomeIcon icon={faEye}/></a>
+                                <a href={"/cart/" + this.currentCart.cartId} className="btn btn-success me-2"><FontAwesomeIcon icon={faEye}/></a>
                                 <UpdateCartModal cart={this.currentCart}/>
                                 <button className="btn btn-danger"><FontAwesomeIcon icon={faTrash} onClick={() => this.deleteCart(this.currentCart.cartId)}/></button>
                             </li>
@@ -52,7 +52,7 @@ export default class CartCard extends React.Component<any, any> {
                     </div>
                 </Card.Body>
                 <Card.Footer className="p-1">
-                    <blockquote className="blockquote ml-4 mr-4">
+                    <blockquote className="blockquote ms-4 me-4">
                         <Card.Text className="m-2">
                             <strong>Description: </strong>{myUtils.getShortDescription(this.currentCart.description)}
                         </Card.Text>

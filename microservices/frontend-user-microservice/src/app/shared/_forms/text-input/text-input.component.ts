@@ -3,6 +3,7 @@ import {ControlValueAccessor, NgControl} from '@angular/forms';
 import {faUser} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
+  standalone: false,
   selector: 'app-text-input',
   templateUrl: './text-input.component.html',
   styleUrls: ['./text-input.component.css']

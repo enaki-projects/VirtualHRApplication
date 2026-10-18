@@ -1,12 +1,13 @@
 import {Button, Col, Modal, Row} from "react-bootstrap";
 import React, {useCallback, useEffect, useState} from "react";
 import {cartService} from "../../../services/CartService";
-import {NotificationManager} from 'react-notifications';
+import {NotificationManager} from '../../../shared/notifications';
 import CandidateCardSimple from "../../shared/CandidateCardSimple/CandidateCardSimple";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash, faUserPlus} from "@fortawesome/free-solid-svg-icons";
 import {CartWithCandidate} from "../../../models/manager/cart-with-candidate";
-import ReactLoading from "react-loading";
+import ReactLoading from "../../../shared/Loading";
+
 
 export function AddItemToCartModal(props) {
     const isCancelled = React.useRef(false);
@@ -95,7 +96,7 @@ export function AddItemToCartModal(props) {
 
     return (
         <>
-            <Button className="btn btn-warning mr-2" onClick={handleShow}><FontAwesomeIcon icon={faUserPlus}/></Button>
+            <Button className="btn btn-warning me-2" onClick={handleShow}><FontAwesomeIcon icon={faUserPlus}/></Button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add Candidate To Cart</Modal.Title>

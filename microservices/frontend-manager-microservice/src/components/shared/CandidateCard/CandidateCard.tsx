@@ -35,12 +35,12 @@ export default class CandidateCard extends React.Component<any, any> {
                         <ul className="list-inline member-icons animate text-center">
                             <li className="list-inline-item">
                                 <AddItemToCartModal candidate={this.currentUserCv}/>
-                                <a href={"/candidates/" + this.currentUserCv.uid} className="btn btn-success mr-2"><FontAwesomeIcon icon={faEye}/></a>
+                                <a href={"/candidates/" + this.currentUserCv.uid} className="btn btn-success me-2"><FontAwesomeIcon icon={faEye}/></a>
                                 <AddItemAsMaintainerCartModal maintainer={this.currentUserCv}/>
                             </li>
                         </ul>
                     </div>
-                    <div className="ml-2">
+                    <div className="ms-2">
                         <Card.Text className="m-2">
                             <strong>First Name: </strong>{this.currentUserCv.firstname}
                         </Card.Text>
@@ -56,7 +56,7 @@ export default class CandidateCard extends React.Component<any, any> {
                     </div>
                 </Card.Body>
                 <Card.Footer className="p-1">
-                    <blockquote className="ml-4 mr-4">
+                    <blockquote className="ms-4 me-4">
                         <Card.Text className="mb-0">"{this.currentUserCv.aboutMe}"</Card.Text>
                     </blockquote>
                 </Card.Footer>

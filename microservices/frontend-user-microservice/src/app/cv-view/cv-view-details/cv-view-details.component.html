@@ -22,7 +22,7 @@
                       <fa-icon class="other-icon" [icon]="faBuilding"></fa-icon>
                     </span>
                       <strong> {{location.type}}</strong>:
-                      <span class="flag-icon flag-icon-{{this.location.city.region.country.iso2 | lowercase}}"></span>
+                      <span class="flag-icon flag-icon-{{location.city.region.country.iso2 | lowercase}}"></span>
                       {{location.city.region.country.countryName}},
                       {{location.city.cityName}},
                       {{location.address}}

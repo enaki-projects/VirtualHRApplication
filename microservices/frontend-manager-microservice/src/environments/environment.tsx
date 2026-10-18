@@ -1,8 +1,8 @@
 export const environment = {
     production: false,
     userFrontendUrl: 'http://localhost:3000/',
-    adapterApiUrl: 'https://localhost:5000/api/',
-    avatarApiUrl: 'https://localhost:2010/api/',
+    adapterApiUrl: 'http://localhost:5000/api/',
+    avatarApiUrl: 'http://localhost:2010/api/',
     avatarScenarios: {
         home: {
             name: 'manager_intro_1',

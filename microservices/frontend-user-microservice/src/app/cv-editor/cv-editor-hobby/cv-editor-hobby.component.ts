@@ -7,6 +7,7 @@ import {HobbyService} from '../../_services/cv-references/hobby.service';
 import {CvEditorHobbyModalComponent} from '../_modals/cv-editor-hobby-modal/cv-editor-hobby-modal.component';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-hobby',
   templateUrl: './cv-editor-hobby.component.html',
   styleUrls: ['./cv-editor-hobby.component.css']

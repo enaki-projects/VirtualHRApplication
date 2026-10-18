@@ -2,7 +2,7 @@ import {BehaviorSubject} from 'rxjs';
 import {AuthenticatedUser} from "../models/authenticated-user";
 import {LoginUser} from "../models/login-user";
 import axios from "axios";
-import {NotificationManager} from 'react-notifications';
+import {NotificationManager} from '../shared/notifications';
 
 import {config} from "../environments/config";
 import {avatarService} from "./AvatarService";
@@ -34,11 +34,11 @@ function getUserImageAccordingToGender(gender: string): string{
     console.log(gender);
     switch (gender.toLowerCase()) {
         case 'male':
-            return `/assets/images/male.png`;
+            return `${import.meta.env.BASE_URL}assets/images/male.png`;
         case 'female':
-            return  `/assets/images/female.png`;
+            return  `${import.meta.env.BASE_URL}assets/images/female.png`;
         default:
-            return  `/assets/images/user.png`;
+            return  `${import.meta.env.BASE_URL}assets/images/user.png`;
     }
 }
 

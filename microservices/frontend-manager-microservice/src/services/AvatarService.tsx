@@ -13,7 +13,7 @@ let settings: VjsPlayerSettings = {
     playing: true,
     controls: false,
     muted: false,
-    url: 'http://localhost:2010/api/avatar?name=cv_page_1&language=en&category=cv&resolution=720x720&subcategory=page'
+    url: ''
 };
 
 let avatarSettings = {

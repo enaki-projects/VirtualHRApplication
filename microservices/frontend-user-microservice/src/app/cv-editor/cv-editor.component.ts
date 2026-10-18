@@ -7,6 +7,7 @@ import {AvatarService} from '../_services/avatar.service';
 import {environment} from '../../environments/environment';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor',
   templateUrl: './cv-editor.component.html',
   styleUrls: ['./cv-editor.component.css']

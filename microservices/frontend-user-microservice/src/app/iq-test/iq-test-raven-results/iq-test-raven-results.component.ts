@@ -9,6 +9,7 @@ import {IqService} from '../../_services/iq/iq.service';
 import {RavenReview} from '../../_models/iq/raven-apm/raven-review';
 
 @Component({
+  standalone: false,
   selector: 'app-iq-test-raven-results',
   templateUrl: './iq-test-raven-results.component.html',
   styleUrls: ['./iq-test-raven-results.component.css']

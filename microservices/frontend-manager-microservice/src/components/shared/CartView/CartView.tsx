@@ -1,14 +1,15 @@
 import React, {Component} from "react";
-import {withRouter} from "react-router";
+import {withRouter} from '../../../shared/withRouter';
 import {Button, Card, Col, Row} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft, faEye, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {cartService} from "../../../services/CartService";
 import {Cart} from "../../../models/manager/cart";
-import ReactLoading from "react-loading";
+import ReactLoading from "../../../shared/Loading";
+
 import CartItemCard from "../CartItemCard/CartItemCard";
 import "./CartView.scss"
-import {NotificationManager} from 'react-notifications';
+import {NotificationManager} from '../../../shared/notifications';
 import {authenticationService} from "../../../services/AuthService";
 import {AuthenticatedUser} from "../../../models/authenticated-user";
 
@@ -136,7 +137,7 @@ class CartView extends Component<any, any> {
                                                             <th className="align-middle" scope="col">{maintainer.maintainer.firstname + ' ' + maintainer.maintainer.lastname}</th>
                                                             <th className="align-middle" scope="col">{maintainer.role}</th>
                                                             <th className="align-middle" scope="col">
-                                                                <a href={`/candidates/${maintainer.maintainerId}/from-cart/${maintainer.cartId}`} className="btn btn-success mr-2"><FontAwesomeIcon icon={faEye}/></a>
+                                                                <a href={`/candidates/${maintainer.maintainerId}/from-cart/${maintainer.cartId}`} className="btn btn-success me-2"><FontAwesomeIcon icon={faEye}/></a>
                                                                 {
                                                                     ((maintainer.role === "creator") || (maintainer.maintainerId === this.currentUser.cv.uid)) ? null:
                                                                         <Button className="btn btn-danger m-1" onClick={() => this.deleteMaintainer(maintainer.maintainerId)}><FontAwesomeIcon icon={faTrash}/></Button>

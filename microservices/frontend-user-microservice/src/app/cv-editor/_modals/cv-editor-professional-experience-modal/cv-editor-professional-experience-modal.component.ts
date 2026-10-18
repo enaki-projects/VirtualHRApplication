@@ -15,6 +15,7 @@ import {City} from '../../../_models/cv/general/city';
 import {Region} from '../../../_models/cv/general/region';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-professional-experience-modal',
   templateUrl: './cv-editor-professional-experience-modal.component.html',
   styleUrls: ['./cv-editor-professional-experience-modal.component.css']

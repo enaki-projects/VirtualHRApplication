@@ -29,12 +29,16 @@ public class ImageService implements IImageService {
     private final ICVRepository _cvRepository;
     private final ResourceLoader _resourceLoader;
 
+    /** Root folder for user photos (IMAGES_DIR env; /data/images in the container). */
+    private static final String IMAGES_DIR =
+            System.getenv().getOrDefault("IMAGES_DIR", "src/main/resources/images").replaceAll("/+$", "");
+
     public Response<Resource> getImage(Long uid){
         CV cv = _cvRepository.get(uid);
         if (cv == null)
             return new Response(false, 404, null, "User Not Found");
 
-        String path = String.format("file:src/main/resources/images/%s/%s", cv.uid, cv.imageName);
+        String path = String.format("file:%s/%s/%s", IMAGES_DIR, cv.uid, cv.imageName);
         Resource resource = _resourceLoader.getResource(path);
         if (resource.exists())
             return new Response(true, 200, resource);
@@ -66,7 +70,7 @@ public class ImageService implements IImageService {
         if (cv.imageName == null)
             return new Response(false, 404, null, "User Does Not Have An Image");
 
-        String path = String.format("file:src/main/resources/images/%s/%s", cv.uid, cv.imageName);
+        String path = String.format("file:%s/%s/%s", IMAGES_DIR, cv.uid, cv.imageName);
         Resource resource = _resourceLoader.getResource(path);
         if (!resource.exists())
             return new Response(false, 404, null, "User Has An Invalid Image");
@@ -82,7 +86,7 @@ public class ImageService implements IImageService {
     }
 
     private boolean deleteImageFile(Long uid, String imageName) {
-        String path = String.format("src/main/resources/images/%s/%s", uid, imageName);
+        String path = String.format("%s/%s/%s", IMAGES_DIR, uid, imageName);
         try {
             File file = new File(path);
             return file.delete();
@@ -94,7 +98,7 @@ public class ImageService implements IImageService {
     }
 
     private boolean createImageFile(byte[] bytes, Long uid, String extension){
-        String path = String.format("src/main/resources/images/%s/%s.%s", uid, uid, extension);
+        String path = String.format("%s/%s/%s.%s", IMAGES_DIR, uid, uid, extension);
         try {
             ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
             BufferedImage bImage = ImageIO.read(bis);

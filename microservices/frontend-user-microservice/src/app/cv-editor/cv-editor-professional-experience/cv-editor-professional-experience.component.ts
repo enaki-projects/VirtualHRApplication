@@ -7,6 +7,7 @@ import {faEye, faEyeSlash, faPen, faTrash} from '@fortawesome/free-solid-svg-ico
 import {CvEditorProfessionalExperienceModalComponent} from '../_modals/cv-editor-professional-experience-modal/cv-editor-professional-experience-modal.component';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-professional-experience',
   templateUrl: './cv-editor-professional-experience.component.html',
   styleUrls: ['./cv-editor-professional-experience.component.css']

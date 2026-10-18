@@ -3,22 +3,21 @@ import services from '../../services';
 import config from "../../config";
 
 const route = Router();
-const fetch = require('node-fetch');
 
 export default (app: Router) => {
     app.use(route);
 
     route.get('/users/:id', async (req: Request, res: Response) => {
         console.log(req.params.id);
-        const url = config.adapterIP + "api/users/" + req.params.id;
+        const url = config.adapterUrl + "api/users/" + req.params.id;
         const settings = {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                "Authorization": "Bearer " + req["session"]["currentUser"]["token"]
+                "Authorization": "Bearer " + req.session.currentUser["token"]
             },
         };
-        const user = await ((await fetch(url, settings)).json());
+        const user: any = await (await fetch(url, settings)).json();
         user["rolesStr"] = services.getRoles(user.roles);
         user["cv"]["photoUrl"] = services.getUrlPhoto(user)
         user["cv"]["age"] = services.getAge(user["cv"]["birthdate"])
@@ -62,17 +61,17 @@ export default (app: Router) => {
                 break;
         }
 
-        const url = `${config.adapterIP}api/users/${uid}/${actionUrlExtension}`;
+        const url = `${config.adapterUrl}api/users/${uid}/${actionUrlExtension}`;
         const settings = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                "Authorization": "Bearer " + req["session"]["currentUser"]["token"]
+                "Authorization": "Bearer " + req.session.currentUser["token"]
             },
         };
         const response = (await fetch(url, settings));
         if (response.status == 200){
-            return res.redirect(`/users/${uid}`);
+            return res.redirect(config.basePath + `/users/${uid}`);
         }
         return res.sendStatus(response.status);
     });

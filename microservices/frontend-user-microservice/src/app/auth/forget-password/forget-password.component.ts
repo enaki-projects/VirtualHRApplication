@@ -6,6 +6,7 @@ import {ToastrService} from 'ngx-toastr';
 import {faKey, faUser} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
+  standalone: false,
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
   styleUrls: ['./forget-password.component.css']

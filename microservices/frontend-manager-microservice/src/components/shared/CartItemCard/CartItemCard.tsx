@@ -7,7 +7,7 @@ import {authenticationService} from "../../../services/AuthService";
 import {EditCartItemModal} from "../../Modals/EditCartItemModal/EditCartItemModal";
 import './CartItemCard.scss'
 import {cartService} from "../../../services/CartService";
-import {NotificationManager} from 'react-notifications';
+import {NotificationManager} from '../../../shared/notifications';
 
 export default class CartItemCard extends React.Component<any, any> {
     currentItem: Item
@@ -52,7 +52,7 @@ export default class CartItemCard extends React.Component<any, any> {
                              className=" cart-picture p-0 m-0"/>
                         <ul className="list-inline member-icons animate text-center">
                             <li className="list-inline-item">
-                                <a href={`/candidates/${candidate.uid}/from-cart/${this.state.currentItem.cartId}`} className="btn btn-success mr-2"><FontAwesomeIcon icon={faEye}/></a>
+                                <a href={`/candidates/${candidate.uid}/from-cart/${this.state.currentItem.cartId}`} className="btn btn-success me-2"><FontAwesomeIcon icon={faEye}/></a>
                                 <EditCartItemModal item={this.state.currentItem} cartItemCardUpdateCallback={this.handleCallback}/>
                                 <button className="btn btn-danger" onClick={() => this.deleteItem(candidate.uid)}><FontAwesomeIcon icon={faTrash}/></button>
                             </li>
@@ -60,7 +60,7 @@ export default class CartItemCard extends React.Component<any, any> {
                     </div>
                 </Card.Body>
                 <Card.Footer className="p-1">
-                    <blockquote className="blockquote ml-4 mr-4">
+                    <blockquote className="blockquote ms-4 me-4">
                         <Card.Text className="m-2">
                             <span><strong>Score: </strong>{this.state.currentItem.score}</span><br/>
                             <span><strong>Notes: </strong>{this.state.currentItem.notes || '-'}</span><br/>

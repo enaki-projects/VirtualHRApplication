@@ -1,64 +1,57 @@
-import express, {NextFunction, Request} from 'express';
-import bodyParser from 'body-parser';
+import express, { NextFunction, Request, Response } from 'express';
+import session from 'express-session';
 import routes from '../api';
 import config from '../config';
+import Logger from './logger';
 
-const session = require('express-session');
-
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const expressLayouts = require('express-ejs-layouts');
 
 export default ({ app }: { app: express.Application }) => {
-    app.get('/status', (req, res) => {
-        res.status(200).end();
-    });
-    app.head('/status', (req, res) => {
+    app.get('/status', (_req, res) => {
         res.status(200).end();
     });
 
-    app.enable('trust proxy');
-    app.use(bodyParser.urlencoded({extended:true}));
-    app.use(bodyParser.json());
-    app.use(session({
-        key: 'user_sid',
-        secret: 'secret',
-        saveUninitialized: false,
-    }));
+    if (config.sessionSecret === 'dev-only-change-me') {
+        Logger.warn('SESSION_SECRET is not set; using an insecure development secret.');
+    }
 
-    app.use(express.static("public"));
+    app.set('trust proxy', true);
     app.set('view engine', 'ejs');
-    app.set('views', 'views'); // general config
-    app.set('view options', { layout:'layout.ejs' });
-    app.use(expressLayouts);
+    app.set('views', 'views');
+    app.set('view options', { layout: 'layout.ejs' });
+    // Exposed to every view so links, assets and forms work under BASE_PATH.
+    app.locals.base = config.basePath;
 
-    app.use(config.api.prefix, routes());
+    const site = express.Router();
+    site.use(express.static('public'));
+    site.use(express.urlencoded({ extended: true }));
+    site.use(express.json());
+    site.use(session({
+        name: 'user_sid',
+        secret: config.sessionSecret,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            path: config.basePath || '/',
+            httpOnly: true,
+            sameSite: 'lax',
+            secure: 'auto',
+        },
+    }));
+    site.use(expressLayouts);
+    site.use(routes());
 
+    app.use(config.basePath || '/', site);
 
-    /// catch 404 and forward to error handler
-    app.use((req, res, next) => {
-        const err = new Error('Not Found');
-        // @ts-ignore
+    app.use((_req: Request, _res: Response, next: NextFunction) => {
+        const err: Error & { status?: number } = new Error('Not Found');
         err.status = 404;
         next(err);
     });
 
-    /// error handlers
-    app.use((err, req, res, next) => {
-        /* Handle 401 thrown by express-jwt library */
-        if (err.name === 'UnauthorizedError') {
-            return res
-                .status(err.status)
-                .send({ message: err.message })
-                .end();
-        }
-        return next(err);
-    });
-
-    app.use((err, req, res, next) => {
+    app.use((err: Error & { status?: number }, _req: Request, res: Response, _next: NextFunction) => {
         res.status(err.status || 500);
-        res.json({
-            errors: {
-                message: err.message,
-            },
-        });
+        res.json({ errors: { message: err.message } });
     });
 };

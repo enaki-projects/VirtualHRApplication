@@ -71,8 +71,8 @@ export default class AvatarVideoPlayer extends React.Component<any, AvatarVideoS
                 </Card.Header>
                 <Card.Body>
                     {(this.state.avatarSettings.enabled) ?
-                        <ReactPlayer className="react-player w-100 p-0 m-0" {...this.state.options}/>
-                        : <img className="avatar-img" src="/assets/images/manager_avatar.png" alt=""/>
+                        <ReactPlayer className="react-player w-100 p-0 m-0" src={this.state.options.url} playing={this.state.options.playing} controls={this.state.options.controls} muted={this.state.options.muted}/>
+                        : <img className="avatar-img" src={import.meta.env.BASE_URL + "assets/images/manager_avatar.png"} alt=""/>
                     }
                 </Card.Body>
                 {

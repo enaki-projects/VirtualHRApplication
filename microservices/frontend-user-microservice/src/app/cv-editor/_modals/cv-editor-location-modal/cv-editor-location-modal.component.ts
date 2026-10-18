@@ -11,6 +11,7 @@ import {faFlag} from '@fortawesome/free-solid-svg-icons';
 import {Region} from '../../../_models/cv/general/region';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-location-modal',
   templateUrl: './cv-editor-location-modal.component.html',
   styleUrls: ['./cv-editor-location-modal.component.css']

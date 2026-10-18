@@ -3,6 +3,7 @@ import {slider} from './shared/_animations/slider';
 import {RouterOutlet} from '@angular/router';
 
 @Component({
+  standalone: false,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],

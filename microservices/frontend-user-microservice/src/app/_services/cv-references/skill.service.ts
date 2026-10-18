@@ -5,7 +5,6 @@ import {AccountService} from '../account.service';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {toTitleCase} from 'codelyzer/util/utils';
 import {UserSkill} from '../../_models/cv/references/user-skill';
 
 @Injectable({
@@ -45,7 +44,7 @@ export class SkillService {
     return this.http.get(`${this.baseUrl}cv/skill-by-name/${skillType}/${encodeURIComponent(skill.name)}`).pipe(
       map((userSkill: UserSkill) => {
         // console.log('[fetchUserSkill] - ' + userSkill);
-        this.currentUser.cv.cvReferences[`user${toTitleCase(skillType)}Skills`].push(userSkill);
+        this.currentUser.cv.cvReferences[`user${this.toTitleCase(skillType)}Skills`].push(userSkill);
         this.accountService.setCurrentUser(this.currentUser);
         return userSkill;
       })
@@ -60,12 +59,12 @@ export class SkillService {
   }
 
   fetchDeletedUserSkill(skill: UserSkill, skillType: string): void {
-    this.currentUser.cv.cvReferences[`user${toTitleCase(skillType)}Skills`] = this.filteredSkill(skill.skillId, skillType);
+    this.currentUser.cv.cvReferences[`user${this.toTitleCase(skillType)}Skills`] = this.filteredSkill(skill.skillId, skillType);
     this.accountService.setCurrentUser(this.currentUser);
   }
 
   private filteredSkill(skillId: any, skillType: string): UserSkill[] {
-    return this.currentUser.cv.cvReferences[`user${toTitleCase(skillType)}Skills`].filter(item => item.skillId !== skillId);
+    return this.currentUser.cv.cvReferences[`user${this.toTitleCase(skillType)}Skills`].filter(item => item.skillId !== skillId);
   }
 
   getSkills(skillType: string): Promise<any>{

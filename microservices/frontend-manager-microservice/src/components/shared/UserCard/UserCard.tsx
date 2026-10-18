@@ -43,7 +43,7 @@ export default class UserCard extends React.Component<any, any> {
                             </li>
                         </ul>
                     </div>
-                    <div className="ml-2">
+                    <div className="ms-2">
                         <Card.Text className="m-2">
                             <strong>First Name: </strong>{this.currentUser.cv.firstname}
                         </Card.Text>
@@ -57,7 +57,7 @@ export default class UserCard extends React.Component<any, any> {
                             <strong>Gender: </strong>{this.currentUser.cv.gender}
                         </Card.Text>
                         <Card.Text className=" m-2">
-                            <strong>Birthdate: </strong>{this.currentUser.cv.birthdate}
+                            <strong>Birthdate: </strong>{String(this.currentUser.cv.birthdate)}
                         </Card.Text>
                         <Card.Text className=" m-2">
                             <strong>Age: </strong>{age}
@@ -68,7 +68,7 @@ export default class UserCard extends React.Component<any, any> {
                     </div>
                 </Card.Body>
                 <Card.Footer className="p-1">
-                    <blockquote className="blockquote ml-4 mr-4">
+                    <blockquote className="blockquote ms-4 me-4">
                         <Card.Text className="mb-0">"{this.currentUser.cv.aboutMe}"</Card.Text>
                     </blockquote>
                 </Card.Footer>

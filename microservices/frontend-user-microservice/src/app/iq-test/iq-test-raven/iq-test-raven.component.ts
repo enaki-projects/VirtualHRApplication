@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 import {CountdownComponent} from 'ngx-countdown';
 
 @Component({
+  standalone: false,
   selector: 'app-iq-test-raven',
   templateUrl: './iq-test-raven.component.html',
   styleUrls: ['./iq-test-raven.component.css']

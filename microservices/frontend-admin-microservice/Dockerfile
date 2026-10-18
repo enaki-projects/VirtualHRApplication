@@ -1,19 +1,23 @@
-FROM node:12
-
-RUN mkdir -p /app/src
+# syntax=docker/dockerfile:1
+# frontend-admin: Express 5 + EJS, server-side calls to cv-adapter. Multi-arch.
+FROM node:24-alpine AS build
 WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci --no-audit --no-fund
+COPY tsconfig.json ./
+COPY src ./src
+RUN npm run build
 
-COPY package*.json ./
-COPY . .
-
-RUN npm install
-
-ENV AVATAR_IP=172.18.0.10
-ENV ADAPTER_IP=172.18.0.50
-ENV NODE_ENV='production'
-ENV PORT=3000
-ENV NODE_TLS_REJECT_UNAUTHORIZED='0'
-
+FROM node:24-alpine AS runtime
+WORKDIR /app
+ENV NODE_ENV=production \
+    PORT=3000
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev --no-audit --no-fund && npm cache clean --force
+COPY --from=build /app/dist ./dist
+COPY views ./views
+COPY public ./public
+# SESSION_SECRET, ADAPTER_URL and BASE_PATH come from compose / .env.
+USER node
 EXPOSE 3000
-
-CMD [ "node", "src/app.js" ]
+CMD ["node", "dist/app.js"]

@@ -1,15 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>disable</Nullable>
+        <ImplicitUsings>disable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.5" />
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+        <!-- Microsoft.AspNet.WebApi.Core (System.Web.Http, .NET Framework) removed. -->
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.10" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -18,9 +20,6 @@
       </Content>
       <Content Include="..\Dockerfile">
         <Link>Dockerfile</Link>
-      </Content>
-      <Content Include="..\docker_commands.bat">
-        <Link>docker_commands.bat</Link>
       </Content>
       <Content Update="..\_Resources\AdvancedRaven\AdvancedRavenAnswers.json">
         <Link>AdvancedRaven\AdvancedRavenAnswers.json</Link>
@@ -46,18 +45,17 @@
         <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
-	
 
-	<ItemGroup>
-    <Content Include="$(ProjectDir)..\_Resources\**\*.*">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-	</ItemGroup>
-	
-	<ItemGroup>
-    <Content Include="$(ProjectDir)..\_MLModels\**\*.*">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-	</ItemGroup>
-	
+    <ItemGroup>
+      <Content Include="$(ProjectDir)..\_Resources\**\*.*">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="$(ProjectDir)..\_MLModels\**\*.*">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

@@ -6,6 +6,7 @@ import {ToastrService} from 'ngx-toastr';
 import {IqService} from '../_services/iq/iq.service';
 
 @Component({
+  standalone: false,
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']

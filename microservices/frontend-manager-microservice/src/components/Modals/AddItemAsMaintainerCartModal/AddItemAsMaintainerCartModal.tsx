@@ -1,10 +1,11 @@
 import {Button, Col, Modal, Row} from "react-bootstrap";
 import React, {useCallback, useEffect, useState} from "react";
 import {cartService} from "../../../services/CartService";
-import {NotificationManager} from 'react-notifications';
+import {NotificationManager} from '../../../shared/notifications';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash, faUserPlus} from "@fortawesome/free-solid-svg-icons";
-import ReactLoading from "react-loading";
+import ReactLoading from "../../../shared/Loading";
+
 import CandidateCardSimple from "../../shared/CandidateCardSimple/CandidateCardSimple";
 import {CartWithCandidate} from "../../../models/manager/cart-with-candidate";
 
@@ -96,7 +97,7 @@ export function AddItemAsMaintainerCartModal(props) {
 
     return (
         <>
-            <Button className="btn btn-info mr-2" onClick={handleShow}><FontAwesomeIcon icon={faUserPlus}/></Button>
+            <Button className="btn btn-info me-2" onClick={handleShow}><FontAwesomeIcon icon={faUserPlus}/></Button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add Maintainer To Cart</Modal.Title>

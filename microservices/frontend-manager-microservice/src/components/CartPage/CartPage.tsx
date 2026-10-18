@@ -9,7 +9,8 @@ import {AddCartModal} from "../Modals/AddCartModal/AddCartModal";
 import {Cart} from "../../models/manager/cart";
 import CartCard from "../shared/CartCard/CartCard";
 import {cartService} from "../../services/CartService";
-import ReactLoading from "react-loading";
+import ReactLoading from "../../shared/Loading";
+
 
 
 export class CartPage extends React.Component<any, any> {
@@ -57,7 +58,7 @@ export class CartPage extends React.Component<any, any> {
         return <div className="d-flex">
             <Row className="mt-4 w-100 justify-content-between">
                 <Col xl={8} lg={8} md={8} sm={12} xs={12} className="text-center">
-                    <Row className="align-content-end text-right">
+                    <Row className="align-content-end text-end">
                         <Col className="justify-content-end">
                             <AddCartModal/>
                         </Col>
@@ -67,7 +68,7 @@ export class CartPage extends React.Component<any, any> {
                             <Row className="text-center justify-content-center align-items-center">
                                 <ReactLoading type="bars" color="purple" height={667} width={375}/>
                             </Row>:
-                            <Row className="mt-4 w-100 ml-2">
+                            <Row className="mt-4 w-100 ms-2">
                                 {
                                     this.carts.length > 0 ?
                                         this.carts.map(item =>

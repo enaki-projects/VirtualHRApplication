@@ -1,6 +1,6 @@
 import config from "../config";
 
-const moment = require('moment');
+import moment from 'moment';
 
 export default {
     getAge: function(value){
@@ -10,15 +10,15 @@ export default {
     },
     getUrlPhoto(user){
         if (user.cv.hasImage){
-            return `${config.adapterIP}api/users/${user.uid}/image`;
+            return `${config.publicAdapterUrl}api/users/${user.uid}/image`;
         }
         switch (user.cv.gender.toLowerCase()) {
             case 'male':
-                return `/images/male.png`;
+                return `${config.basePath}/images/male.png`;
             case 'female':
-                return  `/images/female.png`;
+                return  `${config.basePath}/images/female.png`;
             default:
-                return  `/images/user.png`;
+                return  `${config.basePath}/images/user.png`;
         }
     },
     getRoles(roles){

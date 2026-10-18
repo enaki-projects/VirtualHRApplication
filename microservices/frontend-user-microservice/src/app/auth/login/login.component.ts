@@ -4,9 +4,10 @@ import {AccountService} from '../../_services/account.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { AvatarService } from 'src/app/_services/avatar.service';
+import { AvatarService } from '../../_services/avatar.service';
 
 @Component({
+  standalone: false,
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']

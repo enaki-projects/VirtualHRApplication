@@ -9,6 +9,7 @@ import {BsModalRef} from 'ngx-bootstrap/modal';
 import {LanguageService} from '../../../_services/cv-references/language.service';
 
 @Component({
+  standalone: false,
   selector: 'app-cv-editor-language-modal',
   templateUrl: './cv-editor-language-modal.component.html',
   styleUrls: ['./cv-editor-language-modal.component.css']
